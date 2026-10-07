@@ -27,10 +27,6 @@
               800: '#5c4127',
               900: '#3d2b1a',
               950: '#25190f',
-            },
-            bamboo: {
-              700: '#1b5e20',
-              800: '#134617'
             }
           },
           fontFamily: {
@@ -117,7 +113,7 @@
             <h1 class="font-extrabold text-sm tracking-tight text-beige-950 leading-none">8 Bamboo Calculator</h1>
             <span id="playerCountBadge" class="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded border border-amber-300 font-bold">4 Pemain</span>
           </div>
-          <p class="text-[10px] text-beige-700 font-semibold mt-0.5">31 Aturan Poin Official Rulebook</p>
+          <p class="text-[10px] text-beige-700 font-semibold mt-0.5">Sistem Poin Resmi & Rotasi Bandar</p>
         </div>
       </div>
       
@@ -133,13 +129,15 @@
       </div>
     </header>
 
-    <!-- KLASEMEN POIN PEMAIN -->
+    <!-- KLASEMEN POIN PEMAIN & POSISI BANDAR -->
     <section>
       <div class="flex items-center justify-between text-[11px] text-beige-800 font-bold uppercase tracking-wider mb-1.5 px-0.5">
         <span class="flex items-center gap-1">
           <i class="fa-solid fa-trophy text-amber-600"></i> Klasemen Skor Meja
         </span>
-        <span class="text-[10px] text-beige-600 font-normal">Tersimpan otomatis</span>
+        <button type="button" id="manualRotateDealerBtn" class="text-[10px] text-amber-800 hover:text-amber-950 font-semibold underline tap-btn">
+          <i class="fa-solid fa-arrows-rotate mr-0.5"></i> Ganti Bandar
+        </button>
       </div>
       
       <div id="playersGrid" class="grid grid-cols-2 gap-2">
@@ -150,7 +148,7 @@
     <!-- PILIHAN MODE: KALKULASI ATURAN vs INPUT MANUAL POIN -->
     <div class="bg-beige-200/70 p-1 rounded-xl flex gap-1 border border-beige-300 text-xs font-bold">
       <button type="button" id="tabModeRules" class="flex-1 py-1.5 rounded-lg bg-white text-beige-950 shadow-sm border border-beige-300/80 flex items-center justify-center gap-1.5 tap-btn transition">
-        <i class="fa-solid fa-calculator text-amber-600"></i> Hitung Aturan (31 Cara)
+        <i class="fa-solid fa-calculator text-amber-600"></i> Hitung Otomatis Aturan
       </button>
       <button type="button" id="tabModeManual" class="flex-1 py-1.5 rounded-lg text-beige-700 hover:text-beige-950 flex items-center justify-center gap-1.5 tap-btn transition">
         <i class="fa-solid fa-pen-to-square text-amber-700"></i> Input Poin Manual
@@ -162,7 +160,7 @@
       <div class="flex items-center justify-between">
         <label class="text-xs font-extrabold text-beige-900 uppercase tracking-wide flex items-center gap-1.5">
           <span class="w-4 h-4 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px]">1</span>
-          Pemain yang Menang (胡牌)
+          Pemain yang Menang
         </label>
         <span class="text-[10px] text-beige-600 font-medium">Pilih 1 pemenang</span>
       </div>
@@ -171,7 +169,7 @@
       </div>
     </section>
 
-    <!-- KONTTAINER KHUSUS: INPUT POIN MANUAL (Jika Tab Manual Aktif) -->
+    <!-- KONTTAINER KHUSUS: INPUT POIN MANUAL -->
     <section id="manualPointInputSection" class="cream-card rounded-2xl p-3.5 space-y-3 hidden border-2 border-amber-600 bg-amber-50/20">
       <div class="flex items-center justify-between border-b border-beige-200 pb-2">
         <label class="text-xs font-extrabold text-amber-900 uppercase tracking-wide flex items-center gap-1.5">
@@ -200,7 +198,7 @@
       </div>
     </section>
 
-    <!-- WRAPPER: MODE ATURAN PENUH (31 CARA POIN) -->
+    <!-- WRAPPER: MODE ATURAN PENUH -->
     <div id="rulesEngineWrapper" class="space-y-3.5">
       
       <!-- BAGIAN 2: Foto Mahjong Kamera / Upload + Konfirmasi Kartu -->
@@ -208,7 +206,7 @@
         <div class="flex items-center justify-between">
           <label class="text-xs font-extrabold text-beige-900 uppercase tracking-wide flex items-center gap-1.5">
             <span class="w-4 h-4 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px]">2</span>
-            Foto Tiles Winning Hand
+            Foto Kartu Kemenangan (14 Tiles)
           </label>
           <span class="text-[10px] text-amber-700 font-semibold bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">AI Scanner</span>
         </div>
@@ -227,29 +225,29 @@
           </label>
         </div>
 
-        <!-- Preview Foto yang Diambil -->
+        <!-- Preview Foto -->
         <div id="scanPreviewBox" class="hidden relative rounded-xl overflow-hidden border border-beige-300 bg-black flex items-center justify-center max-h-36">
           <img id="scannedImagePreview" class="object-cover w-full h-36 opacity-85" alt="Winning Tiles">
           <button id="clearPhotoBtn" type="button" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-black/70 text-white text-xs flex items-center justify-center border border-white/30 tap-btn">✕</button>
         </div>
 
-        <!-- Loading Animasi AI -->
+        <!-- Loading AI -->
         <div id="scanLoadingBox" class="hidden py-3 text-center text-xs text-amber-800 font-semibold space-y-1 bg-amber-50 rounded-xl border border-amber-200">
           <i class="fa-solid fa-spinner fa-spin text-lg text-amber-600"></i>
           <p>AI sedang membaca 14 kartu kemenangan...</p>
         </div>
 
-        <!-- KONFIRMASI TILES: Konfirmasi visual 14 kartu -->
+        <!-- KONFIRMASI TILES -->
         <div id="tilesConfirmationBox" class="p-2.5 cream-inset rounded-xl space-y-2">
           <div class="flex items-center justify-between">
             <span class="text-[11px] font-bold text-beige-900 flex items-center gap-1">
-              <i class="fa-solid fa-list-check text-amber-600"></i> Konfirmasi Susunan 14 Kartu:
+              <i class="fa-solid fa-list-check text-amber-600"></i> Susunan 14 Kartu:
             </span>
             <span id="tileCountIndicator" class="text-[10px] text-amber-900 font-mono font-bold bg-amber-100 px-1.5 py-0.5 rounded border border-amber-300">14 / 14 Tiles</span>
           </div>
 
           <p class="text-[10px] text-beige-700 leading-tight">
-            Apakah tiles di bawah sudah tepat? <b class="text-amber-800">Klik salah satu tile</b> jika ada yang keliru untuk menggantinya.
+            Periksa susunan kartu di bawah. <b class="text-amber-800">Klik salah satu kartu</b> jika ingin mengganti nilainya.
           </p>
 
           <!-- Tray Kartu Visual 14 Tiles -->
@@ -297,15 +295,15 @@
         </div>
       </section>
 
-      <!-- BAGIAN 3: JUMLAH POIN POLA HANDS DARI FOTO (19 Pola Mahjong Hands 8 Bamboo) -->
+      <!-- BAGIAN 3: JUMLAH POIN POLA HANDS DARI FOTO (100% Otomatis) -->
       <section id="section3Card" class="cream-card rounded-2xl p-3.5 space-y-3 border-2 border-amber-500/40 transition-all">
         <div class="flex items-center justify-between border-b border-beige-200 pb-2">
           <div>
             <label class="text-xs font-extrabold text-beige-900 uppercase tracking-wide flex items-center gap-1.5">
               <span class="w-4 h-4 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px]">3</span>
-              Pola Kartu (Mahjong Hands)
+              Pola Kartu Kemenangan (Otomatis)
             </label>
-            <span class="text-[10px] text-beige-600">Dihitung dari 19 pola resmi 8 Bamboo</span>
+            <span class="text-[10px] text-beige-600">Dihitung otomatis langsung dari susunan 14 kartu</span>
           </div>
           <div class="text-right flex items-center gap-1.5">
             <span id="handValidityBadge" class="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded border border-emerald-300 font-bold">Sah</span>
@@ -316,74 +314,56 @@
         </div>
 
         <!-- Banner Peringatan Kartu Tidak Sah -->
-        <div id="invalidHandWarningBanner" class="hidden p-2 rounded-xl bg-rose-100 border border-rose-300 text-rose-900 text-xs flex items-center gap-2 font-semibold">
-          <i class="fa-solid fa-triangle-exclamation text-rose-600 text-base"></i>
+        <div id="invalidHandWarningBanner" class="hidden p-2.5 rounded-xl bg-rose-100 border border-rose-300 text-rose-900 text-xs flex items-center gap-2 font-semibold">
+          <i class="fa-solid fa-triangle-exclamation text-rose-600 text-base flex-shrink-0"></i>
           <span>14 kartu ini <b>bukan winning hand</b> (tidak membentuk 4 set + 1 pasang mata). Poin tidak dihitung!</span>
         </div>
 
-        <!-- Nama Pola yang Terdeteksi & Rincian Melds -->
-        <div class="space-y-1.5">
+        <!-- Pola Terdeteksi & Dekomposisi Bahasa Indonesia yang Jelas -->
+        <div class="space-y-2">
           <div class="flex items-center justify-between text-xs font-semibold">
-            <span class="text-beige-700">Pola Terdeteksi:</span>
-            <span id="detectedPatternName" class="font-extrabold text-beige-950">All Triplets = 4 Pongs</span>
+            <span class="text-beige-700">Nama Pola Terdeteksi:</span>
+            <span id="detectedPatternName" class="font-extrabold text-beige-950 text-sm">All Triplets = 4 Pongs</span>
           </div>
 
-          <div class="p-2 bg-beige-50 rounded-lg border border-beige-200 text-[11px] text-beige-800">
-            <span class="text-[10px] font-bold text-beige-600 uppercase block mb-0.5">Dekomposisi Susunan:</span>
-            <span id="meldsDescriptionText" class="font-mono font-semibold text-amber-900">[Pong 1s] [Pong 4s] [Pong 7s] [Pong 1m] [Mata E]</span>
-          </div>
-
-          <div class="pt-1">
-            <button type="button" id="toggleManualOverrideBtn" class="text-[10px] text-amber-800 hover:text-amber-950 font-bold flex items-center gap-1">
-              <i class="fa-solid fa-sliders"></i> Ubah Pola Hand Manual (19 Pola PDF)?
-            </button>
-          </div>
-
-          <!-- 19 POLA RESMI DARI PDF HALAMAN 1 -->
-          <div id="manualOverrideContainer" class="hidden space-y-1 pt-1">
-            <label class="block text-[10px] text-beige-600">Pilih dari 19 Pola Mahjong Hands:</label>
-            <select id="handPatternSelect" class="w-full bg-beige-50 border border-beige-300 rounded-xl p-2 text-xs font-bold text-beige-900 focus:outline-none focus:border-amber-600">
-              <optgroup label="Standar & Kombinasi (0 - 5 Poin)">
-                <option value="chicken:0">Chicken Hand — 0 Poin</option>
-                <option value="sequences:2">All Sequences = 4 Chows — 2 Poin</option>
-                <option value="triplets:3" selected>All Triplets = 4 Pongs — 3 Poin</option>
-                <option value="mixed_terminals:3">Mixed Terminals (1, 9 & Honor) — 3 Poin</option>
-                <option value="mixed_flush:4">Mixed / Semi Flush — 4 Poin</option>
-                <option value="small_3_dragons:5">Small Three Dragons — 5 Poin</option>
-              </optgroup>
-              <optgroup label="Pola Tinggi (10 Poin)">
-                <option value="seven_pairs:10">Seven Pairs (7 Pasang) — 10 Poin</option>
-                <option value="full_flush:10">Full Colour = Full Flush — 10 Poin</option>
-                <option value="big_3_dragons:10">3 Scholars = Big 3 Dragons — 10 Poin</option>
-                <option value="small_4_winds:10">Small Four Winds — 10 Poin</option>
-                <option value="all_concealed:10">All Concealed Triplets — 10 Poin</option>
-                <option value="all_honours:10">All Honours — 10 Poin</option>
-                <option value="all_terminals:10">All Terminals = 1's & 9's — 10 Poin</option>
-              </optgroup>
-              <optgroup label="Limit Hands (12 & 15 Poin)">
-                <option value="four_blessings:12">4 Blessings = 4 Big Winds — 12 Poin</option>
-                <option value="nine_gates:12">Nine Gates — 12 Poin</option>
-                <option value="orphans:15">13 Orphans — 15 Poin</option>
-                <option value="tianhu:15">Tianhu = Heavenly Hand — 15 Poin</option>
-                <option value="di_hu:15">Di Hu = Earthly Hand — 15 Poin</option>
-                <option value="four_kongs:15">All Quadruplets = 4 Kongs — 15 Poin</option>
-              </optgroup>
-            </select>
+          <div class="p-2.5 bg-beige-50 rounded-xl border border-beige-200 space-y-1.5">
+            <span class="text-[10px] font-extrabold text-beige-600 uppercase tracking-wide block">
+              Dekomposisi Susunan Kartu:
+            </span>
+            <!-- Readable Indonesian decomposition items container -->
+            <div id="readableDecompContainer" class="flex flex-wrap gap-1.5">
+              <!-- Rendered with clear friendly pills -->
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- BAGIAN 4: 12 POIN TAMBAHAN & INSTANT (DARI HALAMAN 2 PDF) -->
+      <!-- BAGIAN 4: POIN TAMBAHAN & INSTANT -->
       <section class="cream-card rounded-2xl p-3.5 space-y-3.5">
         <div class="flex items-center justify-between border-b border-beige-200 pb-2">
           <label class="text-xs font-extrabold text-beige-900 uppercase tracking-wide flex items-center gap-1.5">
             <span class="w-4 h-4 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px]">4</span>
-            12 Poin Tambahan & Instant
+            Poin Tambahan & Bunga
           </label>
           <span class="text-[10px] text-beige-600 font-semibold">8 Bamboo Official</span>
         </div>
 
-        <!-- Bunga & Season (Halaman 2) -->
+        <!-- Status Angin Kursi Pemenang (Dihitung dari Bandar) -->
+        <div class="p-2.5 cream-inset rounded-xl flex items-center justify-between">
+          <div>
+            <span class="text-[11px] font-bold text-beige-900 block">
+              <i class="fa-solid fa-compass text-amber-600 mr-1"></i> Angin Kursi Pemenang:
+            </span>
+            <span id="winnerSeatWindLabel" class="text-xs font-extrabold text-amber-900">
+              Angin Timur (Bandar)
+            </span>
+          </div>
+          <span class="text-[10px] text-beige-600 bg-white px-2 py-1 rounded-md border border-beige-300 font-medium">
+            Otomatis dari posisi Bandar
+          </span>
+        </div>
+
+        <!-- Bunga & Season -->
         <div class="p-2.5 cream-inset rounded-xl space-y-1.5">
           <div class="flex items-center justify-between">
             <label class="text-[11px] font-bold text-beige-900 flex items-center gap-1">
@@ -402,30 +382,18 @@
           </select>
         </div>
 
-        <!-- Angin Putaran Meja & Instant Point Kong -->
-        <div class="grid grid-cols-2 gap-2 text-xs">
-          <div class="p-2.5 cream-inset rounded-xl space-y-1">
-            <label class="block text-[10px] text-beige-700 font-bold">Angin Putaran / Meja:</label>
-            <select id="roundWindSelect" class="w-full bg-white border border-beige-300 rounded-lg p-1.5 text-xs text-beige-900 font-bold focus:outline-none">
-              <option value="E" selected>Angin Timur (東)</option>
-              <option value="S">Angin Selatan (南)</option>
-              <option value="W">Angin Barat (西)</option>
-              <option value="N">Angin Utara (北)</option>
-            </select>
-          </div>
-
-          <div class="p-2.5 cream-inset rounded-xl space-y-1">
-            <label class="block text-[10px] text-beige-700 font-bold">Instant Point Kong (槓):</label>
-            <select id="instantKongSelect" class="w-full bg-white border border-beige-300 rounded-lg p-1.5 text-xs text-beige-900 font-bold focus:outline-none">
-              <option value="0">Tidak Ada (+0)</option>
-              <option value="closed:6">Kong Tertutup (+6 Poin Total)</option>
-              <option value="discard:3">Kong Buangan (+3 Poin Total)</option>
-              <option value="added:3">Kong Tambahan (+3 Poin Total)</option>
-            </select>
-          </div>
+        <!-- Instant Kong Point -->
+        <div class="p-2.5 cream-inset rounded-xl space-y-1">
+          <label class="block text-[10px] text-beige-700 font-bold">Instant Point Kong (槓):</label>
+          <select id="instantKongSelect" class="w-full bg-white border border-beige-300 rounded-lg p-2 text-xs text-beige-900 font-bold focus:outline-none">
+            <option value="0">Tidak Ada (+0)</option>
+            <option value="closed:6">Kong Tertutup (+6 Poin Total)</option>
+            <option value="discard:3">Kong Buangan (+3 Poin Total)</option>
+            <option value="added:3">Kong Tambahan (+3 Poin Total)</option>
+          </select>
         </div>
 
-        <!-- Poin Tambahan Lanjutan (Checkboxes Halaman 2) -->
+        <!-- Poin Tambahan Lanjutan -->
         <div class="grid grid-cols-2 gap-1.5 text-[11px]">
           <label class="flex items-center gap-1.5 bg-beige-50 p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer">
             <input type="checkbox" id="chkPair28" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
@@ -456,11 +424,11 @@
 
     </div><!-- End rulesEngineWrapper -->
 
-    <!-- CARA MENANG (ZIMO vs RON) - Berlaku untuk Mode Manual Maupun Aturan -->
+    <!-- CARA MENANG (ZIMO vs RON) -->
     <section class="cream-card rounded-2xl p-3.5 space-y-3">
       <div class="flex items-center justify-between border-b border-beige-200 pb-2">
         <label class="text-xs font-extrabold text-beige-900 uppercase tracking-wide flex items-center gap-1.5">
-          <i class="fa-solid fa-hand-holding-dollar text-amber-600"></i> Cara Pengambilan Tile
+          <i class="fa-solid fa-hand-holding-dollar text-amber-600"></i> Cara Pengambilan Kartu
         </label>
         <span class="text-[10px] text-beige-600">Zimo vs Ron</span>
       </div>
@@ -483,7 +451,7 @@
       <!-- Pilihan Pembuang Kartu (Jika Ron) -->
       <div id="loserSelectContainer" class="hidden p-2.5 bg-rose-50/70 border border-rose-200 rounded-xl space-y-1.5">
         <span class="block text-[11px] font-bold text-rose-900 flex items-center gap-1">
-          <i class="fa-solid fa-user-xmark"></i> Siapa pemain yang membuang tile kemenangan?
+          <i class="fa-solid fa-user-xmark"></i> Siapa pemain yang membuang kartu kemenangan?
         </span>
         <div id="loserSelectButtons" class="grid grid-cols-3 gap-1.5">
           <!-- Dynamically populated -->
@@ -524,6 +492,12 @@
         <!-- Rendered transfer calculation details -->
       </div>
 
+      <!-- Info Efek Bandar Selanjutnya -->
+      <div id="dealerRotationNotice" class="text-[11px] font-bold text-amber-900 bg-amber-50 p-2 rounded-lg border border-amber-200 flex items-center gap-1.5">
+        <i class="fa-solid fa-crown text-amber-600"></i>
+        <span id="dealerRotationNoticeText">Jika disimpan: Bandar bertahan (Pemain 1).</span>
+      </div>
+
       <!-- Tombol Eksekusi Poin -->
       <button type="button" id="recordRoundBtn" class="tap-btn w-full py-3.5 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 text-white font-black text-sm rounded-xl shadow-md flex items-center justify-center gap-2 uppercase tracking-wide">
         <i class="fa-solid fa-circle-check text-lg"></i>
@@ -537,7 +511,7 @@
 
   </div>
 
-  <!-- MODAL: Setup Meja & Pemain -->
+  <!-- MODAL: Setup Meja & Pemain (Tanpa Simbol Angin) -->
   <div id="setupModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
     <div class="cream-card max-w-sm w-full rounded-2xl p-4 border border-beige-300 space-y-3.5 text-xs shadow-xl">
       <div class="flex items-center justify-between border-b border-beige-200 pb-2">
@@ -545,7 +519,7 @@
           <h3 id="setupModalTitle" class="font-bold text-beige-950 text-sm flex items-center gap-1.5">
             <i class="fa-solid fa-users text-amber-600"></i> Masukkan Pemain Meja
           </h3>
-          <p id="setupModalSubtitle" class="text-[10px] text-beige-600 mt-0.5">Tentukan pemain sebelum mencatat ronde</p>
+          <p id="setupModalSubtitle" class="text-[10px] text-beige-600 mt-0.5">Tentukan nama pemain sebelum mulai</p>
         </div>
         <button id="closeSetupBtn" class="text-beige-600 hover:text-black text-base font-bold hidden">✕</button>
       </div>
@@ -563,25 +537,25 @@
         </div>
       </div>
 
-      <!-- Nama Pemain Tiap Kursi -->
+      <!-- Nama Pemain Bersih Tanpa Huruf Angin -->
       <div class="space-y-2 pt-1 border-t border-beige-200">
-        <label class="block font-semibold text-beige-900">Isi Nama Pemain Tiap Kursi:</label>
+        <label class="block font-semibold text-beige-900">Isi Nama Pemain:</label>
         <div class="space-y-1.5">
           <div class="flex items-center gap-2">
-            <span class="w-8 text-center text-amber-800 font-bold font-chinese bg-amber-50 rounded py-1.5 border border-amber-200">東 1</span>
-            <input type="text" id="inputName0" value="" placeholder="Nama Pemain 1 (Timur)" class="flex-1 bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
+            <span class="w-16 text-center text-amber-800 font-bold bg-amber-50 rounded py-2 border border-amber-200 text-[11px]">Pemain 1</span>
+            <input type="text" id="inputName0" value="" placeholder="Nama Pemain 1 (Bandar Awal)" class="flex-1 bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
           </div>
           <div class="flex items-center gap-2">
-            <span class="w-8 text-center text-amber-800 font-bold font-chinese bg-amber-50 rounded py-1.5 border border-amber-200">南 2</span>
-            <input type="text" id="inputName1" value="" placeholder="Nama Pemain 2 (Selatan)" class="flex-1 bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
+            <span class="w-16 text-center text-amber-800 font-bold bg-amber-50 rounded py-2 border border-amber-200 text-[11px]">Pemain 2</span>
+            <input type="text" id="inputName1" value="" placeholder="Nama Pemain 2" class="flex-1 bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
           </div>
           <div class="flex items-center gap-2">
-            <span class="w-8 text-center text-amber-800 font-bold font-chinese bg-amber-50 rounded py-1.5 border border-amber-200">西 3</span>
-            <input type="text" id="inputName2" value="" placeholder="Nama Pemain 3 (Barat)" class="flex-1 bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
+            <span class="w-16 text-center text-amber-800 font-bold bg-amber-50 rounded py-2 border border-amber-200 text-[11px]">Pemain 3</span>
+            <input type="text" id="inputName2" value="" placeholder="Nama Pemain 3" class="flex-1 bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
           </div>
           <div id="player4InputRow" class="flex items-center gap-2">
-            <span class="w-8 text-center text-amber-800 font-bold font-chinese bg-amber-50 rounded py-1.5 border border-amber-200">北 4</span>
-            <input type="text" id="inputName3" value="" placeholder="Nama Pemain 4 (Utara)" class="flex-1 bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
+            <span class="w-16 text-center text-amber-800 font-bold bg-amber-50 rounded py-2 border border-amber-200 text-[11px]">Pemain 4</span>
+            <input type="text" id="inputName3" value="" placeholder="Nama Pemain 4" class="flex-1 bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
           </div>
         </div>
         <p id="setupErrorMsg" class="hidden text-rose-600 font-semibold text-[11px] pt-1">
@@ -648,46 +622,46 @@
   <script>
     const TILE_DATA = {
       wan: [
-        { id: '1m', name: '1 Karakter', label: '一萬', num: '一' },
-        { id: '2m', name: '2 Karakter', label: '二萬', num: '二' },
-        { id: '3m', name: '3 Karakter', label: '三萬', num: '三' },
-        { id: '4m', name: '4 Karakter', label: '四萬', num: '四' },
-        { id: '5m', name: '5 Karakter', label: '五萬', num: '五' },
-        { id: '6m', name: '6 Karakter', label: '六萬', num: '六' },
-        { id: '7m', name: '7 Karakter', label: '七萬', num: '七' },
-        { id: '8m', name: '8 Karakter', label: '八萬', num: '八' },
-        { id: '9m', name: '9 Karakter', label: '九萬', num: '九' },
+        { id: '1m', name: '1 Karakter', label: '一萬', num: '一', indo: '1 Karakter' },
+        { id: '2m', name: '2 Karakter', label: '二萬', num: '二', indo: '2 Karakter' },
+        { id: '3m', name: '3 Karakter', label: '三萬', num: '三', indo: '3 Karakter' },
+        { id: '4m', name: '4 Karakter', label: '四萬', num: '四', indo: '4 Karakter' },
+        { id: '5m', name: '5 Karakter', label: '五萬', num: '五', indo: '5 Karakter' },
+        { id: '6m', name: '6 Karakter', label: '六萬', num: '六', indo: '6 Karakter' },
+        { id: '7m', name: '7 Karakter', label: '七萬', num: '七', indo: '7 Karakter' },
+        { id: '8m', name: '8 Karakter', label: '八萬', num: '八', indo: '8 Karakter' },
+        { id: '9m', name: '9 Karakter', label: '九萬', num: '九', indo: '9 Karakter' },
       ],
       sou: [
-        { id: '1s', name: '1 Bambu (Burung)', label: '一條' },
-        { id: '2s', name: '2 Bambu', label: '二條' },
-        { id: '3s', name: '3 Bambu', label: '三條' },
-        { id: '4s', name: '4 Bambu', label: '四條' },
-        { id: '5s', name: '5 Bambu', label: '五條' },
-        { id: '6s', name: '6 Bambu', label: '六條' },
-        { id: '7s', name: '7 Bambu', label: '七條' },
-        { id: '8s', name: '8 Bambu (Interlocking)', label: '八條' },
-        { id: '9s', name: '9 Bambu', label: '九條' },
+        { id: '1s', name: '1 Bambu (Burung)', label: '一條', indo: '1 Bambu' },
+        { id: '2s', name: '2 Bambu', label: '二條', indo: '2 Bambu' },
+        { id: '3s', name: '3 Bambu', label: '三條', indo: '3 Bambu' },
+        { id: '4s', name: '4 Bambu', label: '四條', indo: '4 Bambu' },
+        { id: '5s', name: '5 Bambu', label: '五條', indo: '5 Bambu' },
+        { id: '6s', name: '6 Bambu', label: '六條', indo: '6 Bambu' },
+        { id: '7s', name: '7 Bambu', label: '七條', indo: '7 Bambu' },
+        { id: '8s', name: '8 Bambu (Interlocking)', label: '八條', indo: '8 Bambu' },
+        { id: '9s', name: '9 Bambu', label: '九條', indo: '9 Bambu' },
       ],
       pin: [
-        { id: '1p', name: '1 Dot (Rosette Lotus)', label: '一筒' },
-        { id: '2p', name: '2 Dot', label: '二筒' },
-        { id: '3p', name: '3 Dot', label: '三筒' },
-        { id: '4p', name: '4 Dot', label: '四筒' },
-        { id: '5p', name: '5 Dot', label: '五筒' },
-        { id: '6p', name: '6 Dot', label: '六筒' },
-        { id: '7p', name: '7 Dot', label: '七筒' },
-        { id: '8p', name: '8 Dot', label: '八筒' },
-        { id: '9p', name: '9 Dot', label: '九筒' },
+        { id: '1p', name: '1 Dot (Rosette Lotus)', label: '一筒', indo: '1 Dot' },
+        { id: '2p', name: '2 Dot', label: '二筒', indo: '2 Dot' },
+        { id: '3p', name: '3 Dot', label: '三筒', indo: '3 Dot' },
+        { id: '4p', name: '4 Dot', label: '四筒', indo: '4 Dot' },
+        { id: '5p', name: '5 Dot', label: '五筒', indo: '5 Dot' },
+        { id: '6p', name: '6 Dot', label: '六筒', indo: '6 Dot' },
+        { id: '7p', name: '7 Dot', label: '七筒', indo: '7 Dot' },
+        { id: '8p', name: '8 Dot', label: '八筒', indo: '8 Dot' },
+        { id: '9p', name: '9 Dot', label: '九筒', indo: '9 Dot' },
       ],
       honors: [
-        { id: 'E', name: 'Angin Timur', label: '東', text: '東', color: '#1e3a8a' },
-        { id: 'S', name: 'Angin Selatan', label: '南', text: '南', color: '#b91c1c' },
-        { id: 'W', name: 'Angin Barat', label: '西', text: '西', color: '#1e3a8a' },
-        { id: 'N', name: 'Angin Utara', label: '北', text: '北', color: '#1e3a8a' },
-        { id: 'Z', name: 'Naga Merah', label: '紅中', text: '中', color: '#dc2626' },
-        { id: 'F', name: 'Naga Hijau', label: '發財', text: '發', color: '#15803d' },
-        { id: 'B', name: 'Naga Putih', label: '白板', text: '白', color: '#2563eb' },
+        { id: 'E', name: 'Angin Timur', label: '東', text: '東', indo: 'Angin Timur', color: '#1e3a8a' },
+        { id: 'S', name: 'Angin Selatan', label: '南', text: '南', indo: 'Angin Selatan', color: '#b91c1c' },
+        { id: 'W', name: 'Angin Barat', label: '西', text: '西', indo: 'Angin Barat', color: '#1e3a8a' },
+        { id: 'N', name: 'Angin Utara', label: '北', text: '北', indo: 'Angin Utara', color: '#1e3a8a' },
+        { id: 'Z', name: 'Naga Merah', label: '紅中', text: '中', indo: 'Naga Merah (Zhong)', color: '#dc2626' },
+        { id: 'F', name: 'Naga Hijau', label: '發財', text: '發', indo: 'Naga Hijau (Fa)', color: '#15803d' },
+        { id: 'B', name: 'Naga Putih', label: '白板', text: '白', indo: 'Naga Putih (Bai)', color: '#2563eb' },
       ]
     };
 
@@ -762,7 +736,6 @@
             content = `${bambooStick(24, 15, 15, C_RED)}${bambooStick(16, 30, 15, C_GRN)}${bambooStick(32, 30, 15, C_GRN)}${bambooStick(13, 47, 16, C_BLU)}${bambooStick(20, 47, 16, C_BLU)}${bambooStick(28, 47, 16, C_BLU)}${bambooStick(35, 47, 16, C_BLU)}`;
             break;
           case '8s':
-            // 8 Bamboo Interlocking as per PDF & image
             content = `
               ${bambooStick(17, 20, 19, C_GRN, -25)}
               ${bambooStick(31, 20, 19, C_GRN, 25)}
@@ -875,6 +848,7 @@
       entryMode: 'RULES', // 'RULES' (31 Rules Engine) or 'MANUAL' (Direct input point)
       playerCount: 4,
       isConfigured: false,
+      currentDealerIndex: 0, // Current active dealer index (0 to playerCount - 1)
       players: [
         { id: 0, name: '', seat: '東', seatNum: 1, points: 0 },
         { id: 1, name: '', seat: '南', seatNum: 2, points: 0 },
@@ -887,8 +861,6 @@
       // Default 14-tile hand (All Triplets = 3 pts)
       currentTiles: ['1s', '1s', '1s', '4s', '4s', '4s', '7s', '7s', '7s', '1m', '1m', '1m', 'E', 'E'],
       activeTileIndex: null,
-      roundWind: 'E',
-      isManualOverride: false,
       baseHand: {
         valid: true,
         key: 'triplets',
@@ -911,6 +883,43 @@
       history: []
     };
 
+    /**
+     * Menghitung posisi relatif setiap pemain terhadap Bandar yang sedang aktif
+     */
+    function getPlayerRelativePosition(playerIndex) {
+      const dealer = state.currentDealerIndex || 0;
+      const count = state.playerCount || 4;
+      const rel = (playerIndex - dealer + count) % count;
+
+      if (rel === 0) {
+        return { short: 'Bandar', full: 'Bandar', icon: '👑' };
+      }
+      if (count === 4) {
+        if (rel === 1) return { short: 'Sebelah Kiri', full: 'Sebelah Kiri Bandar', icon: '👈' };
+        if (rel === 2) return { short: 'Seberang', full: 'Seberang Bandar', icon: '⬆️' };
+        if (rel === 3) return { short: 'Sebelah Kanan', full: 'Sebelah Kanan Bandar', icon: '👉' };
+      } else {
+        if (rel === 1) return { short: 'Sebelah Kiri', full: 'Sebelah Kiri Bandar', icon: '👈' };
+        if (rel === 2) return { short: 'Sebelah Kanan', full: 'Sebelah Kanan Bandar', icon: '👉' };
+      }
+      return { short: '', full: '', icon: '' };
+    }
+
+    /**
+     * Memperbarui Angin Kursi (Seat Wind) berdasarkan siapa yang menjadi Bandar
+     */
+    function updateSeatsFromDealer() {
+      const windOrder = ['東', '南', '西', '北'];
+      const dealer = state.currentDealerIndex || 0;
+      const count = state.playerCount || 4;
+
+      for (let i = 0; i < count; i++) {
+        const offset = (i - dealer + count) % count;
+        state.players[i].seat = windOrder[offset];
+        state.players[i].seatNum = offset + 1;
+      }
+    }
+
     function getSeatTileCode(seat) {
       if (seat === '東') return 'E';
       if (seat === '南') return 'S';
@@ -919,15 +928,33 @@
       return null;
     }
 
+    function getPlayerSeatWindInfo(playerIndex) {
+      const p = state.players[playerIndex];
+      const seatWind = p ? p.seat : '東';
+      const windNames = { '東': 'Angin Timur', '南': 'Angin Selatan', '西': 'Angin Barat', '北': 'Angin Utara' };
+      return {
+        seat: seatWind,
+        seatTile: getSeatTileCode(seatWind),
+        seatName: windNames[seatWind] || 'Angin Timur',
+        isDealer: playerIndex === (state.currentDealerIndex || 0)
+      };
+    }
+
+    function getTileIndonesianName(tileId) {
+      const t = TILE_MAP[tileId];
+      if (t && t.indo) return t.indo;
+      return tileId;
+    }
+
     function detectAutomaticHonors(tiles) {
       const counts = {};
       tiles.forEach(t => { counts[t] = (counts[t] || 0) + 1; });
 
       const dragonNames = [];
       let dragonPongs = 0;
-      if ((counts['Z'] || 0) >= 3) { dragonPongs++; dragonNames.push('Red 中'); }
-      if ((counts['F'] || 0) >= 3) { dragonPongs++; dragonNames.push('Green 發'); }
-      if ((counts['B'] || 0) >= 3) { dragonPongs++; dragonNames.push('White 白'); }
+      if ((counts['Z'] || 0) >= 3) { dragonPongs++; dragonNames.push('Naga Merah'); }
+      if ((counts['F'] || 0) >= 3) { dragonPongs++; dragonNames.push('Naga Hijau'); }
+      if ((counts['B'] || 0) >= 3) { dragonPongs++; dragonNames.push('Naga Putih'); }
 
       const windCounts = {
         'E': counts['E'] || 0,
@@ -939,9 +966,6 @@
       return { dragonPongs, dragonNames, windCounts };
     }
 
-    /**
-     * Evaluates the 19 Mahjong Hands from Page 1 of 8 BAMBOO Official Rulebook
-     */
     function parseHongKongMahjongHand(tiles) {
       if (!tiles || tiles.length !== 14) {
         return {
@@ -949,7 +973,7 @@
           key: 'invalid',
           name: 'Bukan 14 Kartu (Invalid)',
           points: 0,
-          details: `Hanya ada ${tiles ? tiles.length : 0} kartu`
+          decomposition: null
         };
       }
 
@@ -966,7 +990,13 @@
         if (c >= 2) hasOrphanPair = true;
       });
       if (orphanMissing === 0 && hasOrphanPair) {
-        return { valid: true, key: 'orphans', name: '13 Orphans', points: 15, details: '13 Terminal & Honor + 1 Pasang' };
+        return {
+          valid: true,
+          key: 'orphans',
+          name: '13 Orphans',
+          points: 15,
+          decomposition: { type: 'SPECIAL', desc: '13 Terminal & Honor + 1 Pasang Kembar' }
+        };
       }
 
       // 2. Nine Gates (12 Pts)
@@ -978,21 +1008,45 @@
         if (numCounts[1] >= 3 && numCounts[9] >= 3 &&
             numCounts[2] >= 1 && numCounts[3] >= 1 && numCounts[4] >= 1 &&
             numCounts[5] >= 1 && numCounts[6] >= 1 && numCounts[7] >= 1 && numCounts[8] >= 1) {
-          return { valid: true, key: 'nine_gates', name: 'Nine Gates', points: 12, details: '111 2345678 999 + 1 Tile Sama' };
+          return {
+            valid: true,
+            key: 'nine_gates',
+            name: 'Nine Gates',
+            points: 12,
+            decomposition: { type: 'SPECIAL', desc: '111 2345678 999 dari 1 Jenis Suit' }
+          };
         }
       }
 
       // 3. Seven Pairs (10 Pts)
       let pairCount = 0;
-      Object.values(counts).forEach(c => { pairCount += Math.floor(c / 2); });
+      const pairsFound = [];
+      Object.entries(counts).forEach(([tile, c]) => {
+        if (c >= 2) {
+          pairCount += Math.floor(c / 2);
+          pairsFound.push(tile);
+        }
+      });
       if (pairCount === 7) {
-        return { valid: true, key: 'seven_pairs', name: 'Seven Pairs (7 Pasang)', points: 10, details: '7 Pasang Kartu Kembar' };
+        return {
+          valid: true,
+          key: 'seven_pairs',
+          name: 'Seven Pairs (7 Pasang)',
+          points: 10,
+          decomposition: { type: 'SEVEN_PAIRS', pairs: pairsFound }
+        };
       }
 
-      // 4. Standard 4 Melds + 1 Pair Decomposition
+      // 4. Standard 4 Melds + 1 Pair
       const validDecompositions = decomposeStandardHand(tiles);
       if (validDecompositions.length === 0) {
-        return { valid: false, key: 'invalid', name: 'Bukan Winning Hand', points: 0, details: 'Tidak membentuk 4 Meld + 1 Mata' };
+        return {
+          valid: false,
+          key: 'invalid',
+          name: 'Bukan Winning Hand',
+          points: 0,
+          decomposition: null
+        };
       }
 
       let bestPattern = {
@@ -1000,7 +1054,7 @@
         key: 'chicken',
         name: 'Chicken Hand',
         points: 0,
-        details: ''
+        decomposition: validDecompositions[0]
       };
 
       for (const decomp of validDecompositions) {
@@ -1095,70 +1149,108 @@
       const windPongs = pongsOfTiles.filter(t => ['E', 'S', 'W', 'N'].includes(t)).length;
       const isWindPair = ['E', 'S', 'W', 'N'].includes(decomp.pair);
 
-      const meldDesc = decomp.melds.map(m => {
-        if (m.type === 'PONG') return `[Pong ${m.tile}]`;
-        return `[Chow ${m.tiles.join('-')}]`;
-      }).join(' ') + ` [Mata ${decomp.pair}]`;
-
       // 4 Blessings = 4 Big Winds (12 Poin)
       if (windPongs === 4) {
-        return { valid: true, key: 'four_blessings', name: '4 Blessings = 4 Big Winds', points: 12, details: meldDesc };
+        return { valid: true, key: 'four_blessings', name: '4 Blessings = 4 Big Winds', points: 12, decomposition: decomp };
       }
-
       // Small Four Winds (10 Poin)
       if (windPongs === 3 && isWindPair) {
-        return { valid: true, key: 'small_4_winds', name: 'Small Four Winds', points: 10, details: meldDesc };
+        return { valid: true, key: 'small_4_winds', name: 'Small Four Winds', points: 10, decomposition: decomp };
       }
-
       // 3 Scholars = Big 3 Dragons (10 Poin)
       if (dragonPongs === 3) {
-        return { valid: true, key: 'big_3_dragons', name: '3 Scholars = Big 3 Dragons', points: 10, details: meldDesc };
+        return { valid: true, key: 'big_3_dragons', name: '3 Scholars = Big 3 Dragons', points: 10, decomposition: decomp };
       }
-
       // All Honours (10 Poin)
       if (suits.size === 0 && hasHonors) {
-        return { valid: true, key: 'all_honours', name: 'All Honours', points: 10, details: meldDesc };
+        return { valid: true, key: 'all_honours', name: 'All Honours', points: 10, decomposition: decomp };
       }
-
       // All Terminals = 1's & 9's (10 Poin)
       const allTerm = tiles.every(t => (t.startsWith('1') || t.startsWith('9')) && t.length === 2);
       if (allTerm && pongCount === 4) {
-        return { valid: true, key: 'all_terminals', name: "All Terminals = 1's & 9's", points: 10, details: meldDesc };
+        return { valid: true, key: 'all_terminals', name: "All Terminals = 1's & 9's", points: 10, decomposition: decomp };
       }
-
       // Full Colour = Full Flush (10 Poin)
       if (suits.size === 1 && !hasHonors) {
-        return { valid: true, key: 'full_flush', name: 'Full Colour = Full Flush', points: 10, details: meldDesc };
+        return { valid: true, key: 'full_flush', name: 'Full Colour = Full Flush', points: 10, decomposition: decomp };
       }
-
       // Small Three Dragons (5 Poin)
       if (dragonPongs === 2 && isDragonPair) {
-        return { valid: true, key: 'small_3_dragons', name: 'Small Three Dragons', points: 5, details: meldDesc };
+        return { valid: true, key: 'small_3_dragons', name: 'Small Three Dragons', points: 5, decomposition: decomp };
       }
-
       // Mixed / Semi Flush (4 Poin)
       if (suits.size === 1 && hasHonors) {
-        return { valid: true, key: 'mixed_flush', name: 'Mixed / Semi Flush', points: 4, details: meldDesc };
+        return { valid: true, key: 'mixed_flush', name: 'Mixed / Semi Flush', points: 4, decomposition: decomp };
       }
-
       // Mixed Terminals (1, 9 & Honors) (3 Poin)
       const isMixedTerm = tiles.every(t => (t.startsWith('1') || t.startsWith('9') || ['E','S','W','N','Z','F','B'].includes(t)));
       if (isMixedTerm && pongCount === 4) {
-        return { valid: true, key: 'mixed_terminals', name: 'Mixed Terminals', points: 3, details: meldDesc };
+        return { valid: true, key: 'mixed_terminals', name: 'Mixed Terminals', points: 3, decomposition: decomp };
       }
-
       // All Triplets = 4 Pongs (3 Poin)
       if (pongCount === 4) {
-        return { valid: true, key: 'triplets', name: 'All Triplets = 4 Pongs', points: 3, details: meldDesc };
+        return { valid: true, key: 'triplets', name: 'All Triplets = 4 Pongs', points: 3, decomposition: decomp };
       }
-
       // All Sequences = 4 Chows (2 Poin)
       if (chowCount === 4 && !isDragonPair) {
-        return { valid: true, key: 'sequences', name: 'All Sequences = 4 Chows', points: 2, details: meldDesc };
+        return { valid: true, key: 'sequences', name: 'All Sequences = 4 Chows', points: 2, decomposition: decomp };
+      }
+      // Chicken Hand (0 Poin)
+      return { valid: true, key: 'chicken', name: 'Chicken Hand', points: 0, decomposition: decomp };
+    }
+
+    // Helper to render readable Indonesian decomposition pills
+    function renderIndonesianDecomposition(decomp) {
+      const container = document.getElementById('readableDecompContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      if (!decomp) {
+        container.innerHTML = `<span class="text-xs text-rose-600 italic">Susunan kartu belum membentuk kombinasi sah.</span>`;
+        return;
       }
 
-      // Chicken Hand (0 Poin)
-      return { valid: true, key: 'chicken', name: 'Chicken Hand', points: 0, details: meldDesc };
+      if (decomp.type === 'SPECIAL') {
+        const pill = document.createElement('span');
+        pill.className = 'px-2.5 py-1 bg-amber-100 text-amber-900 border border-amber-300 rounded-lg text-xs font-bold';
+        pill.textContent = decomp.desc;
+        container.appendChild(pill);
+        return;
+      }
+
+      if (decomp.type === 'SEVEN_PAIRS') {
+        const pill = document.createElement('span');
+        pill.className = 'px-2.5 py-1 bg-amber-100 text-amber-900 border border-amber-300 rounded-lg text-xs font-bold';
+        pill.textContent = `7 Pasang Kembar (${decomp.pairs.map(p => getTileIndonesianName(p)).join(', ')})`;
+        container.appendChild(pill);
+        return;
+      }
+
+      // Render Melds (Chows & Pongs)
+      if (decomp.melds && decomp.melds.length) {
+        decomp.melds.forEach(m => {
+          const pill = document.createElement('span');
+          if (m.type === 'PONG') {
+            pill.className = 'px-2 py-0.5 bg-amber-50 text-amber-900 border border-amber-200 rounded-md text-[11px] font-semibold flex items-center gap-1';
+            pill.innerHTML = `<span class="font-bold text-amber-700">3 Kembar:</span> ${getTileIndonesianName(m.tile)}`;
+          } else {
+            const suitLetter = m.tiles[0][1];
+            const suitName = suitLetter === 's' ? 'Bambu' : (suitLetter === 'm' ? 'Karakter' : 'Dot');
+            const nums = m.tiles.map(t => t[0]).join('-');
+            pill.className = 'px-2 py-0.5 bg-beige-100 text-beige-900 border border-beige-300 rounded-md text-[11px] font-semibold flex items-center gap-1';
+            pill.innerHTML = `<span class="font-bold text-beige-700">Urutan:</span> ${nums} ${suitName}`;
+          }
+          container.appendChild(pill);
+        });
+      }
+
+      // Render Eyes / Pair
+      if (decomp.pair) {
+        const pill = document.createElement('span');
+        pill.className = 'px-2 py-0.5 bg-emerald-50 text-emerald-900 border border-emerald-300 rounded-md text-[11px] font-semibold flex items-center gap-1';
+        pill.innerHTML = `<span class="font-bold text-emerald-700">Sepasang Mata:</span> ${getTileIndonesianName(decomp.pair)}`;
+        container.appendChild(pill);
+      }
     }
 
     function buildPaletteTrays() {
@@ -1209,6 +1301,7 @@
     function loadSavedPlayersOrPrompt() {
       try {
         const saved = localStorage.getItem('mj_business_players');
+        const savedDealer = localStorage.getItem('mj_business_dealer');
         if (saved) {
           const parsed = JSON.parse(saved);
           if (Array.isArray(parsed) && parsed.length >= 3 && parsed[0].name) {
@@ -1216,6 +1309,9 @@
             state.playerCount = parsed.length;
             state.isConfigured = true;
           }
+        }
+        if (savedDealer !== null) {
+          state.currentDealerIndex = parseInt(savedDealer, 10) || 0;
         }
       } catch (e) {
         console.warn('Storage read error', e);
@@ -1250,13 +1346,13 @@
         closeBtn?.classList.add('hidden');
         resetContainer?.classList.add('hidden');
         if (title) title.innerHTML = `<i class="fa-solid fa-users text-amber-600"></i> Masukkan Pemain Meja`;
-        if (subtitle) subtitle.textContent = 'Silakan isi nama pemain untuk memulai meja';
+        if (subtitle) subtitle.textContent = 'Silakan isi nama pemain sebelum mulai bermain';
         if (saveBtn) saveBtn.textContent = 'MULAI PERMAINAN MEJA';
       } else {
         closeBtn?.classList.remove('hidden');
         resetContainer?.classList.remove('hidden');
-        if (title) title.innerHTML = `<i class="fa-solid fa-users-gear text-amber-600"></i> Konfigurasi Meja & Pemain`;
-        if (subtitle) subtitle.textContent = 'Ganti nama pemain atau sesuaikan meja';
+        if (title) title.innerHTML = `<i class="fa-solid fa-users-gear text-amber-600"></i> Konfigurasi Pemain Meja`;
+        if (subtitle) subtitle.textContent = 'Ganti nama pemain atau jumlah orang di meja';
         if (saveBtn) saveBtn.textContent = 'SIMPAN PENGATURAN MEJA';
       }
 
@@ -1308,10 +1404,15 @@
       const grid = document.getElementById('playersGrid');
       grid.innerHTML = '';
 
+      updateSeatsFromDealer();
+
       const activePlayers = state.players.slice(0, state.playerCount);
-      activePlayers.forEach(p => {
+      activePlayers.forEach((p, idx) => {
         const card = document.createElement('div');
         const isWinner = p.id === state.selectedWinner;
+        const isDealer = idx === state.currentDealerIndex;
+        const pos = getPlayerRelativePosition(idx);
+
         card.className = `p-2.5 rounded-xl border transition ${isWinner ? 'bg-amber-50/90 border-amber-600 ring-2 ring-amber-500/20 shadow-sm' : 'cream-card border-beige-300'} relative flex flex-col justify-between`;
 
         const ptPrefix = p.points > 0 ? '+' : '';
@@ -1319,8 +1420,13 @@
 
         card.innerHTML = `
           <div class="flex items-center justify-between mb-1">
-            <span class="text-xs font-bold text-beige-950 truncate max-w-[95px]">${p.name}</span>
-            <span class="text-[10px] font-chinese text-amber-900 bg-amber-100 px-1.5 py-0.5 rounded border border-amber-200 font-bold">${p.seat} (${p.seatNum})</span>
+            <div class="truncate max-w-[100px]">
+              <span class="text-xs font-bold text-beige-950 block truncate">${p.name}</span>
+              <span class="text-[9px] text-amber-800 font-bold block">${pos.icon} ${pos.short}</span>
+            </div>
+            <span class="text-[10px] font-chinese ${isDealer ? 'text-amber-900 bg-amber-200 border-amber-400' : 'text-beige-800 bg-beige-100 border-beige-300'} px-1.5 py-0.5 rounded border font-bold">
+              ${p.seat}
+            </span>
           </div>
           <div class="flex items-baseline justify-between mt-1">
             <span class="text-xl font-black font-mono ${ptColor}">${ptPrefix}${p.points}</span>
@@ -1341,12 +1447,17 @@
       const activePlayers = state.players.slice(0, state.playerCount);
       container.className = `grid grid-cols-${state.playerCount} gap-1.5`;
 
-      activePlayers.forEach(p => {
+      activePlayers.forEach((p, idx) => {
         const btn = document.createElement('button');
         const isSel = p.id === state.selectedWinner;
+        const pos = getPlayerRelativePosition(idx);
+
         btn.type = 'button';
-        btn.className = `tap-btn py-2 px-1 rounded-xl text-xs font-bold border transition ${isSel ? 'border-amber-600 bg-amber-600 text-white shadow-sm' : 'border-beige-300 bg-white text-beige-800'}`;
-        btn.innerHTML = `<span class="block text-[10px] font-chinese ${isSel ? 'text-white' : 'text-amber-700'}">${p.seat}</span><span class="block truncate">${p.name}</span>`;
+        btn.className = `tap-btn py-1.5 px-1 rounded-xl text-xs font-bold border transition ${isSel ? 'border-amber-600 bg-amber-600 text-white shadow-sm' : 'border-beige-300 bg-white text-beige-800'}`;
+        btn.innerHTML = `
+          <span class="block text-[9px] ${isSel ? 'text-amber-100' : 'text-amber-700'} font-semibold truncate">${pos.icon} ${pos.short}</span>
+          <span class="block truncate font-extrabold text-[11px]">${p.name}</span>
+        `;
         btn.addEventListener('click', () => {
           state.selectedWinner = p.id;
           if (state.selectedLoser === p.id) {
@@ -1372,9 +1483,14 @@
       activePlayers.forEach(p => {
         const btn = document.createElement('button');
         const isSel = p.id === state.selectedLoser;
+        const pos = getPlayerRelativePosition(p.id);
+
         btn.type = 'button';
         btn.className = `tap-btn py-1.5 px-1 rounded-xl text-xs font-bold border transition ${isSel ? 'border-rose-600 bg-rose-600 text-white font-black' : 'border-rose-200 bg-white text-rose-800'}`;
-        btn.innerHTML = `<span class="block truncate">${p.name}</span>`;
+        btn.innerHTML = `
+          <span class="block text-[9px] ${isSel ? 'text-rose-100' : 'text-rose-600'} font-semibold truncate">${pos.short}</span>
+          <span class="block truncate font-bold text-[11px]">${p.name}</span>
+        `;
         btn.addEventListener('click', () => {
           state.selectedLoser = p.id;
           renderLoserButtons();
@@ -1384,27 +1500,25 @@
       });
     }
 
+    // Evaluate Hand Pattern Automatically
     function evaluateHandPatternFromTiles() {
-      if (state.isManualOverride) return;
-
       const evalResult = parseHongKongMahjongHand(state.currentTiles);
       state.baseHand = {
         valid: evalResult.valid,
         key: evalResult.key,
         name: evalResult.name,
         points: evalResult.points,
-        details: evalResult.details
+        decomposition: evalResult.decomposition
       };
 
       const nameEl = document.getElementById('detectedPatternName');
       const badgeEl = document.getElementById('baseHandPointsBadge');
       const validityBadge = document.getElementById('handValidityBadge');
-      const meldsDesc = document.getElementById('meldsDescriptionText');
       const warningBanner = document.getElementById('invalidHandWarningBanner');
       const section3Card = document.getElementById('section3Card');
 
       if (nameEl) nameEl.textContent = evalResult.name;
-      if (meldsDesc) meldsDesc.textContent = evalResult.details || '-';
+      renderIndonesianDecomposition(evalResult.decomposition);
 
       if (evalResult.valid) {
         if (badgeEl) {
@@ -1429,16 +1543,6 @@
         if (warningBanner) warningBanner.classList.remove('hidden');
         if (section3Card) section3Card.className = 'cream-card rounded-2xl p-3.5 space-y-3 border-2 border-rose-400 bg-rose-50/20 transition-all';
       }
-
-      const select = document.getElementById('handPatternSelect');
-      if (select) {
-        for (let i = 0; i < select.options.length; i++) {
-          if (select.options[i].value.startsWith(evalResult.key + ':')) {
-            select.selectedIndex = i;
-            break;
-          }
-        }
-      }
     }
 
     function recalcPoints() {
@@ -1448,247 +1552,167 @@
       const recordBtnText = document.getElementById('recordRoundBtnText');
       const totalPointsEl = document.getElementById('finalTotalPoints');
       const finalSummaryEl = document.getElementById('finalPatternSummary');
+      const dealerNotice = document.getElementById('dealerRotationNoticeText');
+      const winnerSeatLabel = document.getElementById('winnerSeatWindLabel');
 
       let totalPts = 0;
       const breakdowns = [];
+      const winnerSeatInfo = getPlayerSeatWindInfo(state.selectedWinner);
+      const isDealerWin = (state.selectedWinner === state.currentDealerIndex);
 
-      // ========================================================
-      // JIKA DALAM MODE INPUT MANUAL POIN
-      // ========================================================
-      if (state.entryMode === 'MANUAL') {
-        totalPts = parseInt(state.manualDirectPoints, 10) || 0;
-        if (totalPointsEl) {
-          totalPointsEl.textContent = totalPts;
-          totalPointsEl.className = 'text-3xl font-black text-amber-800 font-mono leading-none';
-        }
-        if (finalSummaryEl) {
-          finalSummaryEl.textContent = 'Input Manual Poin';
-          finalSummaryEl.className = 'text-xs text-beige-950 font-black';
-        }
+      if (winnerSeatLabel) {
+        winnerSeatLabel.textContent = `${winnerSeatInfo.seatName} ${winnerSeatInfo.isDealer ? '(Bandar)' : ''}`;
+      }
 
-        breakdowns.push({
-          title: 'Poin Kemenangan Manual',
-          desc: 'Diinput langsung oleh pengguna',
-          pts: totalPts
-        });
-
-        // Boleh dicatat jika poin >= 0
-        if (recordBtn) {
-          recordBtn.disabled = false;
-          recordBtn.className = 'tap-btn w-full py-3.5 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 text-white font-black text-sm rounded-xl shadow-md flex items-center justify-center gap-2 uppercase tracking-wide cursor-pointer';
-        }
-        if (recordBtnText) {
-          recordBtnText.textContent = 'CATAT & TRANSFER POIN MEJA';
-        }
-
-      } else {
-        // ========================================================
-        // MODE ATURAN (31 ATURAN RESMI 8 BAMBOO)
-        // ========================================================
-        const isHandValid = state.baseHand.valid !== false;
-
-        if (!isHandValid) {
-          if (totalPointsEl) {
-            totalPointsEl.textContent = '0';
-            totalPointsEl.className = 'text-3xl font-black text-rose-600 font-mono leading-none';
-          }
-          if (finalSummaryEl) {
-            finalSummaryEl.textContent = 'Bukan Winning Hand (Tidak Sah)';
-            finalSummaryEl.className = 'text-xs text-rose-700 font-black';
-          }
-
-          if (breakdownEl) {
-            breakdownEl.innerHTML = `
-              <div class="py-2 px-1 text-center text-rose-700 font-semibold text-[11px] bg-rose-50 rounded-lg border border-rose-200">
-                <i class="fa-solid fa-triangle-exclamation mr-1 text-rose-600"></i>
-                Kartu bukan winning tiles. Poin tidak dapat dihitung.
-              </div>
-            `;
-          }
-
-          if (transferText) {
-            transferText.className = 'p-2.5 bg-rose-50 border border-rose-300 rounded-xl text-xs font-semibold text-rose-900 leading-snug';
-            transferText.innerHTML = `
-              <div class="flex items-center gap-1.5 text-xs text-rose-900 font-bold mb-0.5">
-                <i class="fa-solid fa-ban text-rose-600"></i> Transaksi Meja Terkunci
-              </div>
-              <div class="text-[11px] text-rose-800">
-                Susunan 14 kartu belum memenuhi syarat kemenangan Mahjong. Silakan periksa kembali foto atau ganti kartu pada <b>Bagian 2</b>, atau beralih ke <b>Input Poin Manual</b>.
-              </div>
-            `;
-          }
-
-          if (recordBtn) {
-            recordBtn.disabled = true;
-            recordBtn.className = 'tap-btn w-full py-3.5 bg-beige-300 border border-beige-400 text-beige-600 font-black text-xs rounded-xl shadow-none flex items-center justify-center gap-2 cursor-not-allowed opacity-75';
-          }
-          if (recordBtnText) {
-            recordBtnText.textContent = '⛔ BUKAN WINNING TILES (TIDAK BISA DICATAT)';
-          }
-          return 0;
-        }
-
-        if (totalPointsEl) totalPointsEl.className = 'text-3xl font-black text-amber-800 font-mono leading-none';
-        if (finalSummaryEl) {
-          finalSummaryEl.textContent = state.baseHand.name;
-          finalSummaryEl.className = 'text-xs text-beige-950 font-black';
-        }
-
-        totalPts = state.baseHand.points || 0;
-
-        // 1. Pola Dasar Hand
-        breakdowns.push({
-          title: state.baseHand.name,
-          desc: state.baseHand.details || 'Pola Mahjong Hands',
-          pts: state.baseHand.points
-        });
-
-        // 2. Pong Naga Otomatis (Page 2 PDF: Naga Dragon +1 per triplet)
-        const autoDragons = detectAutomaticHonors(state.currentTiles);
-        if (autoDragons.dragonPongs > 0) {
-          totalPts += autoDragons.dragonPongs;
-          breakdowns.push({
-            title: `Pong Naga (${autoDragons.dragonNames.join(', ')})`,
-            desc: `${autoDragons.dragonPongs} Pong Naga (@+1 poin)`,
-            pts: autoDragons.dragonPongs
-          });
-        }
-
-        // 3. Angin Putaran / Kursi (Page 2 PDF: +1 satu angin, +2 jika keduanya)
-        const winner = state.players[state.selectedWinner];
-        let windPts = 0;
-        const windReasons = [];
-        const winnerSeatTile = getSeatTileCode(winner.seat);
-
-        const hasSeatWindPong = winnerSeatTile && autoDragons.windCounts[winnerSeatTile] >= 3;
-        const hasRoundWindPong = state.roundWind && autoDragons.windCounts[state.roundWind] >= 3;
-
-        if (hasSeatWindPong && hasRoundWindPong) {
-          windPts += 2;
-          windReasons.push('Angin Putaran & Angin Kursi Sekaligus (+2 Poin)');
-        } else if (hasSeatWindPong) {
-          windPts += 1;
-          windReasons.push(`Pong Angin Kursi (${winner.seat}) (+1 Poin)`);
-        } else if (hasRoundWindPong) {
-          windPts += 1;
-          const windKanji = state.roundWind === 'E' ? '東' : (state.roundWind === 'S' ? '南' : (state.roundWind === 'W' ? '西' : '北'));
-          windReasons.push(`Pong Angin Putaran (${windKanji}) (+1 Poin)`);
-        }
-
-        if (windPts > 0) {
-          totalPts += windPts;
-          breakdowns.push({
-            title: 'Angin Putaran / Kursi',
-            desc: windReasons.join(', '),
-            pts: windPts
-          });
-        }
-
-        // 4. Bunga & Season Sesuai Page 2 PDF
-        let flowerPts = 0;
-        let flowerDesc = '';
-
-        if (state.flowerRule === 'redNotSeat:1') {
-          flowerPts = 1;
-          flowerDesc = 'Bunga Merah tidak sesuai nomor kursi';
-        } else if (state.flowerRule === 'redSeat:2') {
-          flowerPts = 2;
-          flowerDesc = `Bunga Merah sesuai nomor kursi ${winner.seat} (${winner.seatNum})`;
-        } else if (state.flowerRule === 'redSet:7') {
-          flowerPts = 7;
-          flowerDesc = '1 Set Lengkap 4 Bunga Merah';
-        } else if (state.flowerRule === 'blackSeat:1') {
-          flowerPts = 1;
-          flowerDesc = `Bunga Hitam sesuai nomor kursi ${winner.seat} (${winner.seatNum})`;
-        } else if (state.flowerRule === 'blackSet:5') {
-          flowerPts = 5;
-          flowerDesc = '1 Set Lengkap 4 Bunga Hitam';
-        } else if (state.flowerRule === 'instant7Flower:10') {
-          flowerPts = 10;
-          flowerDesc = 'Instant Win: 7 Bunga + Season';
-        }
-
-        if (flowerPts > 0) {
-          totalPts += flowerPts;
-          breakdowns.push({ title: 'Bunga (花牌) & Season', desc: flowerDesc, pts: flowerPts });
-        }
-
-        // 5. Instant Kong Point (Page 2 PDF: +6 / +3 / +3)
-        if (state.instantKong === 'closed:6') {
-          totalPts += 6;
-          breakdowns.push({ title: 'Kong Tertutup (Instant)', desc: 'Kong ambilan sendiri tertutup (+6 poin)', pts: 6 });
-        } else if (state.instantKong === 'discard:3') {
-          totalPts += 3;
-          breakdowns.push({ title: 'Kong Buangan (Instant)', desc: 'Kong dari buangan lawan (+3 poin)', pts: 3 });
-        } else if (state.instantKong === 'added:3') {
-          totalPts += 3;
-          breakdowns.push({ title: 'Kong Tambahan (Instant)', desc: 'Ambilan sendiri ke pong terbuka (+3 poin)', pts: 3 });
-        }
-
-        // 6. Checkboxes Poin Tambahan Lanjutan (Page 2 PDF)
-        if (state.isPair28) {
-          totalPts += 1;
-          breakdowns.push({ title: 'Pair Penutup 2/8', desc: 'Pair 2 atau 8 jenis apa pun sebagai eyes', pts: 1 });
-        }
-        if (state.isHandTertutup) {
-          totalPts += 1;
-          breakdowns.push({ title: 'Hand Tertutup', desc: 'Tidak ada tile yang diambil sebelum menang', pts: 1 });
-        }
-        if (state.isTanpaBungaNagaAngin) {
-          totalPts += 2;
-          breakdowns.push({ title: 'Tanpa Bunga, Naga & Angin', desc: 'Hand tanpa tile bunga, naga, maupun angin sama sekali', pts: 2 });
-        }
-        if (state.isLastTile) {
-          totalPts += 1;
-          breakdowns.push({ title: 'Last Tile / Discard', desc: 'Menang dari tile terakhir dinding / buangan terakhir', pts: 1 });
-        }
-        if (state.isStealingKong) {
-          totalPts += 1;
-          breakdowns.push({ title: 'Stealing Kong', desc: 'Menang merebut tile tambahan pong lawan', pts: 1 });
-        }
-        if (state.isMenangBuntut) {
-          totalPts += 1;
-          breakdowns.push({ title: 'Menang dari Buntut', desc: 'Menang dari tile pengganti Kong atau Bunga', pts: 1 });
-        }
-
-        // ZIMO Poin Tambahan (Page 2 PDF: ZIMO [+1 poin])
-        if (state.winType === 'ZIMO') {
-          totalPts += 1;
-          breakdowns.push({ title: 'ZIMO (Ambil Sendiri)', desc: 'Poin tambahan menang ambilan sendiri', pts: 1 });
-        }
-
-        if (recordBtn) {
-          recordBtn.disabled = false;
-          recordBtn.className = 'tap-btn w-full py-3.5 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 text-white font-black text-sm rounded-xl shadow-md flex items-center justify-center gap-2 uppercase tracking-wide cursor-pointer';
-        }
-        if (recordBtnText) {
-          recordBtnText.textContent = 'CATAT & TRANSFER POIN MEJA';
+      if (dealerNotice) {
+        if (isDealerWin) {
+          dealerNotice.textContent = `Jika dicatat: Bandar bertahan (${state.players[state.currentDealerIndex]?.name || 'Pemain 1'}) ronde berikutnya.`;
+        } else {
+          const nextDealerIdx = (state.currentDealerIndex + 1) % state.playerCount;
+          dealerNotice.textContent = `Jika dicatat: Bandar kalah! Bandar bergeser ke ${state.players[nextDealerIdx]?.name || `Pemain ${nextDealerIdx+1}`}.`;
         }
       }
 
-      if (totalPointsEl) totalPointsEl.textContent = totalPts;
+      // ========================================================
+      // POINT CALCULATION ENGINE (MANUAL vs 31 RULES ENGINE)
+      // ========================================================
+      if (state.entryMode === 'MANUAL') {
+        totalPts = parseInt(state.manualDirectPoints, 10) || 0;
+        breakdowns.push({ label: 'Input Poin Manual Langsung', pts: `+${totalPts}` });
+        if (finalSummaryEl) finalSummaryEl.textContent = `Input Poin Manual (${totalPts} Poin)`;
+      } else {
+        if (!state.baseHand.valid) {
+          totalPts = 0;
+          breakdowns.push({ label: 'Hand Tidak Sah (Bukan Winning Tiles)', pts: '0 Poin' });
+          if (finalSummaryEl) finalSummaryEl.textContent = 'Susunan Kartu Tidak Sah';
+        } else {
+          totalPts += state.baseHand.points;
+          breakdowns.push({ label: state.baseHand.name, pts: `+${state.baseHand.points}` });
+          if (finalSummaryEl) finalSummaryEl.textContent = state.baseHand.name;
 
-      // Render Breakdown UI
+          // Pong Naga Otomatis
+          const honors = detectAutomaticHonors(state.currentTiles);
+          if (honors.dragonNames && honors.dragonNames.length > 0) {
+            honors.dragonNames.forEach(d => {
+              totalPts += 1;
+              breakdowns.push({ label: `Pong Triplet ${d}`, pts: '+1' });
+            });
+          }
+
+          // Pong Angin Kursi Otomatis
+          if (winnerSeatInfo.seatTile && (honors.windCounts[winnerSeatInfo.seatTile] || 0) >= 3) {
+            totalPts += 1;
+            breakdowns.push({ label: `Pong Triplet ${winnerSeatInfo.seatName} (Angin Kursi)`, pts: '+1' });
+          }
+
+          // Poin Tambahan & Bunga
+          if (state.isPair28) {
+            totalPts += 1;
+            breakdowns.push({ label: 'Pair Penutup 2 atau 8', pts: '+1' });
+          }
+          if (state.isHandTertutup) {
+            totalPts += 1;
+            breakdowns.push({ label: 'Hand Tertutup (Concealed)', pts: '+1' });
+          }
+          if (state.isTanpaBungaNagaAngin) {
+            totalPts += 2;
+            breakdowns.push({ label: 'Tanpa Bunga, Naga & Angin', pts: '+2' });
+          }
+          if (state.isLastTile) {
+            totalPts += 1;
+            breakdowns.push({ label: 'Last Tile / Discard', pts: '+1' });
+          }
+          if (state.isStealingKong) {
+            totalPts += 1;
+            breakdowns.push({ label: 'Merebut Kong (Stealing Kong)', pts: '+1' });
+          }
+          if (state.isMenangBuntut) {
+            totalPts += 1;
+            breakdowns.push({ label: 'Menang dari Buntut', pts: '+1' });
+          }
+          if (state.winType === 'ZIMO') {
+            totalPts += 1;
+            breakdowns.push({ label: 'ZIMO (Ambil Sendiri)', pts: '+1' });
+          }
+
+          // Aturan Bunga & Season
+          if (state.flowerRule && state.flowerRule !== '0') {
+            const [fKey, fPtsStr] = state.flowerRule.split(':');
+            const fPts = parseInt(fPtsStr, 10) || 0;
+            const flowerLabels = {
+              redNotSeat: 'Bunga Merah Tidak Sesuai Kursi',
+              redSeat: 'Bunga Merah Sesuai Kursi',
+              redSet: '1 Set Lengkap Bunga Merah',
+              blackSeat: 'Bunga Hitam Sesuai Kursi',
+              blackSet: '1 Set Lengkap Bunga Hitam',
+              instant7Flower: 'Instant Win: 7 Bunga + Season'
+            };
+            totalPts += fPts;
+            breakdowns.push({ label: flowerLabels[fKey] || 'Bunga & Season', pts: `+${fPts}` });
+          }
+
+          // Instant Kong Point
+          if (state.instantKong && state.instantKong !== '0') {
+            const [kKey, kPtsStr] = state.instantKong.split(':');
+            const kPts = parseInt(kPtsStr, 10) || 0;
+            const kongLabels = {
+              closed: 'Kong Tertutup (Ambil Sendiri)',
+              discard: 'Kong Buangan (Dari Lawan)',
+              added: 'Kong Tambahan (Dari Pong Buka)'
+            };
+            totalPts += kPts;
+            breakdowns.push({ label: kongLabels[kKey] || 'Instant Kong Point', pts: `+${kPts}` });
+          }
+
+          // Batas Maksimum Poin (Cap 25 dari PDF)
+          if (totalPts > 25) {
+            totalPts = 25;
+            breakdowns.push({ label: 'Maksimum Poin (Cap 25 Poin)', pts: '=25' });
+          }
+        }
+      }
+
+      // Render Rincian Rumus
       if (breakdownEl) {
         breakdownEl.innerHTML = '';
-        breakdowns.forEach(item => {
-          const row = document.createElement('div');
-          row.className = 'flex items-center justify-between py-0.5 border-b border-beige-200/60 last:border-none';
-          const sign = item.pts >= 0 ? '+' : '';
-          const color = item.pts >= 0 ? 'text-amber-800' : 'text-rose-600';
-          row.innerHTML = `
-            <div>
-              <span class="font-bold text-beige-950 block text-[11px]">${item.title}</span>
-              <span class="text-[9px] text-beige-600 block">${item.desc}</span>
-            </div>
-            <span class="font-black ${color} font-mono text-xs">${sign}${item.pts} Pts</span>
-          `;
-          breakdownEl.appendChild(row);
-        });
+        if (breakdowns.length === 0) {
+          breakdownEl.innerHTML = '<span class="text-beige-500 italic">Belum ada rincian poin.</span>';
+        } else {
+          breakdowns.forEach(b => {
+            const row = document.createElement('div');
+            row.className = 'flex items-center justify-between text-beige-800 py-0.5 border-b border-beige-100 last:border-none';
+            row.innerHTML = `
+              <span>• ${b.label}</span>
+              <span class="font-mono font-bold text-amber-900">${b.pts}</span>
+            `;
+            breakdownEl.appendChild(row);
+          });
+        }
+      }
+
+      if (totalPointsEl) {
+        totalPointsEl.textContent = totalPts;
+      }
+
+      // Lock / Unlock Tombol Catat Poin
+      if (recordBtn) {
+        if (state.entryMode === 'RULES' && !state.baseHand.valid) {
+          recordBtn.disabled = true;
+          recordBtn.className = 'w-full py-3.5 bg-beige-300 text-beige-500 font-black text-sm rounded-xl cursor-not-allowed flex items-center justify-center gap-2 uppercase tracking-wide';
+          if (recordBtnText) recordBtnText.textContent = '⛔ BUKAN WINNING TILES (TIDAK BISA DICATAT)';
+        } else {
+          recordBtn.disabled = false;
+          recordBtn.className = 'tap-btn w-full py-3.5 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 text-white font-black text-sm rounded-xl shadow-md flex items-center justify-center gap-2 uppercase tracking-wide';
+          if (recordBtnText) recordBtnText.textContent = 'CATAT & SIMPAN POIN MEJA';
+        }
       }
 
       // ========================================================
       // TRANSFER SUMMARY & DELTA CALCULATION
+      // ATURAN: Pemenang memperoleh poin kemenangannya (+totalPts).
+      // Lawan mengalami pengurangan poin (bukan bayar/transfer ke pemenang).
+      // ZIMO: Setiap lawan dipotong 2x poin pemenang.
+      // RON: Pembuang dipotong 2x poin, lawan lainnya masing-masing dipotong 1x poin.
       // ========================================================
       const winner = state.players[state.selectedWinner];
       const loser = state.players[state.selectedLoser];
@@ -1696,52 +1720,61 @@
       const deltas = new Array(state.playerCount).fill(0);
 
       if (transferText) {
-        transferText.className = 'p-2.5 bg-amber-100/70 border border-amber-300 rounded-xl text-xs font-semibold text-amber-950 leading-snug space-y-1';
+        transferText.className = 'p-2.5 bg-amber-100/70 border border-amber-300 rounded-xl text-xs font-semibold text-amber-950 leading-snug space-y-1.5';
 
         if (state.winType === 'ZIMO') {
-          // ZIMO: Sesuai Page 2 PDF: "Semua pemain kalah membayar 2x poin pemenang [2x poin]"
-          const payPerOpponent = totalPts * 2;
-          const totalGain = payPerOpponent * otherCount;
+          // Pemenang mendapatkan totalPts
+          deltas[state.selectedWinner] = totalPts;
 
-          deltas[state.selectedWinner] = totalGain;
+          // Setiap lawan dipotong 2x poin
+          const cutPerOpponent = totalPts * 2;
           state.players.forEach((p, idx) => {
             if (idx < state.playerCount && idx !== state.selectedWinner) {
-              deltas[idx] = -payPerOpponent;
+              deltas[idx] = -cutPerOpponent;
             }
           });
 
           transferText.innerHTML = `
             <div class="flex items-center gap-1.5 text-xs text-amber-900 font-bold">
-              <i class="fa-solid fa-hand-holding-hand"></i> ZIMO — Semua Lawan Membayar 2× Poin
+              <i class="fa-solid fa-hand-holding-hand"></i> ZIMO — Pengurangan Poin Lawan (2× Poin)
             </div>
-            <div class="text-[11px] text-beige-900 leading-relaxed">
-              Masing-masing dari <b>${otherCount} lawan</b> membayar <b>${payPerOpponent} Poin</b> (2 × ${totalPts} Pts).<br>
-              Pemenang (<b class="text-amber-900 font-bold">${winner ? winner.name : 'Pemenang'}</b>) memperoleh total <b class="text-amber-900 font-mono text-sm font-black">+${totalGain} Poin</b>.
+            <div class="text-[11px] text-beige-900 leading-relaxed space-y-1">
+              <div>
+                • Pemenang (<b class="text-amber-900 font-bold">${winner ? winner.name : 'Pemenang'}</b>) bertambah: <b class="text-amber-900 font-mono text-sm font-black">+${totalPts} Poin</b>
+              </div>
+              <div class="text-rose-800">
+                • Semua <b>${otherCount} lawan</b> mengalami <b>pengurangan poin:</b> masing-masing <b class="font-mono font-bold">-${cutPerOpponent} Poin</b> (2 × ${totalPts} Pts).
+              </div>
             </div>
           `;
         } else {
-          // RON: Sesuai Page 2 PDF: "Pembuang membayar 2x poin pemenang, pemain lain masing-masing 1x [2x/1x poin]"
-          const discarderPay = totalPts * 2;
-          const otherPay = totalPts * 1;
-          const nonDiscarderCount = otherCount - 1;
-          const totalGain = discarderPay + (otherPay * nonDiscarderCount);
+          // Pemenang mendapatkan totalPts
+          deltas[state.selectedWinner] = totalPts;
 
-          deltas[state.selectedWinner] = totalGain;
-          deltas[state.selectedLoser] = -discarderPay;
+          // Pembuang dipotong 2x poin, lawan lainnya masing-masing dipotong 1x poin
+          const discarderCut = totalPts * 2;
+          const otherCut = totalPts * 1;
+          const nonDiscarderCount = otherCount - 1;
+
+          deltas[state.selectedLoser] = -discarderCut;
           state.players.forEach((p, idx) => {
             if (idx < state.playerCount && idx !== state.selectedWinner && idx !== state.selectedLoser) {
-              deltas[idx] = -otherPay;
+              deltas[idx] = -otherCut;
             }
           });
 
           transferText.innerHTML = `
             <div class="flex items-center gap-1.5 text-xs text-rose-900 font-bold">
-              <i class="fa-solid fa-crosshairs"></i> RON — Pembuang 2×, Lainnya 1×
+              <i class="fa-solid fa-crosshairs"></i> RON — Pengurangan Poin: Pembuang 2×, Lainnya 1×
             </div>
-            <div class="text-[11px] text-beige-900 leading-relaxed">
-              • Pembuang (<b class="text-rose-700 font-bold">${loser ? loser.name : 'Lawan'}</b>) membayar <b>2× Poin</b> = <b class="text-rose-700 font-mono font-bold">-${discarderPay} Poin</b><br>
-              • ${nonDiscarderCount} Lawan lainnya masing-masing membayar <b>1× Poin</b> = <b class="text-rose-700 font-mono font-bold">-${otherPay} Poin</b><br>
-              • Pemenang (<b class="text-amber-900 font-bold">${winner ? winner.name : 'Pemenang'}</b>) memperoleh total <b class="text-amber-900 font-mono text-sm font-black">+${totalGain} Poin</b>.
+            <div class="text-[11px] text-beige-900 leading-relaxed space-y-1">
+              <div>
+                • Pemenang (<b class="text-amber-900 font-bold">${winner ? winner.name : 'Pemenang'}</b>) bertambah: <b class="text-amber-900 font-mono text-sm font-black">+${totalPts} Poin</b>
+              </div>
+              <div class="text-rose-800">
+                • Pembuang (<b class="text-rose-700 font-bold">${loser ? loser.name : 'Lawan'}</b>) dipotong <b>2× Poin</b> = <b class="font-mono font-bold">-${discarderCut} Poin</b><br>
+                ${nonDiscarderCount > 0 ? `• ${nonDiscarderCount} Lawan lainnya masing-masing dipotong <b>1× Poin</b> = <b class="font-mono font-bold">-${otherCut} Poin</b>` : ''}
+              </div>
             </div>
           `;
         }
@@ -1756,36 +1789,18 @@
       loadingBox.classList.remove('hidden');
 
       const systemPrompt = `You are an official referee for 8 Bamboo Mahjong.
-Examine the winning mahjong tiles in the photo.
-Identify the 14 tiles of the winning hand if possible, using standard codes:
+Examine the 14 winning tiles in the photo.
+Identify the 14 tiles using standard codes:
 - Characters/Wan: 1m to 9m
 - Bamboos/Sou: 1s to 9s
 - Dots/Pin: 1p to 9p
 - Winds: E, S, W, N
 - Dragons: Z (Red Zhong), F (Green Fa), B (White Bai)
 
-Map to 8 Bamboo rulebook pattern:
-- "sequences": All Sequences = 4 Chows (2 pts)
-- "triplets": All Triplets = 4 Pongs (3 pts)
-- "mixed_terminals": Mixed Terminals (3 pts)
-- "mixed_flush": Mixed / Semi Flush (4 pts)
-- "small_3_dragons": Small Three Dragons (5 pts)
-- "seven_pairs": Seven Pairs (10 pts)
-- "full_flush": Full Colour = Full Flush (10 pts)
-- "big_3_dragons": 3 Scholars = Big 3 Dragons (10 pts)
-- "small_4_winds": Small Four Winds (10 pts)
-- "all_honours": All Honours (10 pts)
-- "all_terminals": All Terminals = 1's & 9's (10 pts)
-- "four_blessings": 4 Blessings = 4 Big Winds (12 pts)
-- "nine_gates": Nine Gates (12 pts)
-- "orphans": 13 Orphans (15 pts)
-
 Respond strictly in JSON:
 {
   "tiles": ["1s", "1s", "1s", "4s", "4s", "4s", "7s", "7s", "7s", "1m", "1m", "1m", "E", "E"],
-  "patternKey": "triplets",
-  "patternName": "All Triplets = 4 Pongs",
-  "basePoints": 3
+  "patternName": "All Triplets = 4 Pongs"
 }`;
 
       try {
@@ -1796,7 +1811,7 @@ Respond strictly in JSON:
           contents: [{
             role: "user",
             parts: [
-              { text: "Analyze the 14 tiles in this Mahjong hand according to 8 Bamboo official rulebook." },
+              { text: "Analyze the 14 tiles in this Mahjong hand." },
               { inlineData: { mimeType: "image/jpeg", data: base64Data } }
             ]
           }],
@@ -1820,21 +1835,10 @@ Respond strictly in JSON:
             while (cleaned.length < 14) cleaned.push('1m');
             state.currentTiles = cleaned;
           }
-
-          if (parsed.patternName && parsed.patternKey) {
-            state.baseHand = {
-              valid: true,
-              key: parsed.patternKey,
-              name: parsed.patternName,
-              points: typeof parsed.basePoints === 'number' ? parsed.basePoints : 3
-            };
-            document.getElementById('detectedPatternName').textContent = parsed.patternName;
-            document.getElementById('baseHandPointsBadge').textContent = `+${state.baseHand.points} Poin`;
-          }
-
+          evaluateHandPatternFromTiles();
           renderHandTilesTray();
           recalcPoints();
-          showToast(`Terdeteksi: ${parsed.patternName}!`);
+          showToast(`Terdeteksi: ${state.baseHand.name}!`);
         } else {
           evaluateHandPatternFromTiles();
           renderHandTilesTray();
@@ -1846,7 +1850,7 @@ Respond strictly in JSON:
         evaluateHandPatternFromTiles();
         renderHandTilesTray();
         recalcPoints();
-        showToast("Gunakan tombol Ganti Kartu manual.");
+        showToast("Gunakan tombol Ganti Kartu jika ada yang keliru.");
       } finally {
         loadingBox.classList.add('hidden');
       }
@@ -1866,7 +1870,7 @@ Respond strictly in JSON:
     }
 
     function bindEvents() {
-      // TAB SELECTION: Mode Aturan vs Mode Input Manual Poin
+      // Tab Switching
       const tabRules = document.getElementById('tabModeRules');
       const tabManual = document.getElementById('tabModeManual');
       const rulesWrapper = document.getElementById('rulesEngineWrapper');
@@ -1890,7 +1894,7 @@ Respond strictly in JSON:
         recalcPoints();
       });
 
-      // Manual Point Controls
+      // Manual Steppers
       const directInput = document.getElementById('manualDirectPointInput');
       directInput?.addEventListener('input', (e) => {
         state.manualDirectPoints = parseInt(e.target.value, 10) || 0;
@@ -1918,7 +1922,7 @@ Respond strictly in JSON:
         });
       });
 
-      // Photo Uploads
+      // Camera & Photos
       document.getElementById('cameraInput')?.addEventListener('change', (e) => handleUploadedImage(e.target.files[0]));
       document.getElementById('galleryInput')?.addEventListener('change', (e) => handleUploadedImage(e.target.files[0]));
       document.getElementById('clearPhotoBtn')?.addEventListener('click', () => {
@@ -1931,7 +1935,7 @@ Respond strictly in JSON:
         if (gal) gal.value = '';
       });
 
-      // Hand Tiles Drawer Actions
+      // Manual Tile Picker Tray
       document.getElementById('openTilePickerBtn')?.addEventListener('click', () => {
         const panel = document.getElementById('tileSelectorPanel');
         panel?.classList.toggle('hidden');
@@ -1949,44 +1953,26 @@ Respond strictly in JSON:
 
       document.getElementById('resetHandTilesBtn')?.addEventListener('click', () => {
         state.currentTiles = ['1s', '1s', '1s', '4s', '4s', '4s', '7s', '7s', '7s', '1m', '1m', '1m', 'E', 'E'];
-        state.isManualOverride = false;
         evaluateHandPatternFromTiles();
         renderHandTilesTray();
         recalcPoints();
         showToast("Tiles di-reset ke standar");
       });
 
-      // Section 3: Toggle Manual Override
-      document.getElementById('toggleManualOverrideBtn')?.addEventListener('click', () => {
-        document.getElementById('manualOverrideContainer')?.classList.toggle('hidden');
-      });
-
-      // Section 3: 19 Pola PDF Dropdown
-      document.getElementById('handPatternSelect')?.addEventListener('change', (e) => {
-        state.isManualOverride = true;
-        const [key, pts] = e.target.value.split(':');
-        const selectedText = e.target.options[e.target.selectedIndex].text.split('—')[0].trim();
-        state.baseHand = {
-          valid: true,
-          key: key,
-          name: selectedText,
-          points: parseInt(pts, 10),
-          details: 'Dipilih dari 19 Pola Mahjong Hands'
-        };
-        const detectedName = document.getElementById('detectedPatternName');
-        if (detectedName) detectedName.textContent = selectedText;
-        const ptsBadge = document.getElementById('baseHandPointsBadge');
-        if (ptsBadge) ptsBadge.textContent = `+${pts} Poin`;
-        const valBadge = document.getElementById('handValidityBadge');
-        if (valBadge) {
-          valBadge.textContent = 'Pola Manual';
-          valBadge.className = 'text-[10px] bg-amber-200 text-amber-900 px-1.5 py-0.5 rounded font-bold';
-        }
+      // Manual Dealer Rotation Button
+      document.getElementById('manualRotateDealerBtn')?.addEventListener('click', () => {
+        state.currentDealerIndex = (state.currentDealerIndex + 1) % state.playerCount;
+        try {
+          localStorage.setItem('mj_business_dealer', state.currentDealerIndex);
+        } catch(e) {}
+        renderPlayers();
+        renderWinnerButtons();
+        renderLoserButtons();
         recalcPoints();
-        showToast(`Pola diatur ke: ${selectedText}`);
+        showToast(`Bandar dialihkan ke: ${state.players[state.currentDealerIndex].name || `Pemain ${state.currentDealerIndex+1}`}`);
       });
 
-      // Cara Pengambilan: ZIMO vs RON
+      // Win Type Buttons
       const btnZimo = document.getElementById('btnZimo');
       const btnHu = document.getElementById('btnHu');
       const loserBox = document.getElementById('loserSelectContainer');
@@ -2008,14 +1994,9 @@ Respond strictly in JSON:
         recalcPoints();
       });
 
-      // Page 2 Dropdowns & Checkboxes
+      // Checkboxes & Dropdowns
       document.getElementById('flowerRuleSelect')?.addEventListener('change', (e) => {
         state.flowerRule = e.target.value;
-        recalcPoints();
-      });
-      document.getElementById('roundWindSelect')?.addEventListener('change', (e) => {
-        state.roundWind = e.target.value;
-        evaluateHandPatternFromTiles();
         recalcPoints();
       });
       document.getElementById('instantKongSelect')?.addEventListener('change', (e) => {
@@ -2048,14 +2029,12 @@ Respond strictly in JSON:
         recalcPoints();
       });
 
-      // Section 5: Record Round Button
+      // Submit Record Round
       document.getElementById('recordRoundBtn')?.addEventListener('click', recordRound);
 
-      // Table Setup Modal
+      // Setup Modal Controls
       const setupModal = document.getElementById('setupModal');
-      document.getElementById('openSetupBtn')?.addEventListener('click', () => {
-        showSetupModal(false);
-      });
+      document.getElementById('openSetupBtn')?.addEventListener('click', () => showSetupModal(false));
       document.getElementById('closeSetupBtn')?.addEventListener('click', () => {
         if (!state.isConfigured) return;
         setupModal.classList.add('hidden');
@@ -2069,6 +2048,7 @@ Respond strictly in JSON:
         state.playerCount = 3;
         if (state.selectedWinner >= 3) state.selectedWinner = 0;
         if (state.selectedLoser >= 3) state.selectedLoser = 1;
+        if (state.currentDealerIndex >= 3) state.currentDealerIndex = 0;
         updatePlayerCountUI();
       });
 
@@ -2099,6 +2079,7 @@ Respond strictly in JSON:
         try {
           const toSave = state.players.slice(0, state.playerCount);
           localStorage.setItem('mj_business_players', JSON.stringify(toSave));
+          localStorage.setItem('mj_business_dealer', state.currentDealerIndex);
         } catch (e) {
           console.warn('Storage save error', e);
         }
@@ -2120,24 +2101,20 @@ Respond strictly in JSON:
         renderHistory();
         historyModal.classList.remove('hidden');
       });
-      document.getElementById('closeHistoryBtn')?.addEventListener('click', () => {
-        historyModal.classList.add('hidden');
-      });
+      document.getElementById('closeHistoryBtn')?.addEventListener('click', () => historyModal.classList.add('hidden'));
       document.getElementById('undoLastRoundBtn')?.addEventListener('click', undoLastRound);
 
       // Reset Table Modal
       const confirmResetModal = document.getElementById('confirmResetModal');
-      document.getElementById('triggerResetTableBtn')?.addEventListener('click', () => {
-        confirmResetModal.classList.remove('hidden');
-      });
-      document.getElementById('cancelResetBtn')?.addEventListener('click', () => {
-        confirmResetModal.classList.add('hidden');
-      });
+      document.getElementById('triggerResetTableBtn')?.addEventListener('click', () => confirmResetModal.classList.remove('hidden'));
+      document.getElementById('cancelResetBtn')?.addEventListener('click', () => confirmResetModal.classList.add('hidden'));
       document.getElementById('executeResetBtn')?.addEventListener('click', () => {
         state.players.forEach(p => p.points = 0);
         state.history = [];
+        state.currentDealerIndex = 0;
         try {
           localStorage.removeItem('mj_business_players');
+          localStorage.removeItem('mj_business_dealer');
         } catch(e) {}
         confirmResetModal.classList.add('hidden');
         setupModal.classList.add('hidden');
@@ -2146,7 +2123,7 @@ Respond strictly in JSON:
         renderHistory();
         recalcPoints();
         showSetupModal(true);
-        showToast("Tabel poin di-reset. Silakan isi pemain baru.");
+        showToast("Tabel di-reset. Silakan isi pemain baru.");
       });
     }
 
@@ -2166,6 +2143,7 @@ Respond strictly in JSON:
       }
     }
 
+    // Execute Point Recording & Rotate Dealer
     function recordRound() {
       if (state.entryMode === 'RULES' && state.baseHand.valid === false) {
         showToast("Gagal: Susunan kartu bukan winning tiles!");
@@ -2183,6 +2161,18 @@ Respond strictly in JSON:
         }
       });
 
+      // Aturan Pergantian Bandar (Lian Zhuang):
+      // Jika Bandar yang menang, posisi bandar bertahan.
+      // Jika pemain lain yang menang, bandar bergeser ke pemain berikutnya.
+      const previousDealer = state.currentDealerIndex;
+      let dealerShifted = false;
+      if (state.selectedWinner !== state.currentDealerIndex) {
+        state.currentDealerIndex = (state.currentDealerIndex + 1) % state.playerCount;
+        dealerShifted = true;
+      }
+
+      updateSeatsFromDealer();
+
       state.history.unshift({
         roundNum: state.history.length + 1,
         winnerName: winner ? winner.name : 'Pemain',
@@ -2190,6 +2180,9 @@ Respond strictly in JSON:
         winType: state.winType,
         points: finalPts,
         winnerGain: delta[state.selectedWinner],
+        previousDealer: previousDealer,
+        newDealer: state.currentDealerIndex,
+        dealerShifted: dealerShifted,
         delta: [...delta],
         time: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })
       });
@@ -2198,7 +2191,11 @@ Respond strictly in JSON:
       renderWinnerButtons();
       renderLoserButtons();
       recalcPoints();
-      showToast(`${winner ? winner.name : 'Pemenang'} +${delta[state.selectedWinner]} Poin tercatat!`);
+
+      const dealerMsg = dealerShifted
+        ? ` | Bandar berpindah ke ${state.players[state.currentDealerIndex].name}!`
+        : ` | Bandar bertahan!`;
+      showToast(`${winner ? winner.name : 'Pemenang'} +${delta[state.selectedWinner]} Poin tercatat${dealerMsg}`);
     }
 
     function undoLastRound() {
@@ -2209,7 +2206,15 @@ Respond strictly in JSON:
           state.players[idx].points -= d;
         }
       });
+
+      if (last.previousDealer !== undefined) {
+        state.currentDealerIndex = last.previousDealer;
+        updateSeatsFromDealer();
+      }
+
       renderPlayers();
+      renderWinnerButtons();
+      renderLoserButtons();
       renderHistory();
       recalcPoints();
       showToast("Ronde terakhir berhasil dibatalkan!");
