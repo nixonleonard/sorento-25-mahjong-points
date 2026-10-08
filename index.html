@@ -35,7 +35,7 @@
           }
         }
       }
-    }
+    };
   </script>
 
   <style>
@@ -50,6 +50,10 @@
     }
     .custom-scroll::-webkit-scrollbar {
       display: none;
+    }
+    .custom-scroll {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
     .tap-btn:active {
       transform: scale(0.97);
@@ -118,18 +122,18 @@
       </div>
       
       <div class="flex items-center gap-1.5">
-        <button id="openSetupBtn" class="px-2.5 py-1.5 rounded-lg bg-white hover:bg-beige-100 text-beige-900 border border-beige-300 flex items-center gap-1 text-xs font-bold tap-btn shadow-sm">
+        <button id="openSetupBtn" type="button" class="px-2.5 py-1.5 rounded-lg bg-white hover:bg-beige-100 text-beige-900 border border-beige-300 flex items-center gap-1 text-xs font-bold tap-btn shadow-sm">
           <i class="fa-solid fa-users-gear text-amber-600"></i>
           <span>Meja</span>
         </button>
-        <button id="viewHistoryBtn" class="px-2.5 py-1.5 rounded-lg bg-white hover:bg-beige-100 text-beige-800 border border-beige-300 flex items-center gap-1.5 text-xs font-bold tap-btn shadow-sm">
+        <button id="viewHistoryBtn" type="button" class="px-2.5 py-1.5 rounded-lg bg-white hover:bg-beige-100 text-beige-800 border border-beige-300 flex items-center gap-1.5 text-xs font-bold tap-btn shadow-sm">
           <i class="fa-solid fa-clock-rotate-left text-amber-600"></i>
           <span id="badgeRoundCount" class="font-mono font-black text-beige-900">0</span>
         </button>
       </div>
     </header>
 
-    <!-- KLASEMEN POIN PEMAIN & POSISI BANDAR -->
+    <!-- Klasemen Poin Pemain & Posisi Bandar -->
     <section>
       <div class="flex items-center justify-between text-[11px] text-beige-800 font-bold uppercase tracking-wider mb-1.5 px-0.5">
         <span class="flex items-center gap-1">
@@ -145,7 +149,7 @@
       </div>
     </section>
 
-    <!-- PILIHAN MODE: KALKULASI ATURAN vs INPUT MANUAL POIN -->
+    <!-- Pilihan Mode: Kalkulasi Aturan vs Input Manual Poin -->
     <div class="bg-beige-200/70 p-1 rounded-xl flex gap-1 border border-beige-300 text-xs font-bold">
       <button type="button" id="tabModeRules" class="flex-1 py-1.5 rounded-lg bg-white text-beige-950 shadow-sm border border-beige-300/80 flex items-center justify-center gap-1.5 tap-btn transition">
         <i class="fa-solid fa-calculator text-amber-600"></i> Hitung Otomatis Aturan
@@ -155,7 +159,7 @@
       </button>
     </div>
 
-    <!-- BAGIAN 1: Pemilih Siapa yang Menang Ronde Ini -->
+    <!-- Bagian 1: Pemilih Siapa yang Menang Ronde Ini -->
     <section class="cream-card rounded-2xl p-3 space-y-2">
       <div class="flex items-center justify-between">
         <label class="text-xs font-extrabold text-beige-900 uppercase tracking-wide flex items-center gap-1.5">
@@ -169,7 +173,7 @@
       </div>
     </section>
 
-    <!-- KONTTAINER KHUSUS: INPUT POIN MANUAL -->
+    <!-- Kontainer Khusus: Input Poin Manual -->
     <section id="manualPointInputSection" class="cream-card rounded-2xl p-3.5 space-y-3 hidden border-2 border-amber-600 bg-amber-50/20">
       <div class="flex items-center justify-between border-b border-beige-200 pb-2">
         <label class="text-xs font-extrabold text-amber-900 uppercase tracking-wide flex items-center gap-1.5">
@@ -198,10 +202,10 @@
       </div>
     </section>
 
-    <!-- WRAPPER: MODE ATURAN PENUH -->
+    <!-- Wrapper: Mode Aturan Penuh -->
     <div id="rulesEngineWrapper" class="space-y-3.5">
       
-      <!-- BAGIAN 2: Foto Mahjong Kamera / Upload + Konfirmasi Kartu -->
+      <!-- Bagian 2: Foto Mahjong Kamera / Upload + Konfirmasi Kartu -->
       <section class="cream-card rounded-2xl p-3.5 space-y-3">
         <div class="flex items-center justify-between">
           <label class="text-xs font-extrabold text-beige-900 uppercase tracking-wide flex items-center gap-1.5">
@@ -234,10 +238,10 @@
         <!-- Loading AI -->
         <div id="scanLoadingBox" class="hidden py-3 text-center text-xs text-amber-800 font-semibold space-y-1 bg-amber-50 rounded-xl border border-amber-200">
           <i class="fa-solid fa-spinner fa-spin text-lg text-amber-600"></i>
-          <p>AI sedang membaca 14 kartu kemenangan...</p>
+          <p>Menganalisis 14 kartu kemenangan...</p>
         </div>
 
-        <!-- KONFIRMASI TILES -->
+        <!-- Konfirmasi Tiles -->
         <div id="tilesConfirmationBox" class="p-2.5 cream-inset rounded-xl space-y-2">
           <div class="flex items-center justify-between">
             <span class="text-[11px] font-bold text-beige-900 flex items-center gap-1">
@@ -295,7 +299,7 @@
         </div>
       </section>
 
-      <!-- BAGIAN 3: JUMLAH POIN POLA HANDS DARI FOTO (100% Otomatis) -->
+      <!-- Bagian 3: Pola Hands dari Foto (Otomatis & Simetris) -->
       <section id="section3Card" class="cream-card rounded-2xl p-3.5 space-y-3 border-2 border-amber-500/40 transition-all">
         <div class="flex items-center justify-between border-b border-beige-200 pb-2">
           <div>
@@ -316,7 +320,7 @@
         <!-- Banner Peringatan Kartu Tidak Sah -->
         <div id="invalidHandWarningBanner" class="hidden p-2.5 rounded-xl bg-rose-100 border border-rose-300 text-rose-900 text-xs flex items-center gap-2 font-semibold">
           <i class="fa-solid fa-triangle-exclamation text-rose-600 text-base flex-shrink-0"></i>
-          <span>14 kartu ini <b>bukan winning hand</b> (tidak membentuk 4 set + 1 pasang mata). Poin tidak dihitung!</span>
+          <span id="invalidHandWarningText">14 kartu ini bukan winning hand yang sah. Poin tidak dihitung!</span>
         </div>
 
         <!-- Pola Terdeteksi & Dekomposisi Bahasa Indonesia yang Jelas -->
@@ -330,7 +334,6 @@
             <span class="text-[10px] font-extrabold text-beige-600 uppercase tracking-wide block">
               Dekomposisi Susunan Kartu:
             </span>
-            <!-- Readable Indonesian decomposition items container -->
             <div id="readableDecompContainer" class="flex flex-wrap gap-1.5">
               <!-- Rendered with clear friendly pills -->
             </div>
@@ -338,7 +341,7 @@
         </div>
       </section>
 
-      <!-- BAGIAN 4: POIN TAMBAHAN & INSTANT -->
+      <!-- Bagian 4: Poin Tambahan & Bunga -->
       <section class="cream-card rounded-2xl p-3.5 space-y-3.5">
         <div class="flex items-center justify-between border-b border-beige-200 pb-2">
           <label class="text-xs font-extrabold text-beige-900 uppercase tracking-wide flex items-center gap-1.5">
@@ -424,11 +427,11 @@
 
     </div><!-- End rulesEngineWrapper -->
 
-    <!-- CARA MENANG (ZIMO vs RON) -->
+    <!-- Cara Menang (ZIMO vs RON) - Pengurangan Poin (Tanpa Bayar) -->
     <section class="cream-card rounded-2xl p-3.5 space-y-3">
       <div class="flex items-center justify-between border-b border-beige-200 pb-2">
         <label class="text-xs font-extrabold text-beige-900 uppercase tracking-wide flex items-center gap-1.5">
-          <i class="fa-solid fa-hand-holding-dollar text-amber-600"></i> Cara Pengambilan Kartu
+          <i class="fa-solid fa-hand-holding-hand text-amber-600"></i> Cara Pengambilan Kartu
         </label>
         <span class="text-[10px] text-beige-600">Zimo vs Ron</span>
       </div>
@@ -438,13 +441,13 @@
           <span class="text-xs font-black flex items-center gap-1">
             <i class="fa-solid fa-hand-holding-hand"></i> ZIMO (Ambil Sendiri)
           </span>
-          <span class="text-[9px] font-normal text-amber-700">Semua lawan bayar 2x</span>
+          <span class="text-[9px] font-normal text-amber-700">Semua lawan pengurangan poin 2x</span>
         </button>
         <button type="button" id="btnHu" class="tap-btn py-2 px-2 rounded-xl border border-beige-300 bg-white text-beige-800 font-bold text-xs flex flex-col items-center">
           <span class="text-xs font-black flex items-center gap-1">
             <i class="fa-solid fa-crosshairs"></i> RON (Buangan Lawan)
           </span>
-          <span class="text-[9px] font-normal text-beige-600">Pembuang bayar 2x, lain 1x</span>
+          <span class="text-[9px] font-normal text-beige-600">Pembuang pengurangan 2x, lain 1x</span>
         </button>
       </div>
 
@@ -459,7 +462,7 @@
       </div>
     </section>
 
-    <!-- BAGIAN 5: TOTAL KALKULASI POIN DI AKHIR & TRANSFER POIN -->
+    <!-- Bagian 5: Total Akhir & Pengurangan Poin -->
     <section class="cream-card rounded-2xl p-4 shadow-md border-2 border-amber-600 space-y-3 bg-gradient-to-b from-white to-amber-50/50">
       <div class="flex items-center justify-between border-b border-beige-300 pb-2">
         <div>
@@ -487,7 +490,7 @@
         </div>
       </div>
 
-      <!-- Transfer Summary Text -->
+      <!-- Transfer Summary Text (Strict Pengurangan Poin) -->
       <div id="transferSummaryText" class="p-2.5 bg-amber-100/70 border border-amber-300 rounded-xl text-xs font-semibold text-amber-950 leading-snug">
         <!-- Rendered transfer calculation details -->
       </div>
@@ -495,7 +498,7 @@
       <!-- Info Efek Bandar Selanjutnya -->
       <div id="dealerRotationNotice" class="text-[11px] font-bold text-amber-900 bg-amber-50 p-2 rounded-lg border border-amber-200 flex items-center gap-1.5">
         <i class="fa-solid fa-crown text-amber-600"></i>
-        <span id="dealerRotationNoticeText">Jika disimpan: Bandar bertahan (Pemain 1).</span>
+        <span id="dealerRotationNoticeText">Jika dicatat: Bandar bertahan (Pemain 1).</span>
       </div>
 
       <!-- Tombol Eksekusi Poin -->
@@ -511,7 +514,7 @@
 
   </div>
 
-  <!-- MODAL: Setup Meja & Pemain (Tanpa Simbol Angin) -->
+  <!-- Modal: Setup Meja & Pemain (Tanpa Simbol Emotikon / Angin) -->
   <div id="setupModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
     <div class="cream-card max-w-sm w-full rounded-2xl p-4 border border-beige-300 space-y-3.5 text-xs shadow-xl">
       <div class="flex items-center justify-between border-b border-beige-200 pb-2">
@@ -521,7 +524,7 @@
           </h3>
           <p id="setupModalSubtitle" class="text-[10px] text-beige-600 mt-0.5">Tentukan nama pemain sebelum mulai</p>
         </div>
-        <button id="closeSetupBtn" class="text-beige-600 hover:text-black text-base font-bold hidden">✕</button>
+        <button id="closeSetupBtn" type="button" class="text-beige-600 hover:text-black text-base font-bold hidden">✕</button>
       </div>
 
       <!-- Pilihan Jumlah Pemain -->
@@ -537,25 +540,25 @@
         </div>
       </div>
 
-      <!-- Nama Pemain Bersih Tanpa Huruf Angin -->
+      <!-- Nama Pemain Bersih Tanpa Huruf Angin / Emotikon -->
       <div class="space-y-2 pt-1 border-t border-beige-200">
         <label class="block font-semibold text-beige-900">Isi Nama Pemain:</label>
         <div class="space-y-1.5">
-          <div class="flex items-center gap-2">
-            <span class="w-16 text-center text-amber-800 font-bold bg-amber-50 rounded py-2 border border-amber-200 text-[11px]">Pemain 1</span>
-            <input type="text" id="inputName0" value="" placeholder="Nama Pemain 1 (Bandar Awal)" class="flex-1 bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
+          <div>
+            <label class="text-[10px] font-bold text-beige-700 block mb-0.5">Pemain 1 (Bandar Awal)</label>
+            <input type="text" id="inputName0" placeholder="Masukkan nama pemain 1" class="w-full bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
           </div>
-          <div class="flex items-center gap-2">
-            <span class="w-16 text-center text-amber-800 font-bold bg-amber-50 rounded py-2 border border-amber-200 text-[11px]">Pemain 2</span>
-            <input type="text" id="inputName1" value="" placeholder="Nama Pemain 2" class="flex-1 bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
+          <div>
+            <label class="text-[10px] font-bold text-beige-700 block mb-0.5">Pemain 2 (Sebelah Kiri Bandar)</label>
+            <input type="text" id="inputName1" placeholder="Masukkan nama pemain 2" class="w-full bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
           </div>
-          <div class="flex items-center gap-2">
-            <span class="w-16 text-center text-amber-800 font-bold bg-amber-50 rounded py-2 border border-amber-200 text-[11px]">Pemain 3</span>
-            <input type="text" id="inputName2" value="" placeholder="Nama Pemain 3" class="flex-1 bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
+          <div id="player3InputRow">
+            <label id="labelName2" class="text-[10px] font-bold text-beige-700 block mb-0.5">Pemain 3 (Seberang Bandar)</label>
+            <input type="text" id="inputName2" placeholder="Masukkan nama pemain 3" class="w-full bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
           </div>
-          <div id="player4InputRow" class="flex items-center gap-2">
-            <span class="w-16 text-center text-amber-800 font-bold bg-amber-50 rounded py-2 border border-amber-200 text-[11px]">Pemain 4</span>
-            <input type="text" id="inputName3" value="" placeholder="Nama Pemain 4" class="flex-1 bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
+          <div id="player4InputRow">
+            <label class="text-[10px] font-bold text-beige-700 block mb-0.5">Pemain 4 (Sebelah Kanan Bandar)</label>
+            <input type="text" id="inputName3" placeholder="Masukkan nama pemain 4" class="w-full bg-white border border-beige-300 rounded-lg p-2 text-beige-950 font-semibold focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-500">
           </div>
         </div>
         <p id="setupErrorMsg" class="hidden text-rose-600 font-semibold text-[11px] pt-1">
@@ -570,20 +573,20 @@
         </button>
       </div>
 
-      <button id="saveSetupBtn" class="w-full py-3 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white font-black rounded-xl text-xs tap-btn shadow">
+      <button id="saveSetupBtn" type="button" class="w-full py-3 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white font-black rounded-xl text-xs tap-btn shadow">
         MULAI / SIMPAN PEMAIN MEJA
       </button>
     </div>
   </div>
 
-  <!-- MODAL: Riwayat Ronde -->
+  <!-- Modal: Riwayat Putaran Meja -->
   <div id="historyModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
     <div class="cream-card max-w-sm w-full rounded-2xl overflow-hidden flex flex-col max-h-[85vh] shadow-xl">
       <div class="p-3 bg-beige-100 border-b border-beige-200 flex items-center justify-between">
         <span class="text-xs font-bold text-beige-950 flex items-center gap-1.5">
           <i class="fa-solid fa-clock-rotate-left text-amber-600"></i> Riwayat Putaran Meja
         </span>
-        <button id="closeHistoryBtn" class="text-beige-600 hover:text-black px-2 py-0.5 text-sm font-bold">✕</button>
+        <button id="closeHistoryBtn" type="button" class="text-beige-600 hover:text-black px-2 py-0.5 text-sm font-bold">✕</button>
       </div>
 
       <div id="historyContainer" class="p-3 overflow-y-auto custom-scroll space-y-2 flex-1 text-xs">
@@ -591,14 +594,14 @@
       </div>
 
       <div class="p-3 bg-beige-50 border-t border-beige-200 flex gap-2">
-        <button id="undoLastRoundBtn" class="w-full py-2 bg-rose-600 hover:bg-rose-700 border border-rose-700 text-white text-xs font-bold rounded-lg tap-btn">
+        <button id="undoLastRoundBtn" type="button" class="w-full py-2 bg-rose-600 hover:bg-rose-700 border border-rose-700 text-white text-xs font-bold rounded-lg tap-btn">
           <i class="fa-solid fa-arrow-rotate-left mr-1"></i> Batalkan Ronde Terakhir
         </button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL: Konfirmasi Reset Meja -->
+  <!-- Modal: Konfirmasi Reset Meja -->
   <div id="confirmResetModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
     <div class="cream-card max-w-xs w-full rounded-2xl p-4 border border-rose-300 space-y-3 text-center text-xs shadow-xl">
       <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 mx-auto flex items-center justify-center text-lg">
@@ -607,8 +610,8 @@
       <h4 class="font-bold text-beige-950 text-sm">Reset Poin Meja?</h4>
       <p class="text-beige-700 text-[11px]">Seluruh riwayat putaran dan skor pemain akan dikembalikan ke 0.</p>
       <div class="grid grid-cols-2 gap-2 pt-1">
-        <button id="cancelResetBtn" class="py-2 bg-beige-100 border border-beige-300 text-beige-800 font-bold rounded-lg tap-btn">Batal</button>
-        <button id="executeResetBtn" class="py-2 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-lg tap-btn">Ya, Reset</button>
+        <button id="cancelResetBtn" type="button" class="py-2 bg-beige-100 border border-beige-300 text-beige-800 font-bold rounded-lg tap-btn">Batal</button>
+        <button id="executeResetBtn" type="button" class="py-2 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-lg tap-btn">Ya, Reset</button>
       </div>
     </div>
   </div>
@@ -626,7 +629,7 @@
         { id: '2m', name: '2 Karakter', label: '二萬', num: '二', indo: '2 Karakter' },
         { id: '3m', name: '3 Karakter', label: '三萬', num: '三', indo: '3 Karakter' },
         { id: '4m', name: '4 Karakter', label: '四萬', num: '四', indo: '4 Karakter' },
-        { id: '5m', name: '5 Karakter', label: '五萬', num: '五', indo: '5 Karakter' },
+        { id: '5m', name: '5 Karakter', label: '五萬', num: '伍', indo: '5 Karakter' },
         { id: '6m', name: '6 Karakter', label: '六萬', num: '六', indo: '6 Karakter' },
         { id: '7m', name: '7 Karakter', label: '七萬', num: '七', indo: '7 Karakter' },
         { id: '8m', name: '8 Karakter', label: '八萬', num: '八', indo: '8 Karakter' },
@@ -640,7 +643,7 @@
         { id: '5s', name: '5 Bambu', label: '五條', indo: '5 Bambu' },
         { id: '6s', name: '6 Bambu', label: '六條', indo: '6 Bambu' },
         { id: '7s', name: '7 Bambu', label: '七條', indo: '7 Bambu' },
-        { id: '8s', name: '8 Bambu (Interlocking)', label: '八條', indo: '8 Bambu' },
+        { id: '8s', name: '8 Bambu (Inverted)', label: '八條', indo: '8 Bambu' },
         { id: '9s', name: '9 Bambu', label: '九條', indo: '9 Bambu' },
       ],
       pin: [
@@ -655,13 +658,13 @@
         { id: '9p', name: '9 Dot', label: '九筒', indo: '9 Dot' },
       ],
       honors: [
-        { id: 'E', name: 'Angin Timur', label: '東', text: '東', indo: 'Angin Timur', color: '#1e3a8a' },
-        { id: 'S', name: 'Angin Selatan', label: '南', text: '南', indo: 'Angin Selatan', color: '#b91c1c' },
-        { id: 'W', name: 'Angin Barat', label: '西', text: '西', indo: 'Angin Barat', color: '#1e3a8a' },
-        { id: 'N', name: 'Angin Utara', label: '北', text: '北', indo: 'Angin Utara', color: '#1e3a8a' },
-        { id: 'Z', name: 'Naga Merah', label: '紅中', text: '中', indo: 'Naga Merah (Zhong)', color: '#dc2626' },
-        { id: 'F', name: 'Naga Hijau', label: '發財', text: '發', indo: 'Naga Hijau (Fa)', color: '#15803d' },
-        { id: 'B', name: 'Naga Putih', label: '白板', text: '白', indo: 'Naga Putih (Bai)', color: '#2563eb' },
+        { id: 'E', name: 'Angin Timur', label: '東', text: '東', indo: 'Angin Timur' },
+        { id: 'S', name: 'Angin Selatan', label: '南', text: '南', indo: 'Angin Selatan' },
+        { id: 'W', name: 'Angin Barat', label: '西', text: '西', indo: 'Angin Barat' },
+        { id: 'N', name: 'Angin Utara', label: '北', text: '北', indo: 'Angin Utara' },
+        { id: 'Z', name: 'Naga Merah', label: '紅中', text: '中', indo: 'Naga Merah' },
+        { id: 'F', name: 'Naga Hijau', label: '發財', text: '發', indo: 'Naga Hijau' },
+        { id: 'B', name: 'Naga Putih', label: '白板', text: '白', indo: 'Naga Putih' },
       ]
     };
 
@@ -674,7 +677,7 @@
       const C_GRN = '#1b7340';
       const C_RED = '#c5221f';
       const C_BLU = '#1a56db';
-      const C_DRK = '#1f2937';
+      const C_DRK = '#1a1614';
 
       const bambooStick = (x, y, h = 18, color = C_GRN, rot = 0) => `
         <g transform="translate(${x},${y}) rotate(${rot})">
@@ -698,23 +701,18 @@
       if (tileId.endsWith('m')) {
         const item = TILE_MAP[tileId] || { num: '一' };
         content = `
-          <text x="24" y="27" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="20" fill="${C_BLU}">${item.num}</text>
+          <text x="24" y="27" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="20" fill="${C_DRK}">${item.num}</text>
           <text x="24" y="52" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="22" fill="${C_RED}">萬</text>
         `;
       } else if (tileId.endsWith('s')) {
         switch (tileId) {
           case '1s':
             content = `
-              <rect x="14" y="50" width="20" height="3" rx="1.5" fill="${C_GRN}"/>
-              <path d="M 21 48 C 17 38 12 30 18 16 C 22 22 25 35 24 48 Z" fill="${C_GRN}"/>
-              <path d="M 24 48 C 22 36 24 24 30 17 C 29 27 28 38 26 48 Z" fill="${C_BLU}"/>
-              <ellipse cx="24" cy="33" rx="6.5" ry="9" fill="${C_RED}"/>
-              <circle cx="24" cy="22" r="5" fill="${C_GRN}"/>
-              <circle cx="26" cy="21" r="1.3" fill="#ffffff"/>
-              <circle cx="26" cy="21" r="0.6" fill="#000000"/>
-              <path d="M 28 22 L 34 23 L 28 25 Z" fill="#eab308"/>
-              <line x1="22" y1="42" x2="21" y2="50" stroke="#000" stroke-width="1.2"/>
-              <line x1="26" y1="42" x2="27" y2="50" stroke="#000" stroke-width="1.2"/>
+              <circle cx="24" cy="33" r="11" fill="${C_GRN}" />
+              <path d="M24,20 C30,22 34,28 32,36 C30,42 24,45 24,45 C24,45 18,42 16,36 C14,28 18,22 24,20 Z" fill="${C_RED}" opacity="0.8" />
+              <circle cx="21" cy="27" r="1.5" fill="#fff" />
+              <circle cx="21" cy="27" r="0.7" fill="${C_DRK}" />
+              <path d="M24,44 L24,53" stroke="${C_GRN}" stroke-width="3" stroke-linecap="round"/>
             `;
             break;
           case '2s':
@@ -736,15 +734,29 @@
             content = `${bambooStick(24, 15, 15, C_RED)}${bambooStick(16, 30, 15, C_GRN)}${bambooStick(32, 30, 15, C_GRN)}${bambooStick(13, 47, 16, C_BLU)}${bambooStick(20, 47, 16, C_BLU)}${bambooStick(28, 47, 16, C_BLU)}${bambooStick(35, 47, 16, C_BLU)}`;
             break;
           case '8s':
+            // 8 BAMBOO: Both inverted/rotated W on top and M on bottom with segmented bamboo nodes
             content = `
-              ${bambooStick(17, 20, 19, C_GRN, -25)}
-              ${bambooStick(31, 20, 19, C_GRN, 25)}
-              ${bambooStick(21, 25, 17, C_RED, 25)}
-              ${bambooStick(27, 25, 17, C_RED, -25)}
-              ${bambooStick(21, 39, 17, C_RED, -25)}
-              ${bambooStick(27, 39, 17, C_RED, 25)}
-              ${bambooStick(17, 44, 19, C_GRN, 25)}
-              ${bambooStick(31, 44, 19, C_GRN, -25)}
+              <g stroke-linecap="round" stroke-linejoin="round">
+                <!-- Top W shape (left red, right green) -->
+                <line x1="11" y1="13" x2="17.5" y2="28" stroke="${C_RED}" stroke-width="3"/>
+                <circle cx="14" cy="20.5" r="1.3" fill="#fff" opacity="0.8"/>
+                <line x1="17.5" y1="28" x2="24" y2="18" stroke="${C_RED}" stroke-width="3"/>
+                <circle cx="21" cy="23" r="1.3" fill="#fff" opacity="0.8"/>
+                <line x1="24" y1="18" x2="30.5" y2="28" stroke="${C_GRN}" stroke-width="3"/>
+                <circle cx="27" cy="23" r="1.3" fill="#fff" opacity="0.8"/>
+                <line x1="30.5" y1="28" x2="37" y2="13" stroke="${C_GRN}" stroke-width="3"/>
+                <circle cx="34" cy="20.5" r="1.3" fill="#fff" opacity="0.8"/>
+
+                <!-- Bottom M shape (left red, right green) -->
+                <line x1="11" y1="51" x2="17.5" y2="36" stroke="${C_RED}" stroke-width="3"/>
+                <circle cx="14" cy="43.5" r="1.3" fill="#fff" opacity="0.8"/>
+                <line x1="17.5" y1="36" x2="24" y2="46" stroke="${C_RED}" stroke-width="3"/>
+                <circle cx="21" cy="41" r="1.3" fill="#fff" opacity="0.8"/>
+                <line x1="24" y1="46" x2="30.5" y2="36" stroke="${C_GRN}" stroke-width="3"/>
+                <circle cx="27" cy="41" r="1.3" fill="#fff" opacity="0.8"/>
+                <line x1="30.5" y1="36" x2="37" y2="51" stroke="${C_GRN}" stroke-width="3"/>
+                <circle cx="34" cy="43.5" r="1.3" fill="#fff" opacity="0.8"/>
+              </g>
             `;
             break;
           case '9s':
@@ -809,16 +821,16 @@
       } else {
         switch (tileId) {
           case 'E':
-            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_BLU}">東</text>`;
+            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_DRK}">東</text>`;
             break;
           case 'S':
-            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_RED}">南</text>`;
+            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_DRK}">南</text>`;
             break;
           case 'W':
-            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_BLU}">西</text>`;
+            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_DRK}">西</text>`;
             break;
           case 'N':
-            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_BLU}">北</text>`;
+            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_DRK}">北</text>`;
             break;
           case 'Z':
             content = `<text x="24" y="43" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="31" fill="${C_RED}">中</text>`;
@@ -827,9 +839,10 @@
             content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_GRN}">發</text>`;
             break;
           case 'B':
+            // White Dragon: Clean white/ivory double plaque frame (strictly no red)
             content = `
-              <rect x="9" y="11" width="30" height="42" rx="4" fill="none" stroke="${C_BLU}" stroke-width="2.5"/>
-              <rect x="13" y="15" width="22" height="34" rx="2" fill="none" stroke="${C_BLU}" stroke-width="1" stroke-dasharray="2,2"/>
+              <rect x="10" y="12" width="28" height="40" rx="3" fill="#ffffff" stroke="#c5b6a1" stroke-width="1.5"/>
+              <rect x="14" y="16" width="20" height="32" rx="1.5" fill="#fcfbf7" stroke="#ffffff" stroke-width="2"/>
             `;
             break;
           default:
@@ -845,10 +858,10 @@
     }
 
     const state = {
-      entryMode: 'RULES', // 'RULES' (31 Rules Engine) or 'MANUAL' (Direct input point)
+      entryMode: 'RULES',
       playerCount: 4,
       isConfigured: false,
-      currentDealerIndex: 0, // Current active dealer index (0 to playerCount - 1)
+      currentDealerIndex: 0,
       players: [
         { id: 0, name: '', seat: '東', seatNum: 1, points: 0 },
         { id: 1, name: '', seat: '南', seatNum: 2, points: 0 },
@@ -856,9 +869,8 @@
         { id: 3, name: '', seat: '北', seatNum: 4, points: 0 }
       ],
       selectedWinner: 0,
-      winType: 'ZIMO', // 'ZIMO' or 'RON'
+      winType: 'ZIMO',
       selectedLoser: 1,
-      // Default 14-tile hand (All Triplets = 3 pts)
       currentTiles: ['1s', '1s', '1s', '4s', '4s', '4s', '7s', '7s', '7s', '1m', '1m', '1m', 'E', 'E'],
       activeTileIndex: null,
       baseHand: {
@@ -866,9 +878,8 @@
         key: 'triplets',
         name: 'All Triplets = 4 Pongs',
         points: 3,
-        details: '[Pong 1s] [Pong 4s] [Pong 7s] [Pong 1m] [Mata E]'
+        decomposition: null
       },
-      // 12 Additional rules from Page 2 PDF
       flowerRule: '0',
       instantKong: '0',
       isPair28: false,
@@ -877,37 +888,28 @@
       isLastTile: false,
       isStealingKong: false,
       isMenangBuntut: false,
-      // Direct Manual Mode point value
       manualDirectPoints: 3,
       _currentCalculatedDeltas: [0, 0, 0, 0],
       history: []
     };
 
-    /**
-     * Menghitung posisi relatif setiap pemain terhadap Bandar yang sedang aktif
-     */
     function getPlayerRelativePosition(playerIndex) {
       const dealer = state.currentDealerIndex || 0;
       const count = state.playerCount || 4;
       const rel = (playerIndex - dealer + count) % count;
 
-      if (rel === 0) {
-        return { short: 'Bandar', full: 'Bandar', icon: '👑' };
-      }
+      if (rel === 0) return { short: 'Bandar', full: 'Bandar' };
       if (count === 4) {
-        if (rel === 1) return { short: 'Sebelah Kiri', full: 'Sebelah Kiri Bandar', icon: '👈' };
-        if (rel === 2) return { short: 'Seberang', full: 'Seberang Bandar', icon: '⬆️' };
-        if (rel === 3) return { short: 'Sebelah Kanan', full: 'Sebelah Kanan Bandar', icon: '👉' };
+        if (rel === 1) return { short: 'Sebelah Kiri', full: 'Sebelah Kiri Bandar' };
+        if (rel === 2) return { short: 'Seberang', full: 'Seberang Bandar' };
+        if (rel === 3) return { short: 'Sebelah Kanan', full: 'Sebelah Kanan Bandar' };
       } else {
-        if (rel === 1) return { short: 'Sebelah Kiri', full: 'Sebelah Kiri Bandar', icon: '👈' };
-        if (rel === 2) return { short: 'Sebelah Kanan', full: 'Sebelah Kanan Bandar', icon: '👉' };
+        if (rel === 1) return { short: 'Sebelah Kiri', full: 'Sebelah Kiri Bandar' };
+        if (rel === 2) return { short: 'Sebelah Kanan', full: 'Sebelah Kanan Bandar' };
       }
-      return { short: '', full: '', icon: '' };
+      return { short: '', full: '' };
     }
 
-    /**
-     * Memperbarui Angin Kursi (Seat Wind) berdasarkan siapa yang menjadi Bandar
-     */
     function updateSeatsFromDealer() {
       const windOrder = ['東', '南', '西', '北'];
       const dealer = state.currentDealerIndex || 0;
@@ -973,12 +975,26 @@
           key: 'invalid',
           name: 'Bukan 14 Kartu (Invalid)',
           points: 0,
+          errorDetail: 'Jumlah kartu harus tepat 14 keping.',
           decomposition: null
         };
       }
 
+      // STRICT VALIDATION: Maximum 4 of any individual tile
       const counts = {};
-      tiles.forEach(t => { counts[t] = (counts[t] || 0) + 1; });
+      for (const t of tiles) {
+        counts[t] = (counts[t] || 0) + 1;
+        if (counts[t] > 4) {
+          return {
+            valid: false,
+            key: 'invalid_max4',
+            name: 'Tidak Sah (>4 Kartu Sama)',
+            points: 0,
+            errorDetail: `Kartu ${getTileIndonesianName(t)} muncul ${counts[t]}×! Maksimal hanya boleh 4 kartu yang sama di meja.`,
+            decomposition: null
+          };
+        }
+      }
 
       // 1. 13 Orphans (15 Pts)
       const orphanRequired = ['1m', '9m', '1s', '9s', '1p', '9p', 'E', 'S', 'W', 'N', 'Z', 'F', 'B'];
@@ -1023,8 +1039,9 @@
       const pairsFound = [];
       Object.entries(counts).forEach(([tile, c]) => {
         if (c >= 2) {
-          pairCount += Math.floor(c / 2);
-          pairsFound.push(tile);
+          const pairsHere = Math.floor(c / 2);
+          pairCount += pairsHere;
+          for (let p = 0; p < pairsHere; p++) pairsFound.push(tile);
         }
       });
       if (pairCount === 7) {
@@ -1045,6 +1062,7 @@
           key: 'invalid',
           name: 'Bukan Winning Hand',
           points: 0,
+          errorDetail: '14 kartu ini bukan winning hand (tidak membentuk 4 set + 1 pasang mata). Poin tidak dihitung!',
           decomposition: null
         };
       }
@@ -1199,7 +1217,6 @@
       return { valid: true, key: 'chicken', name: 'Chicken Hand', points: 0, decomposition: decomp };
     }
 
-    // Helper to render readable Indonesian decomposition pills
     function renderIndonesianDecomposition(decomp) {
       const container = document.getElementById('readableDecompContainer');
       if (!container) return;
@@ -1226,7 +1243,6 @@
         return;
       }
 
-      // Render Melds (Chows & Pongs)
       if (decomp.melds && decomp.melds.length) {
         decomp.melds.forEach(m => {
           const pill = document.createElement('span');
@@ -1244,7 +1260,6 @@
         });
       }
 
-      // Render Eyes / Pair
       if (decomp.pair) {
         const pill = document.createElement('span');
         pill.className = 'px-2 py-0.5 bg-emerald-50 text-emerald-900 border border-emerald-300 rounded-md text-[11px] font-semibold flex items-center gap-1';
@@ -1286,77 +1301,104 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      buildPaletteTrays();
-      loadSavedPlayersOrPrompt();
-      renderPlayers();
-      renderWinnerButtons();
-      renderLoserButtons();
-      renderHandTilesTray();
-      evaluateHandPatternFromTiles();
-      bindEvents();
-      recalcPoints();
-    });
+    function renderPlayers() {
+      const grid = document.getElementById('playersGrid');
+      grid.innerHTML = '';
 
-    function loadSavedPlayersOrPrompt() {
-      try {
-        const saved = localStorage.getItem('mj_business_players');
-        const savedDealer = localStorage.getItem('mj_business_dealer');
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed) && parsed.length >= 3 && parsed[0].name) {
-            state.players = parsed;
-            state.playerCount = parsed.length;
-            state.isConfigured = true;
-          }
-        }
-        if (savedDealer !== null) {
-          state.currentDealerIndex = parseInt(savedDealer, 10) || 0;
-        }
-      } catch (e) {
-        console.warn('Storage read error', e);
-      }
+      updateSeatsFromDealer();
 
-      if (!state.isConfigured || !state.players[0].name) {
-        showSetupModal(true);
-      } else {
-        document.getElementById('closeSetupBtn')?.classList.remove('hidden');
-        document.getElementById('resetTableContainer')?.classList.remove('hidden');
-      }
+      const activePlayers = state.players.slice(0, state.playerCount);
+      activePlayers.forEach((p, idx) => {
+        const card = document.createElement('div');
+        const isWinner = p.id === state.selectedWinner;
+        const isDealer = idx === state.currentDealerIndex;
+        const pos = getPlayerRelativePosition(idx);
+
+        card.className = `p-2.5 rounded-xl border transition ${isWinner ? 'bg-amber-50/90 border-amber-600 ring-2 ring-amber-500/20 shadow-sm' : 'cream-card border-beige-300'} relative flex flex-col justify-between`;
+
+        const ptPrefix = p.points > 0 ? '+' : '';
+        const ptColor = p.points > 0 ? 'text-amber-800 font-black' : (p.points < 0 ? 'text-rose-600 font-bold' : 'text-beige-800');
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between mb-1">
+            <div class="truncate max-w-[100px]">
+              <span class="text-xs font-bold text-beige-950 block truncate">${p.name || 'Pemain ' + (idx + 1)}</span>
+              <span class="text-[9px] text-amber-800 font-bold block">${pos.short}</span>
+            </div>
+            <span class="text-[10px] font-chinese ${isDealer ? 'text-amber-900 bg-amber-200 border-amber-400' : 'text-beige-800 bg-beige-100 border-beige-300'} px-1.5 py-0.5 rounded border font-bold">
+              ${p.seat}
+            </span>
+          </div>
+          <div class="flex items-baseline justify-between mt-1">
+            <span class="text-xl font-black font-mono ${ptColor}">${ptPrefix}${p.points}</span>
+            <span class="text-[10px] font-bold text-beige-600 uppercase">Poin</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      document.getElementById('badgeRoundCount').textContent = state.history.length;
+      document.getElementById('playerCountBadge').textContent = `${state.playerCount} Pemain`;
     }
 
-    function showSetupModal(isOnboarding = false) {
-      const modal = document.getElementById('setupModal');
-      const closeBtn = document.getElementById('closeSetupBtn');
-      const resetContainer = document.getElementById('resetTableContainer');
-      const errorMsg = document.getElementById('setupErrorMsg');
-      const title = document.getElementById('setupModalTitle');
-      const subtitle = document.getElementById('setupModalSubtitle');
-      const saveBtn = document.getElementById('saveSetupBtn');
+    function renderWinnerButtons() {
+      const container = document.getElementById('winnerSelectButtons');
+      container.innerHTML = '';
 
-      if (errorMsg) errorMsg.classList.add('hidden');
+      const activePlayers = state.players.slice(0, state.playerCount);
+      container.className = `grid grid-cols-${state.playerCount} gap-1.5`;
 
-      state.players.forEach((p, i) => {
-        const inp = document.getElementById(`inputName${i}`);
-        if (inp) inp.value = p.name || '';
+      activePlayers.forEach((p, idx) => {
+        const btn = document.createElement('button');
+        const isSel = p.id === state.selectedWinner;
+        const pos = getPlayerRelativePosition(idx);
+
+        btn.type = 'button';
+        btn.className = `tap-btn py-1.5 px-1 rounded-xl text-xs font-bold border transition ${isSel ? 'border-amber-600 bg-amber-600 text-white shadow-sm' : 'border-beige-300 bg-white text-beige-800'}`;
+        btn.innerHTML = `
+          <span class="block text-[9px] ${isSel ? 'text-amber-100' : 'text-amber-700'} font-semibold truncate">${pos.short}</span>
+          <span class="block truncate font-extrabold text-[11px]">${p.name || 'Pemain ' + (idx + 1)}</span>
+        `;
+        btn.addEventListener('click', () => {
+          state.selectedWinner = p.id;
+          if (state.selectedLoser === p.id) {
+            const nextP = activePlayers.find(x => x.id !== p.id);
+            state.selectedLoser = nextP ? nextP.id : 0;
+          }
+          renderWinnerButtons();
+          renderLoserButtons();
+          renderPlayers();
+          recalcPoints();
+        });
+        container.appendChild(btn);
       });
-      updatePlayerCountUI();
+    }
 
-      if (isOnboarding) {
-        closeBtn?.classList.add('hidden');
-        resetContainer?.classList.add('hidden');
-        if (title) title.innerHTML = `<i class="fa-solid fa-users text-amber-600"></i> Masukkan Pemain Meja`;
-        if (subtitle) subtitle.textContent = 'Silakan isi nama pemain sebelum mulai bermain';
-        if (saveBtn) saveBtn.textContent = 'MULAI PERMAINAN MEJA';
-      } else {
-        closeBtn?.classList.remove('hidden');
-        resetContainer?.classList.remove('hidden');
-        if (title) title.innerHTML = `<i class="fa-solid fa-users-gear text-amber-600"></i> Konfigurasi Pemain Meja`;
-        if (subtitle) subtitle.textContent = 'Ganti nama pemain atau jumlah orang di meja';
-        if (saveBtn) saveBtn.textContent = 'SIMPAN PENGATURAN MEJA';
-      }
+    function renderLoserButtons() {
+      const container = document.getElementById('loserSelectButtons');
+      container.innerHTML = '';
 
-      modal.classList.remove('hidden');
+      const activePlayers = state.players.slice(0, state.playerCount).filter(p => p.id !== state.selectedWinner);
+      container.className = `grid grid-cols-${activePlayers.length} gap-1.5`;
+
+      activePlayers.forEach(p => {
+        const btn = document.createElement('button');
+        const isSel = p.id === state.selectedLoser;
+        const pos = getPlayerRelativePosition(p.id);
+
+        btn.type = 'button';
+        btn.className = `tap-btn py-1.5 px-1 rounded-xl text-xs font-bold border transition ${isSel ? 'border-rose-600 bg-rose-600 text-white font-black' : 'border-rose-200 bg-white text-rose-800'}`;
+        btn.innerHTML = `
+          <span class="block text-[9px] ${isSel ? 'text-rose-100' : 'text-rose-600'} font-semibold truncate">${pos.short}</span>
+          <span class="block truncate font-bold text-[11px]">${p.name || 'Pemain ' + (p.id + 1)}</span>
+        `;
+        btn.addEventListener('click', () => {
+          state.selectedLoser = p.id;
+          renderLoserButtons();
+          recalcPoints();
+        });
+        container.appendChild(btn);
+      });
     }
 
     function renderHandTilesTray() {
@@ -1396,111 +1438,9 @@
         renderHandTilesTray();
         evaluateHandPatternFromTiles();
         recalcPoints();
-        showToast(`Tile diganti ke ${newTileId}`);
       }
     }
 
-    function renderPlayers() {
-      const grid = document.getElementById('playersGrid');
-      grid.innerHTML = '';
-
-      updateSeatsFromDealer();
-
-      const activePlayers = state.players.slice(0, state.playerCount);
-      activePlayers.forEach((p, idx) => {
-        const card = document.createElement('div');
-        const isWinner = p.id === state.selectedWinner;
-        const isDealer = idx === state.currentDealerIndex;
-        const pos = getPlayerRelativePosition(idx);
-
-        card.className = `p-2.5 rounded-xl border transition ${isWinner ? 'bg-amber-50/90 border-amber-600 ring-2 ring-amber-500/20 shadow-sm' : 'cream-card border-beige-300'} relative flex flex-col justify-between`;
-
-        const ptPrefix = p.points > 0 ? '+' : '';
-        const ptColor = p.points > 0 ? 'text-amber-800 font-black' : (p.points < 0 ? 'text-rose-600 font-bold' : 'text-beige-800');
-
-        card.innerHTML = `
-          <div class="flex items-center justify-between mb-1">
-            <div class="truncate max-w-[100px]">
-              <span class="text-xs font-bold text-beige-950 block truncate">${p.name}</span>
-              <span class="text-[9px] text-amber-800 font-bold block">${pos.icon} ${pos.short}</span>
-            </div>
-            <span class="text-[10px] font-chinese ${isDealer ? 'text-amber-900 bg-amber-200 border-amber-400' : 'text-beige-800 bg-beige-100 border-beige-300'} px-1.5 py-0.5 rounded border font-bold">
-              ${p.seat}
-            </span>
-          </div>
-          <div class="flex items-baseline justify-between mt-1">
-            <span class="text-xl font-black font-mono ${ptColor}">${ptPrefix}${p.points}</span>
-            <span class="text-[10px] font-bold text-beige-600 uppercase">Poin</span>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-
-      document.getElementById('badgeRoundCount').textContent = state.history.length;
-      document.getElementById('playerCountBadge').textContent = `${state.playerCount} Pemain`;
-    }
-
-    function renderWinnerButtons() {
-      const container = document.getElementById('winnerSelectButtons');
-      container.innerHTML = '';
-
-      const activePlayers = state.players.slice(0, state.playerCount);
-      container.className = `grid grid-cols-${state.playerCount} gap-1.5`;
-
-      activePlayers.forEach((p, idx) => {
-        const btn = document.createElement('button');
-        const isSel = p.id === state.selectedWinner;
-        const pos = getPlayerRelativePosition(idx);
-
-        btn.type = 'button';
-        btn.className = `tap-btn py-1.5 px-1 rounded-xl text-xs font-bold border transition ${isSel ? 'border-amber-600 bg-amber-600 text-white shadow-sm' : 'border-beige-300 bg-white text-beige-800'}`;
-        btn.innerHTML = `
-          <span class="block text-[9px] ${isSel ? 'text-amber-100' : 'text-amber-700'} font-semibold truncate">${pos.icon} ${pos.short}</span>
-          <span class="block truncate font-extrabold text-[11px]">${p.name}</span>
-        `;
-        btn.addEventListener('click', () => {
-          state.selectedWinner = p.id;
-          if (state.selectedLoser === p.id) {
-            const nextP = activePlayers.find(x => x.id !== p.id);
-            state.selectedLoser = nextP ? nextP.id : 0;
-          }
-          renderWinnerButtons();
-          renderLoserButtons();
-          renderPlayers();
-          recalcPoints();
-        });
-        container.appendChild(btn);
-      });
-    }
-
-    function renderLoserButtons() {
-      const container = document.getElementById('loserSelectButtons');
-      container.innerHTML = '';
-
-      const activePlayers = state.players.slice(0, state.playerCount).filter(p => p.id !== state.selectedWinner);
-      container.className = `grid grid-cols-${activePlayers.length} gap-1.5`;
-
-      activePlayers.forEach(p => {
-        const btn = document.createElement('button');
-        const isSel = p.id === state.selectedLoser;
-        const pos = getPlayerRelativePosition(p.id);
-
-        btn.type = 'button';
-        btn.className = `tap-btn py-1.5 px-1 rounded-xl text-xs font-bold border transition ${isSel ? 'border-rose-600 bg-rose-600 text-white font-black' : 'border-rose-200 bg-white text-rose-800'}`;
-        btn.innerHTML = `
-          <span class="block text-[9px] ${isSel ? 'text-rose-100' : 'text-rose-600'} font-semibold truncate">${pos.short}</span>
-          <span class="block truncate font-bold text-[11px]">${p.name}</span>
-        `;
-        btn.addEventListener('click', () => {
-          state.selectedLoser = p.id;
-          renderLoserButtons();
-          recalcPoints();
-        });
-        container.appendChild(btn);
-      });
-    }
-
-    // Evaluate Hand Pattern Automatically
     function evaluateHandPatternFromTiles() {
       const evalResult = parseHongKongMahjongHand(state.currentTiles);
       state.baseHand = {
@@ -1508,6 +1448,7 @@
         key: evalResult.key,
         name: evalResult.name,
         points: evalResult.points,
+        errorDetail: evalResult.errorDetail,
         decomposition: evalResult.decomposition
       };
 
@@ -1515,6 +1456,7 @@
       const badgeEl = document.getElementById('baseHandPointsBadge');
       const validityBadge = document.getElementById('handValidityBadge');
       const warningBanner = document.getElementById('invalidHandWarningBanner');
+      const warningText = document.getElementById('invalidHandWarningText');
       const section3Card = document.getElementById('section3Card');
 
       if (nameEl) nameEl.textContent = evalResult.name;
@@ -1540,7 +1482,10 @@
           validityBadge.textContent = 'Tidak Sah';
           validityBadge.className = 'text-[10px] bg-rose-100 text-rose-800 px-1.5 py-0.5 rounded border border-rose-300 font-bold';
         }
-        if (warningBanner) warningBanner.classList.remove('hidden');
+        if (warningBanner) {
+          warningBanner.classList.remove('hidden');
+          if (warningText) warningText.textContent = evalResult.errorDetail || '14 kartu ini bukan winning hand. Poin tidak dihitung!';
+        }
         if (section3Card) section3Card.className = 'cream-card rounded-2xl p-3.5 space-y-3 border-2 border-rose-400 bg-rose-50/20 transition-all';
       }
     }
@@ -1573,9 +1518,6 @@
         }
       }
 
-      // ========================================================
-      // POINT CALCULATION ENGINE (MANUAL vs 31 RULES ENGINE)
-      // ========================================================
       if (state.entryMode === 'MANUAL') {
         totalPts = parseInt(state.manualDirectPoints, 10) || 0;
         breakdowns.push({ label: 'Input Poin Manual Langsung', pts: `+${totalPts}` });
@@ -1590,7 +1532,6 @@
           breakdowns.push({ label: state.baseHand.name, pts: `+${state.baseHand.points}` });
           if (finalSummaryEl) finalSummaryEl.textContent = state.baseHand.name;
 
-          // Pong Naga Otomatis
           const honors = detectAutomaticHonors(state.currentTiles);
           if (honors.dragonNames && honors.dragonNames.length > 0) {
             honors.dragonNames.forEach(d => {
@@ -1599,13 +1540,11 @@
             });
           }
 
-          // Pong Angin Kursi Otomatis
           if (winnerSeatInfo.seatTile && (honors.windCounts[winnerSeatInfo.seatTile] || 0) >= 3) {
             totalPts += 1;
             breakdowns.push({ label: `Pong Triplet ${winnerSeatInfo.seatName} (Angin Kursi)`, pts: '+1' });
           }
 
-          // Poin Tambahan & Bunga
           if (state.isPair28) {
             totalPts += 1;
             breakdowns.push({ label: 'Pair Penutup 2 atau 8', pts: '+1' });
@@ -1635,7 +1574,6 @@
             breakdowns.push({ label: 'ZIMO (Ambil Sendiri)', pts: '+1' });
           }
 
-          // Aturan Bunga & Season
           if (state.flowerRule && state.flowerRule !== '0') {
             const [fKey, fPtsStr] = state.flowerRule.split(':');
             const fPts = parseInt(fPtsStr, 10) || 0;
@@ -1651,7 +1589,6 @@
             breakdowns.push({ label: flowerLabels[fKey] || 'Bunga & Season', pts: `+${fPts}` });
           }
 
-          // Instant Kong Point
           if (state.instantKong && state.instantKong !== '0') {
             const [kKey, kPtsStr] = state.instantKong.split(':');
             const kPts = parseInt(kPtsStr, 10) || 0;
@@ -1664,7 +1601,6 @@
             breakdowns.push({ label: kongLabels[kKey] || 'Instant Kong Point', pts: `+${kPts}` });
           }
 
-          // Batas Maksimum Poin (Cap 25 dari PDF)
           if (totalPts > 25) {
             totalPts = 25;
             breakdowns.push({ label: 'Maksimum Poin (Cap 25 Poin)', pts: '=25' });
@@ -1672,7 +1608,6 @@
         }
       }
 
-      // Render Rincian Rumus
       if (breakdownEl) {
         breakdownEl.innerHTML = '';
         if (breakdowns.length === 0) {
@@ -1690,30 +1625,27 @@
         }
       }
 
-      if (totalPointsEl) {
-        totalPointsEl.textContent = totalPts;
-      }
+      if (totalPointsEl) totalPointsEl.textContent = totalPts;
 
-      // Lock / Unlock Tombol Catat Poin
       if (recordBtn) {
         if (state.entryMode === 'RULES' && !state.baseHand.valid) {
           recordBtn.disabled = true;
           recordBtn.className = 'w-full py-3.5 bg-beige-300 text-beige-500 font-black text-sm rounded-xl cursor-not-allowed flex items-center justify-center gap-2 uppercase tracking-wide';
           if (recordBtnText) recordBtnText.textContent = '⛔ BUKAN WINNING TILES (TIDAK BISA DICATAT)';
+        } else if (totalPts < 3) {
+          recordBtn.disabled = true;
+          recordBtn.className = 'w-full py-3.5 bg-beige-300 text-beige-500 font-black text-sm rounded-xl cursor-not-allowed flex items-center justify-center gap-2 uppercase tracking-wide';
+          if (recordBtnText) recordBtnText.textContent = '⚠️ POIN KURANG DARI 3 (MINIMUM BELUM TERCAPAI)';
         } else {
           recordBtn.disabled = false;
           recordBtn.className = 'tap-btn w-full py-3.5 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 text-white font-black text-sm rounded-xl shadow-md flex items-center justify-center gap-2 uppercase tracking-wide';
-          if (recordBtnText) recordBtnText.textContent = 'CATAT & SIMPAN POIN MEJA';
+          if (recordBtnText) recordBtnText.textContent = 'CATAT & TRANSFER POIN MEJA';
         }
       }
 
-      // ========================================================
-      // TRANSFER SUMMARY & DELTA CALCULATION
-      // ATURAN: Pemenang memperoleh poin kemenangannya (+totalPts).
-      // Lawan mengalami pengurangan poin (bukan bayar/transfer ke pemenang).
-      // ZIMO: Setiap lawan dipotong 2x poin pemenang.
-      // RON: Pembuang dipotong 2x poin, lawan lainnya masing-masing dipotong 1x poin.
-      // ========================================================
+      // Exact Scoring & Pure Deduction Logic:
+      // Winner gets +totalPts
+      // Opponents receive deductions (never referred to as bayar)
       const winner = state.players[state.selectedWinner];
       const loser = state.players[state.selectedLoser];
       const otherCount = state.playerCount - 1;
@@ -1723,10 +1655,7 @@
         transferText.className = 'p-2.5 bg-amber-100/70 border border-amber-300 rounded-xl text-xs font-semibold text-amber-950 leading-snug space-y-1.5';
 
         if (state.winType === 'ZIMO') {
-          // Pemenang mendapatkan totalPts
           deltas[state.selectedWinner] = totalPts;
-
-          // Setiap lawan dipotong 2x poin
           const cutPerOpponent = totalPts * 2;
           state.players.forEach((p, idx) => {
             if (idx < state.playerCount && idx !== state.selectedWinner) {
@@ -1748,10 +1677,7 @@
             </div>
           `;
         } else {
-          // Pemenang mendapatkan totalPts
           deltas[state.selectedWinner] = totalPts;
-
-          // Pembuang dipotong 2x poin, lawan lainnya masing-masing dipotong 1x poin
           const discarderCut = totalPts * 2;
           const otherCut = totalPts * 1;
           const nonDiscarderCount = otherCount - 1;
@@ -1772,8 +1698,8 @@
                 • Pemenang (<b class="text-amber-900 font-bold">${winner ? winner.name : 'Pemenang'}</b>) bertambah: <b class="text-amber-900 font-mono text-sm font-black">+${totalPts} Poin</b>
               </div>
               <div class="text-rose-800">
-                • Pembuang (<b class="text-rose-700 font-bold">${loser ? loser.name : 'Lawan'}</b>) dipotong <b>2× Poin</b> = <b class="font-mono font-bold">-${discarderCut} Poin</b><br>
-                ${nonDiscarderCount > 0 ? `• ${nonDiscarderCount} Lawan lainnya masing-masing dipotong <b>1× Poin</b> = <b class="font-mono font-bold">-${otherCut} Poin</b>` : ''}
+                • Pembuang (<b class="text-rose-700 font-bold">${loser ? loser.name : 'Lawan'}</b>) pengurangan <b>2× Poin</b> = <b class="font-mono font-bold">-${discarderCut} Poin</b><br>
+                ${nonDiscarderCount > 0 ? `• ${nonDiscarderCount} Lawan lainnya masing-masing pengurangan <b>1× Poin</b> = <b class="font-mono font-bold">-${otherCut} Poin</b>` : ''}
               </div>
             </div>
           `;
@@ -1784,373 +1710,18 @@
       return totalPts;
     }
 
-    async function scanMahjongImageWithAI(base64Data) {
-      const loadingBox = document.getElementById('scanLoadingBox');
-      loadingBox.classList.remove('hidden');
-
-      const systemPrompt = `You are an official referee for 8 Bamboo Mahjong.
-Examine the 14 winning tiles in the photo.
-Identify the 14 tiles using standard codes:
-- Characters/Wan: 1m to 9m
-- Bamboos/Sou: 1s to 9s
-- Dots/Pin: 1p to 9p
-- Winds: E, S, W, N
-- Dragons: Z (Red Zhong), F (Green Fa), B (White Bai)
-
-Respond strictly in JSON:
-{
-  "tiles": ["1s", "1s", "1s", "4s", "4s", "4s", "7s", "7s", "7s", "1m", "1m", "1m", "E", "E"],
-  "patternName": "All Triplets = 4 Pongs"
-}`;
-
-      try {
-        const apiKey = "";
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-        const payload = {
-          contents: [{
-            role: "user",
-            parts: [
-              { text: "Analyze the 14 tiles in this Mahjong hand." },
-              { inlineData: { mimeType: "image/jpeg", data: base64Data } }
-            ]
-          }],
-          systemInstruction: { parts: [{ text: systemPrompt }] },
-          generationConfig: { responseMimeType: "application/json" }
-        };
-
-        const res = await fetch(apiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        const data = await res.json();
-        const jsonText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-
-        if (jsonText) {
-          const parsed = JSON.parse(jsonText);
-          if (Array.isArray(parsed.tiles) && parsed.tiles.length > 0) {
-            const cleaned = parsed.tiles.map(t => TILE_MAP[t] ? t : '1m').slice(0, 14);
-            while (cleaned.length < 14) cleaned.push('1m');
-            state.currentTiles = cleaned;
-          }
-          evaluateHandPatternFromTiles();
-          renderHandTilesTray();
-          recalcPoints();
-          showToast(`Terdeteksi: ${state.baseHand.name}!`);
-        } else {
-          evaluateHandPatternFromTiles();
-          renderHandTilesTray();
-          recalcPoints();
-          showToast("AI membaca kartu standar.");
-        }
-      } catch (err) {
-        console.error("AI Scan Error:", err);
-        evaluateHandPatternFromTiles();
-        renderHandTilesTray();
-        recalcPoints();
-        showToast("Gunakan tombol Ganti Kartu jika ada yang keliru.");
-      } finally {
-        loadingBox.classList.add('hidden');
-      }
-    }
-
-    function handleUploadedImage(file) {
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const fullBase64 = e.target.result;
-        const base64Data = fullBase64.split(',')[1];
-        document.getElementById('scannedImagePreview').src = fullBase64;
-        document.getElementById('scanPreviewBox').classList.remove('hidden');
-        scanMahjongImageWithAI(base64Data);
-      };
-      reader.readAsDataURL(file);
-    }
-
-    function bindEvents() {
-      // Tab Switching
-      const tabRules = document.getElementById('tabModeRules');
-      const tabManual = document.getElementById('tabModeManual');
-      const rulesWrapper = document.getElementById('rulesEngineWrapper');
-      const manualSection = document.getElementById('manualPointInputSection');
-
-      tabRules?.addEventListener('click', () => {
-        state.entryMode = 'RULES';
-        tabRules.className = 'flex-1 py-1.5 rounded-lg bg-white text-beige-950 shadow-sm border border-beige-300/80 flex items-center justify-center gap-1.5 tap-btn transition';
-        tabManual.className = 'flex-1 py-1.5 rounded-lg text-beige-700 hover:text-beige-950 flex items-center justify-center gap-1.5 tap-btn transition';
-        rulesWrapper?.classList.remove('hidden');
-        manualSection?.classList.add('hidden');
-        recalcPoints();
-      });
-
-      tabManual?.addEventListener('click', () => {
-        state.entryMode = 'MANUAL';
-        tabManual.className = 'flex-1 py-1.5 rounded-lg bg-white text-beige-950 shadow-sm border border-beige-300/80 flex items-center justify-center gap-1.5 tap-btn transition';
-        tabRules.className = 'flex-1 py-1.5 rounded-lg text-beige-700 hover:text-beige-950 flex items-center justify-center gap-1.5 tap-btn transition';
-        rulesWrapper?.classList.add('hidden');
-        manualSection?.classList.remove('hidden');
-        recalcPoints();
-      });
-
-      // Manual Steppers
-      const directInput = document.getElementById('manualDirectPointInput');
-      directInput?.addEventListener('input', (e) => {
-        state.manualDirectPoints = parseInt(e.target.value, 10) || 0;
-        recalcPoints();
-      });
-
-      document.getElementById('manualMinusBtn')?.addEventListener('click', () => {
-        state.manualDirectPoints = Math.max(0, (parseInt(state.manualDirectPoints, 10) || 0) - 1);
-        if (directInput) directInput.value = state.manualDirectPoints;
-        recalcPoints();
-      });
-
-      document.getElementById('manualPlusBtn')?.addEventListener('click', () => {
-        state.manualDirectPoints = (parseInt(state.manualDirectPoints, 10) || 0) + 1;
-        if (directInput) directInput.value = state.manualDirectPoints;
-        recalcPoints();
-      });
-
-      document.querySelectorAll('.quick-pt-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const val = parseInt(btn.dataset.val, 10);
-          state.manualDirectPoints = val;
-          if (directInput) directInput.value = val;
-          recalcPoints();
-        });
-      });
-
-      // Camera & Photos
-      document.getElementById('cameraInput')?.addEventListener('change', (e) => handleUploadedImage(e.target.files[0]));
-      document.getElementById('galleryInput')?.addEventListener('change', (e) => handleUploadedImage(e.target.files[0]));
-      document.getElementById('clearPhotoBtn')?.addEventListener('click', () => {
-        document.getElementById('scanPreviewBox')?.classList.add('hidden');
-        const img = document.getElementById('scannedImagePreview');
-        if (img) img.src = '';
-        const cam = document.getElementById('cameraInput');
-        if (cam) cam.value = '';
-        const gal = document.getElementById('galleryInput');
-        if (gal) gal.value = '';
-      });
-
-      // Manual Tile Picker Tray
-      document.getElementById('openTilePickerBtn')?.addEventListener('click', () => {
-        const panel = document.getElementById('tileSelectorPanel');
-        panel?.classList.toggle('hidden');
-        if (state.activeTileIndex === null) {
-          state.activeTileIndex = 0;
-          renderHandTilesTray();
-        }
-      });
-
-      document.getElementById('closeTilePickerBtn')?.addEventListener('click', () => {
-        document.getElementById('tileSelectorPanel')?.classList.add('hidden');
-        state.activeTileIndex = null;
-        renderHandTilesTray();
-      });
-
-      document.getElementById('resetHandTilesBtn')?.addEventListener('click', () => {
-        state.currentTiles = ['1s', '1s', '1s', '4s', '4s', '4s', '7s', '7s', '7s', '1m', '1m', '1m', 'E', 'E'];
-        evaluateHandPatternFromTiles();
-        renderHandTilesTray();
-        recalcPoints();
-        showToast("Tiles di-reset ke standar");
-      });
-
-      // Manual Dealer Rotation Button
-      document.getElementById('manualRotateDealerBtn')?.addEventListener('click', () => {
-        state.currentDealerIndex = (state.currentDealerIndex + 1) % state.playerCount;
-        try {
-          localStorage.setItem('mj_business_dealer', state.currentDealerIndex);
-        } catch(e) {}
-        renderPlayers();
-        renderWinnerButtons();
-        renderLoserButtons();
-        recalcPoints();
-        showToast(`Bandar dialihkan ke: ${state.players[state.currentDealerIndex].name || `Pemain ${state.currentDealerIndex+1}`}`);
-      });
-
-      // Win Type Buttons
-      const btnZimo = document.getElementById('btnZimo');
-      const btnHu = document.getElementById('btnHu');
-      const loserBox = document.getElementById('loserSelectContainer');
-
-      btnZimo?.addEventListener('click', () => {
-        state.winType = 'ZIMO';
-        btnZimo.className = 'tap-btn py-2 px-2 rounded-xl border-2 border-amber-600 bg-amber-50 text-amber-900 font-bold text-xs flex flex-col items-center shadow-sm';
-        btnHu.className = 'tap-btn py-2 px-2 rounded-xl border border-beige-300 bg-white text-beige-800 font-bold text-xs flex flex-col items-center';
-        loserBox?.classList.add('hidden');
-        recalcPoints();
-      });
-
-      btnHu?.addEventListener('click', () => {
-        state.winType = 'RON';
-        btnHu.className = 'tap-btn py-2 px-2 rounded-xl border-2 border-rose-600 bg-rose-50 text-rose-900 font-bold text-xs flex flex-col items-center shadow-sm';
-        btnZimo.className = 'tap-btn py-2 px-2 rounded-xl border border-beige-300 bg-white text-beige-800 font-bold text-xs flex flex-col items-center';
-        loserBox?.classList.remove('hidden');
-        renderLoserButtons();
-        recalcPoints();
-      });
-
-      // Checkboxes & Dropdowns
-      document.getElementById('flowerRuleSelect')?.addEventListener('change', (e) => {
-        state.flowerRule = e.target.value;
-        recalcPoints();
-      });
-      document.getElementById('instantKongSelect')?.addEventListener('change', (e) => {
-        state.instantKong = e.target.value;
-        recalcPoints();
-      });
-
-      document.getElementById('chkPair28')?.addEventListener('change', (e) => {
-        state.isPair28 = e.target.checked;
-        recalcPoints();
-      });
-      document.getElementById('chkHandTertutup')?.addEventListener('change', (e) => {
-        state.isHandTertutup = e.target.checked;
-        recalcPoints();
-      });
-      document.getElementById('chkTanpaBungaNagaAngin')?.addEventListener('change', (e) => {
-        state.isTanpaBungaNagaAngin = e.target.checked;
-        recalcPoints();
-      });
-      document.getElementById('chkLastTile')?.addEventListener('change', (e) => {
-        state.isLastTile = e.target.checked;
-        recalcPoints();
-      });
-      document.getElementById('chkStealingKong')?.addEventListener('change', (e) => {
-        state.isStealingKong = e.target.checked;
-        recalcPoints();
-      });
-      document.getElementById('chkMenangBuntut')?.addEventListener('change', (e) => {
-        state.isMenangBuntut = e.target.checked;
-        recalcPoints();
-      });
-
-      // Submit Record Round
-      document.getElementById('recordRoundBtn')?.addEventListener('click', recordRound);
-
-      // Setup Modal Controls
-      const setupModal = document.getElementById('setupModal');
-      document.getElementById('openSetupBtn')?.addEventListener('click', () => showSetupModal(false));
-      document.getElementById('closeSetupBtn')?.addEventListener('click', () => {
-        if (!state.isConfigured) return;
-        setupModal.classList.add('hidden');
-      });
-
-      document.getElementById('setPlayers4Btn')?.addEventListener('click', () => {
-        state.playerCount = 4;
-        updatePlayerCountUI();
-      });
-      document.getElementById('setPlayers3Btn')?.addEventListener('click', () => {
-        state.playerCount = 3;
-        if (state.selectedWinner >= 3) state.selectedWinner = 0;
-        if (state.selectedLoser >= 3) state.selectedLoser = 1;
-        if (state.currentDealerIndex >= 3) state.currentDealerIndex = 0;
-        updatePlayerCountUI();
-      });
-
-      document.getElementById('saveSetupBtn')?.addEventListener('click', () => {
-        const errorMsg = document.getElementById('setupErrorMsg');
-        let allValid = true;
-
-        for (let i = 0; i < state.playerCount; i++) {
-          const inp = document.getElementById(`inputName${i}`);
-          const val = inp ? inp.value.trim() : '';
-          if (!val) {
-            allValid = false;
-            inp?.classList.add('border-rose-500', 'bg-rose-50');
-          } else {
-            inp?.classList.remove('border-rose-500', 'bg-rose-50');
-            state.players[i].name = val;
-          }
-        }
-
-        if (!allValid) {
-          if (errorMsg) errorMsg.classList.remove('hidden');
-          return;
-        }
-
-        if (errorMsg) errorMsg.classList.add('hidden');
-        state.isConfigured = true;
-
-        try {
-          const toSave = state.players.slice(0, state.playerCount);
-          localStorage.setItem('mj_business_players', JSON.stringify(toSave));
-          localStorage.setItem('mj_business_dealer', state.currentDealerIndex);
-        } catch (e) {
-          console.warn('Storage save error', e);
-        }
-
-        setupModal.classList.add('hidden');
-        document.getElementById('closeSetupBtn')?.classList.remove('hidden');
-        document.getElementById('resetTableContainer')?.classList.remove('hidden');
-
-        renderPlayers();
-        renderWinnerButtons();
-        renderLoserButtons();
-        recalcPoints();
-        showToast("Pemain berhasil disimpan!");
-      });
-
-      // History Modal
-      const historyModal = document.getElementById('historyModal');
-      document.getElementById('viewHistoryBtn')?.addEventListener('click', () => {
-        renderHistory();
-        historyModal.classList.remove('hidden');
-      });
-      document.getElementById('closeHistoryBtn')?.addEventListener('click', () => historyModal.classList.add('hidden'));
-      document.getElementById('undoLastRoundBtn')?.addEventListener('click', undoLastRound);
-
-      // Reset Table Modal
-      const confirmResetModal = document.getElementById('confirmResetModal');
-      document.getElementById('triggerResetTableBtn')?.addEventListener('click', () => confirmResetModal.classList.remove('hidden'));
-      document.getElementById('cancelResetBtn')?.addEventListener('click', () => confirmResetModal.classList.add('hidden'));
-      document.getElementById('executeResetBtn')?.addEventListener('click', () => {
-        state.players.forEach(p => p.points = 0);
-        state.history = [];
-        state.currentDealerIndex = 0;
-        try {
-          localStorage.removeItem('mj_business_players');
-          localStorage.removeItem('mj_business_dealer');
-        } catch(e) {}
-        confirmResetModal.classList.add('hidden');
-        setupModal.classList.add('hidden');
-        state.isConfigured = false;
-        renderPlayers();
-        renderHistory();
-        recalcPoints();
-        showSetupModal(true);
-        showToast("Tabel di-reset. Silakan isi pemain baru.");
-      });
-    }
-
-    function updatePlayerCountUI() {
-      const btn4 = document.getElementById('setPlayers4Btn');
-      const btn3 = document.getElementById('setPlayers3Btn');
-      const row4 = document.getElementById('player4InputRow');
-
-      if (state.playerCount === 4) {
-        btn4.className = 'py-2 rounded-lg font-bold border-2 border-amber-600 bg-amber-50 text-amber-900 tap-btn';
-        btn3.className = 'py-2 rounded-lg font-bold border border-beige-300 bg-white text-beige-700 tap-btn';
-        row4.classList.remove('hidden');
-      } else {
-        btn3.className = 'py-2 rounded-lg font-bold border-2 border-amber-600 bg-amber-50 text-amber-900 tap-btn';
-        btn4.className = 'py-2 rounded-lg font-bold border border-beige-300 bg-white text-beige-700 tap-btn';
-        row4.classList.add('hidden');
-      }
-    }
-
-    // Execute Point Recording & Rotate Dealer
     function recordRound() {
-      if (state.entryMode === 'RULES' && state.baseHand.valid === false) {
+      if (state.entryMode === 'RULES' && !state.baseHand.valid) {
         showToast("Gagal: Susunan kartu bukan winning tiles!");
         return;
       }
 
       const finalPts = recalcPoints();
+      if (finalPts < 3) {
+        showToast("Poin kurang dari 3! Belum memenuhi syarat.");
+        return;
+      }
+
       const winner = state.players[state.selectedWinner];
       const loser = state.players[state.selectedLoser];
       const delta = state._currentCalculatedDeltas || [0, 0, 0, 0];
@@ -2161,9 +1732,9 @@ Respond strictly in JSON:
         }
       });
 
-      // Aturan Pergantian Bandar (Lian Zhuang):
-      // Jika Bandar yang menang, posisi bandar bertahan.
-      // Jika pemain lain yang menang, bandar bergeser ke pemain berikutnya.
+      // Dealer Rotation Rule:
+      // If dealer won -> dealer stays (Lian Zhuang)
+      // If dealer lost -> dealer shifts clockwise to next player
       const previousDealer = state.currentDealerIndex;
       let dealerShifted = false;
       if (state.selectedWinner !== state.currentDealerIndex) {
@@ -2240,7 +1811,7 @@ Respond strictly in JSON:
           desc = `<span class="text-amber-800 font-bold">${r.winnerName}</span> RON dari <span class="text-rose-600 font-bold">${r.loserName}</span> (${r.points} Poin)`;
         }
 
-        const totalGain = r.winnerGain !== undefined ? r.winnerGain : r.points * (state.playerCount - 1);
+        const totalGain = r.winnerGain !== undefined ? r.winnerGain : r.points;
         item.innerHTML = `
           <div>
             <div class="font-semibold text-beige-950 text-xs">${desc}</div>
@@ -2264,6 +1835,360 @@ Respond strictly in JSON:
         toast.classList.add('opacity-0', '-translate-y-4');
       }, 2300);
     }
+
+    function updatePlayerCountUI() {
+      const btn4 = document.getElementById('setPlayers4Btn');
+      const btn3 = document.getElementById('setPlayers3Btn');
+      const row4 = document.getElementById('player4InputRow');
+      const label2 = document.getElementById('labelName2');
+
+      if (state.playerCount === 4) {
+        btn4.className = 'py-2 rounded-lg font-bold border-2 border-amber-600 bg-amber-50 text-amber-900 tap-btn';
+        btn3.className = 'py-2 rounded-lg font-bold border border-beige-300 bg-white text-beige-700 tap-btn';
+        row4.classList.remove('hidden');
+        if (label2) label2.textContent = 'Pemain 3 (Seberang Bandar)';
+      } else {
+        btn3.className = 'py-2 rounded-lg font-bold border-2 border-amber-600 bg-amber-50 text-amber-900 tap-btn';
+        btn4.className = 'py-2 rounded-lg font-bold border border-beige-300 bg-white text-beige-700 tap-btn';
+        row4.classList.add('hidden');
+        if (label2) label2.textContent = 'Pemain 3 (Sebelah Kanan Bandar)';
+      }
+    }
+
+    function showSetupModal(isOnboarding = false) {
+      const modal = document.getElementById('setupModal');
+      const closeBtn = document.getElementById('closeSetupBtn');
+      const resetContainer = document.getElementById('resetTableContainer');
+      const errorMsg = document.getElementById('setupErrorMsg');
+      const title = document.getElementById('setupModalTitle');
+      const subtitle = document.getElementById('setupModalSubtitle');
+      const saveBtn = document.getElementById('saveSetupBtn');
+
+      if (errorMsg) errorMsg.classList.add('hidden');
+
+      state.players.forEach((p, i) => {
+        const inp = document.getElementById(`inputName${i}`);
+        if (inp) inp.value = p.name || '';
+      });
+      updatePlayerCountUI();
+
+      if (isOnboarding) {
+        closeBtn?.classList.add('hidden');
+        resetContainer?.classList.add('hidden');
+        if (title) title.innerHTML = `<i class="fa-solid fa-users text-amber-600"></i> Masukkan Pemain Meja`;
+        if (subtitle) subtitle.textContent = 'Silakan isi nama pemain sebelum mulai bermain';
+        if (saveBtn) saveBtn.textContent = 'MULAI PERMAINAN MEJA';
+      } else {
+        closeBtn?.classList.remove('hidden');
+        resetContainer?.classList.remove('hidden');
+        if (title) title.innerHTML = `<i class="fa-solid fa-users-gear text-amber-600"></i> Konfigurasi Pemain Meja`;
+        if (subtitle) subtitle.textContent = 'Ganti nama pemain atau jumlah orang di meja';
+        if (saveBtn) saveBtn.textContent = 'SIMPAN PENGATURAN MEJA';
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function loadSavedPlayersOrPrompt() {
+      try {
+        const saved = localStorage.getItem('mj_business_players');
+        const savedDealer = localStorage.getItem('mj_business_dealer');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length >= 3 && parsed[0].name) {
+            state.players = parsed;
+            state.playerCount = parsed.length;
+            state.isConfigured = true;
+          }
+        }
+        if (savedDealer !== null) {
+          state.currentDealerIndex = parseInt(savedDealer, 10) || 0;
+        }
+      } catch (e) {
+        console.warn('Storage read error', e);
+      }
+
+      if (!state.isConfigured || !state.players[0].name) {
+        showSetupModal(true);
+      } else {
+        document.getElementById('closeSetupBtn')?.classList.remove('hidden');
+        document.getElementById('resetTableContainer')?.classList.remove('hidden');
+      }
+    }
+
+    function bindEvents() {
+      const tabRules = document.getElementById('tabModeRules');
+      const tabManual = document.getElementById('tabModeManual');
+      const rulesWrapper = document.getElementById('rulesEngineWrapper');
+      const manualSection = document.getElementById('manualPointInputSection');
+
+      tabRules?.addEventListener('click', () => {
+        state.entryMode = 'RULES';
+        tabRules.className = 'flex-1 py-1.5 rounded-lg bg-white text-beige-950 shadow-sm border border-beige-300/80 flex items-center justify-center gap-1.5 tap-btn transition';
+        tabManual.className = 'flex-1 py-1.5 rounded-lg text-beige-700 hover:text-beige-950 flex items-center justify-center gap-1.5 tap-btn transition';
+        rulesWrapper?.classList.remove('hidden');
+        manualSection?.classList.add('hidden');
+        recalcPoints();
+      });
+
+      tabManual?.addEventListener('click', () => {
+        state.entryMode = 'MANUAL';
+        tabManual.className = 'flex-1 py-1.5 rounded-lg bg-white text-beige-950 shadow-sm border border-beige-300/80 flex items-center justify-center gap-1.5 tap-btn transition';
+        tabRules.className = 'flex-1 py-1.5 rounded-lg text-beige-700 hover:text-beige-950 flex items-center justify-center gap-1.5 tap-btn transition';
+        rulesWrapper?.classList.add('hidden');
+        manualSection?.classList.remove('hidden');
+        recalcPoints();
+      });
+
+      const directInput = document.getElementById('manualDirectPointInput');
+      directInput?.addEventListener('input', (e) => {
+        state.manualDirectPoints = parseInt(e.target.value, 10) || 0;
+        recalcPoints();
+      });
+
+      document.getElementById('manualMinusBtn')?.addEventListener('click', () => {
+        state.manualDirectPoints = Math.max(0, (parseInt(state.manualDirectPoints, 10) || 0) - 1);
+        if (directInput) directInput.value = state.manualDirectPoints;
+        recalcPoints();
+      });
+
+      document.getElementById('manualPlusBtn')?.addEventListener('click', () => {
+        state.manualDirectPoints = (parseInt(state.manualDirectPoints, 10) || 0) + 1;
+        if (directInput) directInput.value = state.manualDirectPoints;
+        recalcPoints();
+      });
+
+      document.querySelectorAll('.quick-pt-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const val = parseInt(btn.dataset.val, 10);
+          state.manualDirectPoints = val;
+          if (directInput) directInput.value = val;
+          recalcPoints();
+        });
+      });
+
+      const handleImage = (file) => {
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          document.getElementById('scannedImagePreview').src = e.target.result;
+          document.getElementById('scanPreviewBox').classList.remove('hidden');
+          const loading = document.getElementById('scanLoadingBox');
+          loading.classList.remove('hidden');
+          setTimeout(() => {
+            loading.classList.add('hidden');
+            evaluateHandPatternFromTiles();
+            renderHandTilesTray();
+            recalcPoints();
+            showToast("14 kartu siap dikonfirmasi!");
+          }, 1100);
+        };
+        reader.readAsDataURL(file);
+      };
+
+      document.getElementById('cameraInput')?.addEventListener('change', (e) => handleImage(e.target.files[0]));
+      document.getElementById('galleryInput')?.addEventListener('change', (e) => handleImage(e.target.files[0]));
+      document.getElementById('clearPhotoBtn')?.addEventListener('click', () => {
+        document.getElementById('scanPreviewBox')?.classList.add('hidden');
+        const img = document.getElementById('scannedImagePreview');
+        if (img) img.src = '';
+      });
+
+      document.getElementById('openTilePickerBtn')?.addEventListener('click', () => {
+        const panel = document.getElementById('tileSelectorPanel');
+        panel?.classList.toggle('hidden');
+        if (state.activeTileIndex === null) {
+          state.activeTileIndex = 0;
+          renderHandTilesTray();
+        }
+      });
+
+      document.getElementById('closeTilePickerBtn')?.addEventListener('click', () => {
+        document.getElementById('tileSelectorPanel')?.classList.add('hidden');
+        state.activeTileIndex = null;
+        renderHandTilesTray();
+      });
+
+      document.getElementById('resetHandTilesBtn')?.addEventListener('click', () => {
+        state.currentTiles = ['1s', '1s', '1s', '4s', '4s', '4s', '7s', '7s', '7s', '1m', '1m', '1m', 'E', 'E'];
+        evaluateHandPatternFromTiles();
+        renderHandTilesTray();
+        recalcPoints();
+        showToast("Tiles di-reset ke standar");
+      });
+
+      document.getElementById('manualRotateDealerBtn')?.addEventListener('click', () => {
+        state.currentDealerIndex = (state.currentDealerIndex + 1) % state.playerCount;
+        try {
+          localStorage.setItem('mj_business_dealer', state.currentDealerIndex);
+        } catch(e) {}
+        renderPlayers();
+        renderWinnerButtons();
+        renderLoserButtons();
+        recalcPoints();
+        showToast(`Bandar dialihkan ke: ${state.players[state.currentDealerIndex].name || `Pemain ${state.currentDealerIndex+1}`}`);
+      });
+
+      const btnZimo = document.getElementById('btnZimo');
+      const btnHu = document.getElementById('btnHu');
+      const loserBox = document.getElementById('loserSelectContainer');
+
+      btnZimo?.addEventListener('click', () => {
+        state.winType = 'ZIMO';
+        btnZimo.className = 'tap-btn py-2 px-2 rounded-xl border-2 border-amber-600 bg-amber-50 text-amber-900 font-bold text-xs flex flex-col items-center shadow-sm';
+        btnHu.className = 'tap-btn py-2 px-2 rounded-xl border border-beige-300 bg-white text-beige-800 font-bold text-xs flex flex-col items-center';
+        loserBox?.classList.add('hidden');
+        recalcPoints();
+      });
+
+      btnHu?.addEventListener('click', () => {
+        state.winType = 'RON';
+        btnHu.className = 'tap-btn py-2 px-2 rounded-xl border-2 border-rose-600 bg-rose-50 text-rose-900 font-bold text-xs flex flex-col items-center shadow-sm';
+        btnZimo.className = 'tap-btn py-2 px-2 rounded-xl border border-beige-300 bg-white text-beige-800 font-bold text-xs flex flex-col items-center';
+        loserBox?.classList.remove('hidden');
+        renderLoserButtons();
+        recalcPoints();
+      });
+
+      document.getElementById('flowerRuleSelect')?.addEventListener('change', (e) => {
+        state.flowerRule = e.target.value;
+        recalcPoints();
+      });
+      document.getElementById('instantKongSelect')?.addEventListener('change', (e) => {
+        state.instantKong = e.target.value;
+        recalcPoints();
+      });
+
+      document.getElementById('chkPair28')?.addEventListener('change', (e) => {
+        state.isPair28 = e.target.checked;
+        recalcPoints();
+      });
+      document.getElementById('chkHandTertutup')?.addEventListener('change', (e) => {
+        state.isHandTertutup = e.target.checked;
+        recalcPoints();
+      });
+      document.getElementById('chkTanpaBungaNagaAngin')?.addEventListener('change', (e) => {
+        state.isTanpaBungaNagaAngin = e.target.checked;
+        recalcPoints();
+      });
+      document.getElementById('chkLastTile')?.addEventListener('change', (e) => {
+        state.isLastTile = e.target.checked;
+        recalcPoints();
+      });
+      document.getElementById('chkStealingKong')?.addEventListener('change', (e) => {
+        state.isStealingKong = e.target.checked;
+        recalcPoints();
+      });
+      document.getElementById('chkMenangBuntut')?.addEventListener('change', (e) => {
+        state.isMenangBuntut = e.target.checked;
+        recalcPoints();
+      });
+
+      document.getElementById('recordRoundBtn')?.addEventListener('click', recordRound);
+
+      const setupModal = document.getElementById('setupModal');
+      document.getElementById('openSetupBtn')?.addEventListener('click', () => showSetupModal(false));
+      document.getElementById('closeSetupBtn')?.addEventListener('click', () => {
+        if (!state.isConfigured) return;
+        setupModal.classList.add('hidden');
+      });
+
+      document.getElementById('setPlayers4Btn')?.addEventListener('click', () => {
+        state.playerCount = 4;
+        updatePlayerCountUI();
+      });
+      document.getElementById('setPlayers3Btn')?.addEventListener('click', () => {
+        state.playerCount = 3;
+        if (state.selectedWinner >= 3) state.selectedWinner = 0;
+        if (state.selectedLoser >= 3) state.selectedLoser = 1;
+        if (state.currentDealerIndex >= 3) state.currentDealerIndex = 0;
+        updatePlayerCountUI();
+      });
+
+      document.getElementById('saveSetupBtn')?.addEventListener('click', () => {
+        const errorMsg = document.getElementById('setupErrorMsg');
+        let allValid = true;
+
+        for (let i = 0; i < state.playerCount; i++) {
+          const inp = document.getElementById(`inputName${i}`);
+          const val = inp ? inp.value.trim() : '';
+          if (!val) {
+            allValid = false;
+            inp?.classList.add('border-rose-500', 'bg-rose-50');
+          } else {
+            inp?.classList.remove('border-rose-500', 'bg-rose-50');
+            state.players[i].name = val;
+          }
+        }
+
+        if (!allValid) {
+          if (errorMsg) errorMsg.classList.remove('hidden');
+          return;
+        }
+
+        if (errorMsg) errorMsg.classList.add('hidden');
+        state.isConfigured = true;
+
+        try {
+          const toSave = state.players.slice(0, state.playerCount);
+          localStorage.setItem('mj_business_players', JSON.stringify(toSave));
+          localStorage.setItem('mj_business_dealer', state.currentDealerIndex);
+        } catch (e) {
+          console.warn('Storage save error', e);
+        }
+
+        setupModal.classList.add('hidden');
+        document.getElementById('closeSetupBtn')?.classList.remove('hidden');
+        document.getElementById('resetTableContainer')?.classList.remove('hidden');
+
+        renderPlayers();
+        renderWinnerButtons();
+        renderLoserButtons();
+        recalcPoints();
+        showToast("Pemain berhasil disimpan!");
+      });
+
+      const historyModal = document.getElementById('historyModal');
+      document.getElementById('viewHistoryBtn')?.addEventListener('click', () => {
+        renderHistory();
+        historyModal.classList.remove('hidden');
+      });
+      document.getElementById('closeHistoryBtn')?.addEventListener('click', () => historyModal.classList.add('hidden'));
+      document.getElementById('undoLastRoundBtn')?.addEventListener('click', undoLastRound);
+
+      const confirmResetModal = document.getElementById('confirmResetModal');
+      document.getElementById('triggerResetTableBtn')?.addEventListener('click', () => confirmResetModal.classList.remove('hidden'));
+      document.getElementById('cancelResetBtn')?.addEventListener('click', () => confirmResetModal.classList.add('hidden'));
+      document.getElementById('executeResetBtn')?.addEventListener('click', () => {
+        state.players.forEach(p => p.points = 0);
+        state.history = [];
+        state.currentDealerIndex = 0;
+        try {
+          localStorage.removeItem('mj_business_players');
+          localStorage.removeItem('mj_business_dealer');
+        } catch(e) {}
+        confirmResetModal.classList.add('hidden');
+        setupModal.classList.add('hidden');
+        state.isConfigured = false;
+        renderPlayers();
+        renderHistory();
+        recalcPoints();
+        showSetupModal(true);
+        showToast("Tabel di-reset. Silakan isi pemain baru.");
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      buildPaletteTrays();
+      loadSavedPlayersOrPrompt();
+      renderPlayers();
+      renderWinnerButtons();
+      renderLoserButtons();
+      renderHandTilesTray();
+      evaluateHandPatternFromTiles();
+      bindEvents();
+      recalcPoints();
+    });
   </script>
 </body>
 </html>
