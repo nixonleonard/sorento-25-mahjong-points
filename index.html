@@ -1262,8 +1262,8 @@
 
       if (decomp.pair) {
         const pill = document.createElement('span');
-        pill.className = 'px-2 py-0.5 bg-emerald-50 text-emerald-900 border border-emerald-300 rounded-md text-[11px] font-semibold flex items-center gap-1';
-        pill.innerHTML = `<span class="font-bold text-emerald-700">Sepasang Mata:</span> ${getTileIndonesianName(decomp.pair)}`;
+        pill.className = 'px-2 py-0.5 bg-amber-100/60 text-beige-950 border border-amber-300/80 rounded-md text-[11px] font-semibold flex items-center gap-1';
+        pill.innerHTML = `<span class="font-bold text-amber-800">Sepasang Mata:</span> ${getTileIndonesianName(decomp.pair)}`;
         container.appendChild(pill);
       }
     }
@@ -1465,22 +1465,22 @@
       if (evalResult.valid) {
         if (badgeEl) {
           badgeEl.textContent = `+${evalResult.points} Poin`;
-          badgeEl.className = 'text-lg font-black font-mono text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-lg border border-amber-300';
+          badgeEl.className = 'inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono rounded-lg border bg-amber-50 text-amber-900 border-amber-300 min-w-[56px] text-center shadow-xs';
         }
         if (validityBadge) {
           validityBadge.textContent = 'Sah';
-          validityBadge.className = 'text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded border border-emerald-300 font-bold';
+          validityBadge.className = 'inline-flex items-center justify-center px-2 py-1 text-[10px] font-bold rounded-lg border bg-emerald-50 text-emerald-800 border-emerald-300 min-w-[44px] text-center shadow-xs';
         }
         if (warningBanner) warningBanner.classList.add('hidden');
         if (section3Card) section3Card.className = 'cream-card rounded-2xl p-3.5 space-y-3 border-2 border-amber-500/40 transition-all';
       } else {
         if (badgeEl) {
-          badgeEl.textContent = 'Tidak Sah';
-          badgeEl.className = 'text-sm font-black font-sans text-rose-700 bg-rose-50 px-2.5 py-1 rounded-lg border border-rose-300';
+          badgeEl.textContent = '0 Poin';
+          badgeEl.className = 'inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono rounded-lg border bg-rose-50 text-rose-700 border-rose-300 min-w-[56px] text-center shadow-xs';
         }
         if (validityBadge) {
           validityBadge.textContent = 'Tidak Sah';
-          validityBadge.className = 'text-[10px] bg-rose-100 text-rose-800 px-1.5 py-0.5 rounded border border-rose-300 font-bold';
+          validityBadge.className = 'inline-flex items-center justify-center px-2 py-1 text-[10px] font-bold rounded-lg border bg-rose-50 text-rose-800 border-rose-300 min-w-[44px] text-center shadow-xs';
         }
         if (warningBanner) {
           warningBanner.classList.remove('hidden');
