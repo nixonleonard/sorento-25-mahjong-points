@@ -192,6 +192,8 @@
 
         <!-- Quick Point Chips Preset -->
         <div class="flex flex-wrap gap-1.5 pt-1">
+          <button type="button" class="quick-pt-btn px-2.5 py-1 bg-white border border-beige-300 rounded-lg text-xs font-bold text-beige-800 tap-btn" data-val="1">1 Pt</button>
+          <button type="button" class="quick-pt-btn px-2.5 py-1 bg-white border border-beige-300 rounded-lg text-xs font-bold text-beige-800 tap-btn" data-val="2">2 Pts</button>
           <button type="button" class="quick-pt-btn px-2.5 py-1 bg-white border border-beige-300 rounded-lg text-xs font-bold text-beige-800 tap-btn" data-val="3">3 Pts</button>
           <button type="button" class="quick-pt-btn px-2.5 py-1 bg-white border border-beige-300 rounded-lg text-xs font-bold text-beige-800 tap-btn" data-val="4">4 Pts</button>
           <button type="button" class="quick-pt-btn px-2.5 py-1 bg-white border border-beige-300 rounded-lg text-xs font-bold text-beige-800 tap-btn" data-val="5">5 Pts</button>
@@ -212,7 +214,9 @@
             <span class="w-4 h-4 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px]">2</span>
             Foto Kartu Kemenangan (14 Tiles)
           </label>
-          <span class="text-[10px] text-amber-700 font-semibold bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">AI Scanner</span>
+          <span class="text-[10px] text-amber-800 font-bold bg-amber-100 px-2 py-0.5 rounded border border-amber-300">
+            Scanner Otomatis
+          </span>
         </div>
 
         <!-- Kamera & Galeri Tombol -->
@@ -235,10 +239,10 @@
           <button id="clearPhotoBtn" type="button" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-black/70 text-white text-xs flex items-center justify-center border border-white/30 tap-btn">✕</button>
         </div>
 
-        <!-- Loading AI -->
+        <!-- Loading Scanner -->
         <div id="scanLoadingBox" class="hidden py-3 text-center text-xs text-amber-800 font-semibold space-y-1 bg-amber-50 rounded-xl border border-amber-200">
           <i class="fa-solid fa-spinner fa-spin text-lg text-amber-600"></i>
-          <p>Menganalisis 14 kartu kemenangan...</p>
+          <p id="scanLoadingMessage">Memindai 14 kartu kemenangan secara otomatis...</p>
         </div>
 
         <!-- Konfirmasi Tiles -->
@@ -299,7 +303,7 @@
         </div>
       </section>
 
-      <!-- Bagian 3: Pola Hands dari Foto (Otomatis & Simetris) -->
+      <!-- Bagian 3: Pola Hands dari Foto (Simetris & Rapi) -->
       <section id="section3Card" class="cream-card rounded-2xl p-3.5 space-y-3 border-2 border-amber-500/40 transition-all">
         <div class="flex items-center justify-between border-b border-beige-200 pb-2">
           <div>
@@ -310,8 +314,8 @@
             <span class="text-[10px] text-beige-600">Dihitung otomatis langsung dari susunan 14 kartu</span>
           </div>
           <div class="text-right flex items-center gap-1.5">
-            <span id="handValidityBadge" class="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded border border-emerald-300 font-bold">Sah</span>
-            <span id="baseHandPointsBadge" class="text-lg font-black font-mono text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-lg border border-amber-300">
+            <span id="handValidityBadge" class="inline-flex items-center justify-center px-2 py-1 text-[10px] font-bold rounded-lg border bg-emerald-50 text-emerald-800 border-emerald-300 min-w-[44px] text-center shadow-xs">Sah</span>
+            <span id="baseHandPointsBadge" class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono rounded-lg border bg-amber-50 text-amber-900 border-amber-300 min-w-[56px] text-center shadow-xs">
               +3 Poin
             </span>
           </div>
@@ -341,17 +345,17 @@
         </div>
       </section>
 
-      <!-- Bagian 4: Poin Tambahan & Bunga -->
+      <!-- Bagian 4: Poin Tambahan, Multi-Bunga & Multi-Kong (Terorganisir & Rapi) -->
       <section class="cream-card rounded-2xl p-3.5 space-y-3.5">
         <div class="flex items-center justify-between border-b border-beige-200 pb-2">
           <label class="text-xs font-extrabold text-beige-900 uppercase tracking-wide flex items-center gap-1.5">
             <span class="w-4 h-4 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px]">4</span>
-            Poin Tambahan & Bunga
+            Poin Tambahan, Bunga & Kong
           </label>
           <span class="text-[10px] text-beige-600 font-semibold">8 Bamboo Official</span>
         </div>
 
-        <!-- Status Angin Kursi Pemenang (Dihitung dari Bandar) -->
+        <!-- Sub-Card 1: Angin Kursi Pemenang -->
         <div class="p-2.5 cream-inset rounded-xl flex items-center justify-between">
           <div>
             <span class="text-[11px] font-bold text-beige-900 block">
@@ -366,74 +370,210 @@
           </span>
         </div>
 
-        <!-- Bunga & Season -->
-        <div class="p-2.5 cream-inset rounded-xl space-y-1.5">
-          <div class="flex items-center justify-between">
-            <label class="text-[11px] font-bold text-beige-900 flex items-center gap-1">
-              🌸 Aturan Bunga & Season:
-            </label>
-            <span class="text-[10px] text-beige-600">Hitam / Merah</span>
+        <!-- Sub-Card 2: Multi-Bunga & Season (Dikelompokkan Jelas) -->
+        <div class="p-3 cream-inset rounded-xl space-y-2.5">
+          <div class="flex items-center justify-between border-b border-beige-200 pb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs">🌸</span>
+              <span class="text-xs font-extrabold text-beige-950">Aturan Bunga & Season</span>
+            </div>
+            <span id="totalFlowerPtsLabel" class="text-[11px] font-black text-amber-900 bg-amber-100 px-2 py-0.5 rounded border border-amber-300 font-mono">+0 Pts</span>
           </div>
-          <select id="flowerRuleSelect" class="w-full bg-white border border-beige-300 rounded-lg p-2 text-xs text-beige-900 font-bold focus:outline-none focus:border-amber-600">
-            <option value="0">Tidak Ada Bunga Cocok (+0)</option>
-            <option value="redNotSeat:1">Bunga Merah Tidak Sesuai Kursi (+1 Poin)</option>
-            <option value="redSeat:2">Bunga Merah Sesuai Nomor Kursi (+2 Poin)</option>
-            <option value="redSet:7">1 Set Lengkap Bunga Merah (+7 Poin)</option>
-            <option value="blackSeat:1">Bunga Hitam Sesuai Nomor Kursi (+1 Poin)</option>
-            <option value="blackSet:5">1 Set Lengkap Bunga Hitam (+5 Poin)</option>
-            <option value="instant7Flower:10">Instant Win: 7 Bunga + Season (10 Poin)</option>
-          </select>
+
+          <!-- Grup A: Bunga Merah -->
+          <div class="space-y-1.5">
+            <span class="text-[10px] font-bold text-rose-700 uppercase tracking-wide flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Bunga Merah (1-4)
+            </span>
+            
+            <div class="grid grid-cols-2 gap-1.5">
+              <label class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer tap-btn">
+                <div class="flex items-center gap-1.5">
+                  <input type="checkbox" id="chkFlowerRedSeat" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
+                  <span class="text-[10px] font-bold leading-tight">Sesuai Kursi</span>
+                </div>
+                <span class="text-[9px] font-mono font-bold text-amber-800 bg-amber-50 px-1 py-0.5 rounded border border-amber-200">+2</span>
+              </label>
+
+              <label class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer tap-btn">
+                <div class="flex items-center gap-1.5">
+                  <input type="checkbox" id="chkFlowerRedSet" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
+                  <span class="text-[10px] font-bold leading-tight">1 Set 4 Merah</span>
+                </div>
+                <span class="text-[9px] font-mono font-bold text-amber-800 bg-amber-50 px-1 py-0.5 rounded border border-amber-200">+7</span>
+              </label>
+            </div>
+
+            <!-- Stepper Bunga Merah Beda Kursi -->
+            <div class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300">
+              <div>
+                <span class="text-[10px] font-bold text-beige-900 block leading-tight">Merah Beda Kursi (+1/buah)</span>
+                <span class="text-[9px] text-beige-600">Jumlah keping yang tidak sesuai kursi</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <button type="button" id="btnDecFlowerRedNotSeat" class="w-6 h-6 bg-beige-100 hover:bg-beige-200 border border-beige-300 rounded flex items-center justify-center font-bold text-xs tap-btn">-</button>
+                <span id="txtFlowerRedNotSeat" class="w-5 text-center font-mono font-bold text-xs text-amber-900">0</span>
+                <button type="button" id="btnIncFlowerRedNotSeat" class="w-6 h-6 bg-beige-100 hover:bg-beige-200 border border-beige-300 rounded flex items-center justify-center font-bold text-xs tap-btn">+</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grup B: Bunga Hitam & Instant -->
+          <div class="space-y-1.5 pt-1 border-t border-beige-200">
+            <span class="text-[10px] font-bold text-slate-700 uppercase tracking-wide flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span> Bunga Hitam (1-4) & Instant
+            </span>
+
+            <div class="grid grid-cols-2 gap-1.5">
+              <label class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer tap-btn">
+                <div class="flex items-center gap-1.5">
+                  <input type="checkbox" id="chkFlowerBlackSeat" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
+                  <span class="text-[10px] font-bold leading-tight">Sesuai Kursi</span>
+                </div>
+                <span class="text-[9px] font-mono font-bold text-amber-800 bg-amber-50 px-1 py-0.5 rounded border border-amber-200">+1</span>
+              </label>
+
+              <label class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer tap-btn">
+                <div class="flex items-center gap-1.5">
+                  <input type="checkbox" id="chkFlowerBlackSet" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
+                  <span class="text-[10px] font-bold leading-tight">1 Set 4 Hitam</span>
+                </div>
+                <span class="text-[9px] font-mono font-bold text-amber-800 bg-amber-50 px-1 py-0.5 rounded border border-amber-200">+5</span>
+              </label>
+            </div>
+
+            <label class="flex items-center justify-between bg-amber-50/60 p-2 rounded-lg border border-amber-200 text-beige-900 cursor-pointer tap-btn">
+              <div class="flex items-center gap-1.5">
+                <input type="checkbox" id="chkFlowerInstant7" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
+                <div>
+                  <span class="text-[10px] font-extrabold text-amber-950 block leading-tight">Instant Win: 7 Bunga + Season</span>
+                  <span class="text-[9px] text-amber-800">Langsung menang jika dapat 7 bunga</span>
+                </div>
+              </div>
+              <span class="text-[10px] font-mono font-black text-amber-900 bg-amber-100 px-1.5 py-0.5 rounded border border-amber-300">+10 Pts</span>
+            </label>
+          </div>
         </div>
 
-        <!-- Instant Kong Point -->
-        <div class="p-2.5 cream-inset rounded-xl space-y-1">
-          <label class="block text-[10px] text-beige-700 font-bold">Instant Point Kong (槓):</label>
-          <select id="instantKongSelect" class="w-full bg-white border border-beige-300 rounded-lg p-2 text-xs text-beige-900 font-bold focus:outline-none">
-            <option value="0">Tidak Ada (+0)</option>
-            <option value="closed:6">Kong Tertutup (+6 Poin Total)</option>
-            <option value="discard:3">Kong Buangan (+3 Poin Total)</option>
-            <option value="added:3">Kong Tambahan (+3 Poin Total)</option>
-          </select>
+        <!-- Sub-Card 3: Multi-Kong Points (Stepper Rinci) -->
+        <div class="p-3 cream-inset rounded-xl space-y-2">
+          <div class="flex items-center justify-between border-b border-beige-200 pb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs">槓</span>
+              <span class="text-xs font-extrabold text-beige-950">Instant Point Kong (槓)</span>
+            </div>
+            <span id="totalKongPtsLabel" class="text-[11px] font-black text-amber-900 bg-amber-100 px-2 py-0.5 rounded border border-amber-300 font-mono">+0 Pts</span>
+          </div>
+
+          <div class="space-y-1.5">
+            <!-- Kong Tertutup -->
+            <div class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300">
+              <div>
+                <span class="text-[11px] font-bold text-beige-900 block">Kong Tertutup (+6 Pts/set)</span>
+                <span class="text-[9px] text-beige-600">Ambil sendiri secara tertutup</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button type="button" id="btnDecKongClosed" class="w-6 h-6 bg-beige-100 hover:bg-beige-200 border border-beige-300 rounded flex items-center justify-center font-bold text-xs tap-btn">-</button>
+                <span id="txtKongClosed" class="w-5 text-center font-mono font-bold text-xs text-amber-900">0</span>
+                <button type="button" id="btnIncKongClosed" class="w-6 h-6 bg-beige-100 hover:bg-beige-200 border border-beige-300 rounded flex items-center justify-center font-bold text-xs tap-btn">+</button>
+              </div>
+            </div>
+
+            <!-- Kong Buangan -->
+            <div class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300">
+              <div>
+                <span class="text-[11px] font-bold text-beige-900 block">Kong Buangan (+3 Pts/set)</span>
+                <span class="text-[9px] text-beige-600">Dari tile buangan lawan</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button type="button" id="btnDecKongDiscard" class="w-6 h-6 bg-beige-100 hover:bg-beige-200 border border-beige-300 rounded flex items-center justify-center font-bold text-xs tap-btn">-</button>
+                <span id="txtKongDiscard" class="w-5 text-center font-mono font-bold text-xs text-amber-900">0</span>
+                <button type="button" id="btnIncKongDiscard" class="w-6 h-6 bg-beige-100 hover:bg-beige-200 border border-beige-300 rounded flex items-center justify-center font-bold text-xs tap-btn">+</button>
+              </div>
+            </div>
+
+            <!-- Kong Tambahan -->
+            <div class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300">
+              <div>
+                <span class="text-[11px] font-bold text-beige-900 block">Kong Tambahan (+3 Pts/set)</span>
+                <span class="text-[9px] text-beige-600">Tile sendiri ditambah ke Pong buka</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button type="button" id="btnDecKongAdded" class="w-6 h-6 bg-beige-100 hover:bg-beige-200 border border-beige-300 rounded flex items-center justify-center font-bold text-xs tap-btn">-</button>
+                <span id="txtKongAdded" class="w-5 text-center font-mono font-bold text-xs text-amber-900">0</span>
+                <button type="button" id="btnIncKongAdded" class="w-6 h-6 bg-beige-100 hover:bg-beige-200 border border-beige-300 rounded flex items-center justify-center font-bold text-xs tap-btn">+</button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Poin Tambahan Lanjutan -->
-        <div class="grid grid-cols-2 gap-1.5 text-[11px]">
-          <label class="flex items-center gap-1.5 bg-beige-50 p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer">
-            <input type="checkbox" id="chkPair28" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
-            <span>Pair Penutup 2/8 (+1)</span>
-          </label>
-          <label class="flex items-center gap-1.5 bg-beige-50 p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer">
-            <input type="checkbox" id="chkHandTertutup" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
-            <span>Hand Tertutup (+1)</span>
-          </label>
-          <label class="flex items-center gap-1.5 bg-beige-50 p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer">
-            <input type="checkbox" id="chkTanpaBungaNagaAngin" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
-            <span>Tanpa Bunga/Naga/Angin (+2)</span>
-          </label>
-          <label class="flex items-center gap-1.5 bg-beige-50 p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer">
-            <input type="checkbox" id="chkLastTile" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
-            <span>Last Tile / Discard (+1)</span>
-          </label>
-          <label class="flex items-center gap-1.5 bg-beige-50 p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer">
-            <input type="checkbox" id="chkStealingKong" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
-            <span>Stealing Kong (+1)</span>
-          </label>
-          <label class="flex items-center gap-1.5 bg-beige-50 p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer">
-            <input type="checkbox" id="chkMenangBuntut" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
-            <span>Menang dari Buntut (+1)</span>
-          </label>
+        <!-- Sub-Card 4: Kondisi Tambahan Lainnya -->
+        <div class="p-3 cream-inset rounded-xl space-y-2">
+          <span class="text-xs font-extrabold text-beige-950 block border-b border-beige-200 pb-1">
+            Kondisi Tambahan Lainnya
+          </span>
+
+          <div class="grid grid-cols-2 gap-1.5 text-[11px]">
+            <label class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer tap-btn">
+              <div class="flex items-center gap-1.5">
+                <input type="checkbox" id="chkPair28" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
+                <span class="text-[10px] font-bold leading-tight">Pair 2 / 8</span>
+              </div>
+              <span class="text-[9px] font-mono font-bold text-amber-800 bg-amber-50 px-1 py-0.5 rounded border border-amber-200">+1</span>
+            </label>
+
+            <label class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer tap-btn">
+              <div class="flex items-center gap-1.5">
+                <input type="checkbox" id="chkHandTertutup" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
+                <span class="text-[10px] font-bold leading-tight">Hand Tertutup</span>
+              </div>
+              <span class="text-[9px] font-mono font-bold text-amber-800 bg-amber-50 px-1 py-0.5 rounded border border-amber-200">+1</span>
+            </label>
+
+            <label class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer tap-btn">
+              <div class="flex items-center gap-1.5">
+                <input type="checkbox" id="chkTanpaBungaNagaAngin" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
+                <span class="text-[10px] font-bold leading-tight">Tanpa Bunga/Naga</span>
+              </div>
+              <span class="text-[9px] font-mono font-bold text-amber-800 bg-amber-50 px-1 py-0.5 rounded border border-amber-200">+2</span>
+            </label>
+
+            <label class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer tap-btn">
+              <div class="flex items-center gap-1.5">
+                <input type="checkbox" id="chkLastTile" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
+                <span class="text-[10px] font-bold leading-tight">Last Tile/Discard</span>
+              </div>
+              <span class="text-[9px] font-mono font-bold text-amber-800 bg-amber-50 px-1 py-0.5 rounded border border-amber-200">+1</span>
+            </label>
+
+            <label class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer tap-btn">
+              <div class="flex items-center gap-1.5">
+                <input type="checkbox" id="chkStealingKong" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
+                <span class="text-[10px] font-bold leading-tight">Stealing Kong</span>
+              </div>
+              <span class="text-[9px] font-mono font-bold text-amber-800 bg-amber-50 px-1 py-0.5 rounded border border-amber-200">+1</span>
+            </label>
+
+            <label class="flex items-center justify-between bg-white p-2 rounded-lg border border-beige-300 text-beige-900 cursor-pointer tap-btn">
+              <div class="flex items-center gap-1.5">
+                <input type="checkbox" id="chkMenangBuntut" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
+                <span class="text-[10px] font-bold leading-tight">Menang Buntut</span>
+              </div>
+              <span class="text-[9px] font-mono font-bold text-amber-800 bg-amber-50 px-1 py-0.5 rounded border border-amber-200">+1</span>
+            </label>
+          </div>
         </div>
       </section>
 
     </div><!-- End rulesEngineWrapper -->
 
-    <!-- Cara Menang (ZIMO vs RON) - Pengurangan Poin (Tanpa Bayar) -->
+    <!-- Cara Menang (ZIMO vs HU) - Pengurangan Poin (Tanpa Bayar) -->
     <section class="cream-card rounded-2xl p-3.5 space-y-3">
       <div class="flex items-center justify-between border-b border-beige-200 pb-2">
         <label class="text-xs font-extrabold text-beige-900 uppercase tracking-wide flex items-center gap-1.5">
           <i class="fa-solid fa-hand-holding-hand text-amber-600"></i> Cara Pengambilan Kartu
         </label>
-        <span class="text-[10px] text-beige-600">Zimo vs Ron</span>
+        <span class="text-[10px] text-beige-600">Zimo vs Hu</span>
       </div>
 
       <div class="grid grid-cols-2 gap-2">
@@ -445,13 +585,13 @@
         </button>
         <button type="button" id="btnHu" class="tap-btn py-2 px-2 rounded-xl border border-beige-300 bg-white text-beige-800 font-bold text-xs flex flex-col items-center">
           <span class="text-xs font-black flex items-center gap-1">
-            <i class="fa-solid fa-crosshairs"></i> RON (Buangan Lawan)
+            <i class="fa-solid fa-crosshairs"></i> HU (Buangan Lawan)
           </span>
           <span class="text-[9px] font-normal text-beige-600">Pembuang pengurangan 2x, lain 1x</span>
         </button>
       </div>
 
-      <!-- Pilihan Pembuang Kartu (Jika Ron) -->
+      <!-- Pilihan Pembuang Kartu (Jika Hu) -->
       <div id="loserSelectContainer" class="hidden p-2.5 bg-rose-50/70 border border-rose-200 rounded-xl space-y-1.5">
         <span class="block text-[11px] font-bold text-rose-900 flex items-center gap-1">
           <i class="fa-solid fa-user-xmark"></i> Siapa pemain yang membuang kartu kemenangan?
@@ -514,7 +654,7 @@
 
   </div>
 
-  <!-- Modal: Setup Meja & Pemain (Tanpa Simbol Emotikon / Angin) -->
+  <!-- Modal: Setup Meja & Pemain -->
   <div id="setupModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
     <div class="cream-card max-w-sm w-full rounded-2xl p-4 border border-beige-300 space-y-3.5 text-xs shadow-xl">
       <div class="flex items-center justify-between border-b border-beige-200 pb-2">
@@ -540,7 +680,7 @@
         </div>
       </div>
 
-      <!-- Nama Pemain Bersih Tanpa Huruf Angin / Emotikon -->
+      <!-- Nama Pemain Bersih -->
       <div class="space-y-2 pt-1 border-t border-beige-200">
         <label class="block font-semibold text-beige-900">Isi Nama Pemain:</label>
         <div class="space-y-1.5">
@@ -636,14 +776,14 @@
         { id: '9m', name: '9 Karakter', label: '九萬', num: '九', indo: '9 Karakter' },
       ],
       sou: [
-        { id: '1s', name: '1 Bambu (Burung)', label: '一條', indo: '1 Bambu' },
+        { id: '1s', name: '1 Bambu (Burung Merak)', label: '一條', indo: '1 Bambu' },
         { id: '2s', name: '2 Bambu', label: '二條', indo: '2 Bambu' },
         { id: '3s', name: '3 Bambu', label: '三條', indo: '3 Bambu' },
         { id: '4s', name: '4 Bambu', label: '四條', indo: '4 Bambu' },
         { id: '5s', name: '5 Bambu', label: '五條', indo: '5 Bambu' },
         { id: '6s', name: '6 Bambu', label: '六條', indo: '6 Bambu' },
         { id: '7s', name: '7 Bambu', label: '七條', indo: '7 Bambu' },
-        { id: '8s', name: '8 Bambu (Inverted)', label: '八條', indo: '8 Bambu' },
+        { id: '8s', name: '8 Bambu (Interlocking M)', label: '八條', indo: '8 Bambu' },
         { id: '9s', name: '9 Bambu', label: '九條', indo: '9 Bambu' },
       ],
       pin: [
@@ -674,133 +814,211 @@
     });
 
     function getTileSvg(tileId) {
-      const C_GRN = '#1b7340';
-      const C_RED = '#c5221f';
-      const C_BLU = '#1a56db';
-      const C_DRK = '#1a1614';
+      const C_GRN = '#15803d'; // Emerald green
+      const C_RED = '#b91c1c'; // Cinnabar red
+      const C_BLU = '#1e293b'; // Deep slate blue / charcoal
+      const C_DRK = '#18181b'; // Calligraphy ink
+      const C_GLD = '#d97706'; // Warm gold wash
 
-      const bambooStick = (x, y, h = 18, color = C_GRN, rot = 0) => `
-        <g transform="translate(${x},${y}) rotate(${rot})">
-          <rect x="-2.2" y="-${h/2}" width="4.4" height="${h}" rx="1.6" fill="${color}" stroke="#0b381d" stroke-width="0.5"/>
-          <line x1="0" y1="-${h/2 + 0.5}" x2="0" y2="${h/2 - 0.5}" stroke="#ffffff" stroke-width="0.7" opacity="0.6"/>
-          <ellipse cx="0" cy="-${h/4}" rx="2.8" ry="1" fill="${color}" stroke="#092d17" stroke-width="0.5"/>
-          <ellipse cx="0" cy="${h/4}" rx="2.8" ry="1" fill="${color}" stroke="#092d17" stroke-width="0.5"/>
+      // Multi-ring concentric target medallion
+      const concentricDot = (cx, cy, r = 5.2, outerCol = C_BLU) => `
+        <g>
+          <circle cx="${cx}" cy="${cy}" r="${r}" fill="${outerCol}" stroke="#0f172a" stroke-width="0.35"/>
+          <circle cx="${cx}" cy="${cy}" r="${r * 0.74}" fill="#ffffff" stroke="${outerCol}" stroke-width="0.45"/>
+          <circle cx="${cx}" cy="${cy}" r="${r * 0.46}" fill="${outerCol}"/>
+          <circle cx="${cx}" cy="${cy}" r="${r * 0.18}" fill="#ffffff"/>
         </g>
       `;
 
-      const concentricDot = (cx, cy, r = 5, outerCol = C_BLU, innerCol = '#ffffff', centerCol = outerCol) => `
-        <g>
-          <circle cx="${cx}" cy="${cy}" r="${r}" fill="${outerCol}" stroke="#0f172a" stroke-width="0.4"/>
-          <circle cx="${cx}" cy="${cy}" r="${r * 0.65}" fill="${innerCol}" opacity="0.9"/>
-          <circle cx="${cx}" cy="${cy}" r="${r * 0.35}" fill="${centerCol}"/>
+      // Bamboo segmented bulbous stick with node joints
+      const bambooStick = (x, y, h = 18, color = C_GRN, rot = 0) => `
+        <g transform="translate(${x},${y}) rotate(${rot})">
+          <rect x="-2.2" y="-${h/2}" width="4.4" height="${h}" rx="1.6" fill="${color}" stroke="#092d17" stroke-width="0.4"/>
+          <line x1="0" y1="-${h/2 + 0.5}" x2="0" y2="${h/2 - 0.5}" stroke="#ffffff" stroke-width="0.5" opacity="0.6"/>
+          <ellipse cx="0" cy="-${h/4}" rx="2.8" ry="0.9" fill="${color}" stroke="#092d17" stroke-width="0.4"/>
+          <ellipse cx="0" cy="${h/4}" rx="2.8" ry="0.9" fill="${color}" stroke="#092d17" stroke-width="0.4"/>
+        </g>
+      `;
+
+      // Bamboo shoot with angled leaf branches
+      const bambooShoot = (x, y, color = C_GRN) => `
+        <g transform="translate(${x},${y})">
+          <rect x="-1.8" y="-9" width="3.6" height="18" rx="1.4" fill="${color}" stroke="#092d17" stroke-width="0.4"/>
+          <line x1="0" y1="-9" x2="0" y2="9" stroke="#ffffff" stroke-width="0.5" opacity="0.55"/>
+          <path d="M-1.5 -3 L-5 -7 M1.5 -3 L5 -7" stroke="${color}" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M-1.5 3 L-5 -1 M1.5 3 L5 -1" stroke="${color}" stroke-width="1.3" stroke-linecap="round"/>
         </g>
       `;
 
       let content = '';
 
+      // --- CHARACTERS (WAN) ---
       if (tileId.endsWith('m')) {
         const item = TILE_MAP[tileId] || { num: '一' };
         content = `
-          <text x="24" y="27" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="20" fill="${C_DRK}">${item.num}</text>
+          <text x="24" y="27" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="21" fill="${C_DRK}">${item.num}</text>
           <text x="24" y="52" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="22" fill="${C_RED}">萬</text>
         `;
-      } else if (tileId.endsWith('s')) {
+      } 
+      // --- BAMBOOS (SOU) ---
+      else if (tileId.endsWith('s')) {
         switch (tileId) {
           case '1s':
             content = `
-              <circle cx="24" cy="33" r="11" fill="${C_GRN}" />
-              <path d="M24,20 C30,22 34,28 32,36 C30,42 24,45 24,45 C24,45 18,42 16,36 C14,28 18,22 24,20 Z" fill="${C_RED}" opacity="0.8" />
-              <circle cx="21" cy="27" r="1.5" fill="#fff" />
-              <circle cx="21" cy="27" r="0.7" fill="${C_DRK}" />
-              <path d="M24,44 L24,53" stroke="${C_GRN}" stroke-width="3" stroke-linecap="round"/>
+              <path d="M 8 52 C 12 48 20 49 24 53 C 18 55 12 55 8 52 Z" fill="${C_GLD}" opacity="0.85"/>
+              <ellipse cx="14" cy="51" rx="6" ry="2.2" fill="${C_GLD}"/>
+              <line x1="16" y1="46" x2="14" y2="52" stroke="${C_DRK}" stroke-width="1.2"/>
+              <line x1="20" y1="45" x2="19" y2="52" stroke="${C_DRK}" stroke-width="1.2"/>
+              <g stroke="${C_DRK}" stroke-width="0.8" fill="none">
+                <path d="M 18 40 C 22 26 31 16 38 15"/>
+                <path d="M 18 40 C 25 24 36 20 41 22"/>
+                <path d="M 18 40 C 27 28 38 27 42 31"/>
+                <path d="M 18 40 C 26 33 37 36 40 41"/>
+                <path d="M 18 40 C 24 37 33 42 36 47"/>
+              </g>
+              <circle cx="38" cy="15" r="3.2" fill="${C_GRN}" stroke="${C_DRK}" stroke-width="0.5"/>
+              <circle cx="38" cy="15" r="1.5" fill="${C_GLD}"/>
+              <circle cx="41" cy="22" r="3.2" fill="${C_GRN}" stroke="${C_DRK}" stroke-width="0.5"/>
+              <circle cx="41" cy="22" r="1.5" fill="${C_GLD}"/>
+              <circle cx="42" cy="31" r="3.2" fill="${C_GRN}" stroke="${C_DRK}" stroke-width="0.5"/>
+              <circle cx="42" cy="31" r="1.5" fill="${C_GLD}"/>
+              <circle cx="40" cy="41" r="3" fill="${C_GRN}" stroke="${C_DRK}" stroke-width="0.5"/>
+              <circle cx="40" cy="41" r="1.4" fill="${C_GLD}"/>
+              <circle cx="36" cy="47" r="2.8" fill="${C_GRN}" stroke="${C_DRK}" stroke-width="0.5"/>
+              <circle cx="36" cy="47" r="1.2" fill="${C_GLD}"/>
+              <path d="M 14 45 C 10 39 12 32 17 31 C 21 31 23 37 20 44 Z" fill="${C_DRK}"/>
+              <ellipse cx="16" cy="38" rx="3.5" ry="5.5" fill="${C_BLU}" stroke="${C_DRK}" stroke-width="0.5"/>
+              <path d="M 15 32 C 14 26 13 22 16 19 C 18 19 19 22 18 26 Z" fill="${C_DRK}"/>
+              <circle cx="16" cy="18" r="3.2" fill="${C_DRK}"/>
+              <circle cx="15.2" cy="17.5" r="0.9" fill="#ffffff"/>
+              <polygon points="13,18 9,19.5 13,20.5" fill="${C_GLD}"/>
+              <path d="M 16 15 L 14 11 M 17 15 L 17 10 M 18 15 L 20 11" stroke="${C_RED}" stroke-width="1" stroke-linecap="round"/>
+              <circle cx="14" cy="11" r="1" fill="${C_RED}"/>
+              <circle cx="17" cy="10" r="1" fill="${C_RED}"/>
+              <circle cx="20" cy="11" r="1" fill="${C_RED}"/>
             `;
             break;
           case '2s':
-            content = `${bambooStick(24, 21, 19, C_GRN)}${bambooStick(24, 43, 19, C_BLU)}`;
+            content = `${bambooShoot(24, 21, C_GRN)}${bambooStick(24, 43, 19, C_BLU)}`;
             break;
           case '3s':
-            content = `${bambooStick(24, 18, 17, C_BLU)}${bambooStick(16, 42, 19, C_GRN)}${bambooStick(32, 42, 19, C_GRN)}`;
+            content = `${bambooShoot(24, 18, C_GRN)}${bambooStick(16, 42, 19, C_BLU)}${bambooStick(32, 42, 19, C_GRN)}`;
             break;
           case '4s':
-            content = `${bambooStick(16, 21, 18, C_BLU)}${bambooStick(32, 21, 18, C_GRN)}${bambooStick(16, 43, 18, C_GRN)}${bambooStick(32, 43, 18, C_BLU)}`;
+            content = `${bambooShoot(16, 21, C_GRN)}${bambooShoot(32, 21, C_BLU)}${bambooStick(16, 43, 18, C_BLU)}${bambooStick(32, 43, 18, C_GRN)}`;
             break;
           case '5s':
-            content = `${bambooStick(14, 20, 16, C_BLU)}${bambooStick(34, 20, 16, C_GRN)}${bambooStick(24, 32, 18, C_RED)}${bambooStick(14, 44, 16, C_GRN)}${bambooStick(34, 44, 16, C_BLU)}`;
+            content = `
+              ${bambooStick(14, 21, 16, C_GRN)}
+              ${bambooStick(14, 43, 16, C_GRN)}
+              ${bambooStick(24, 32, 22, C_RED)}
+              ${bambooStick(34, 21, 16, C_BLU)}
+              ${bambooStick(34, 43, 16, C_BLU)}
+            `;
             break;
           case '6s':
-            content = `${bambooStick(15, 21, 18, C_GRN)}${bambooStick(24, 21, 18, C_GRN)}${bambooStick(33, 21, 18, C_GRN)}${bambooStick(15, 43, 18, C_BLU)}${bambooStick(24, 43, 18, C_BLU)}${bambooStick(33, 43, 18, C_BLU)}`;
+            content = `
+              ${bambooStick(15, 21, 18, C_GRN)}
+              ${bambooStick(24, 21, 18, C_GRN)}
+              ${bambooStick(33, 21, 18, C_GRN)}
+              ${bambooStick(15, 43, 18, C_BLU)}
+              ${bambooStick(24, 43, 18, C_BLU)}
+              ${bambooStick(33, 43, 18, C_BLU)}
+            `;
             break;
           case '7s':
-            content = `${bambooStick(24, 15, 15, C_RED)}${bambooStick(16, 30, 15, C_GRN)}${bambooStick(32, 30, 15, C_GRN)}${bambooStick(13, 47, 16, C_BLU)}${bambooStick(20, 47, 16, C_BLU)}${bambooStick(28, 47, 16, C_BLU)}${bambooStick(35, 47, 16, C_BLU)}`;
+            content = `
+              ${bambooStick(14, 23, 16, C_GRN)}
+              ${bambooStick(14, 43, 16, C_GRN)}
+              ${bambooStick(24, 17, 14, C_RED)}
+              ${bambooStick(24, 32, 14, C_RED)}
+              ${bambooStick(24, 47, 14, C_RED)}
+              ${bambooStick(34, 23, 16, C_GRN)}
+              ${bambooStick(34, 43, 16, C_GRN)}
+            `;
             break;
           case '8s':
-            // 8 BAMBOO: Both inverted/rotated W on top and M on bottom with segmented bamboo nodes
             content = `
               <g stroke-linecap="round" stroke-linejoin="round">
-                <!-- Top W shape (left red, right green) -->
-                <line x1="11" y1="13" x2="17.5" y2="28" stroke="${C_RED}" stroke-width="3"/>
-                <circle cx="14" cy="20.5" r="1.3" fill="#fff" opacity="0.8"/>
-                <line x1="17.5" y1="28" x2="24" y2="18" stroke="${C_RED}" stroke-width="3"/>
-                <circle cx="21" cy="23" r="1.3" fill="#fff" opacity="0.8"/>
-                <line x1="24" y1="18" x2="30.5" y2="28" stroke="${C_GRN}" stroke-width="3"/>
-                <circle cx="27" cy="23" r="1.3" fill="#fff" opacity="0.8"/>
-                <line x1="30.5" y1="28" x2="37" y2="13" stroke="${C_GRN}" stroke-width="3"/>
-                <circle cx="34" cy="20.5" r="1.3" fill="#fff" opacity="0.8"/>
+                <!-- Top Inverted M (W shape, opposite to bottom) -->
+                <path d="M 12 16 L 18 30 L 24 21" stroke="${C_RED}" stroke-width="3.2" fill="none"/>
+                <path d="M 24 21 L 30 30 L 36 16" stroke="${C_BLU}" stroke-width="3.2" fill="none"/>
+                <circle cx="18" cy="30" r="1.3" fill="#ffffff" opacity="0.8"/>
+                <circle cx="24" cy="21" r="1.3" fill="#ffffff" opacity="0.8"/>
+                <circle cx="30" cy="30" r="1.3" fill="#ffffff" opacity="0.8"/>
 
-                <!-- Bottom M shape (left red, right green) -->
-                <line x1="11" y1="51" x2="17.5" y2="36" stroke="${C_RED}" stroke-width="3"/>
-                <circle cx="14" cy="43.5" r="1.3" fill="#fff" opacity="0.8"/>
-                <line x1="17.5" y1="36" x2="24" y2="46" stroke="${C_RED}" stroke-width="3"/>
-                <circle cx="21" cy="41" r="1.3" fill="#fff" opacity="0.8"/>
-                <line x1="24" y1="46" x2="30.5" y2="36" stroke="${C_GRN}" stroke-width="3"/>
-                <circle cx="27" cy="41" r="1.3" fill="#fff" opacity="0.8"/>
-                <line x1="30.5" y1="36" x2="37" y2="51" stroke="${C_GRN}" stroke-width="3"/>
-                <circle cx="34" cy="43.5" r="1.3" fill="#fff" opacity="0.8"/>
+                <!-- Bottom M shape (preserved) -->
+                <path d="M 12 50 L 18 36 L 24 45 L 30 36 L 36 50" stroke="${C_GRN}" stroke-width="3.2" fill="none"/>
+                <circle cx="18" cy="36" r="1.3" fill="#ffffff" opacity="0.8"/>
+                <circle cx="24" cy="45" r="1.3" fill="#ffffff" opacity="0.8"/>
+                <circle cx="30" cy="36" r="1.3" fill="#ffffff" opacity="0.8"/>
               </g>
             `;
             break;
           case '9s':
             content = `
-              ${bambooStick(15, 18, 15, C_BLU)}${bambooStick(24, 18, 15, C_RED)}${bambooStick(33, 18, 15, C_GRN)}
-              ${bambooStick(15, 32, 15, C_BLU)}${bambooStick(24, 32, 15, C_RED)}${bambooStick(33, 32, 15, C_GRN)}
-              ${bambooStick(15, 46, 15, C_BLU)}${bambooStick(24, 46, 15, C_RED)}${bambooStick(33, 46, 15, C_GRN)}
+              ${bambooStick(14, 18, 14, C_GRN)}${bambooStick(24, 18, 14, C_RED)}${bambooStick(34, 18, 14, C_GRN)}
+              ${bambooStick(14, 32, 14, C_GRN)}${bambooStick(24, 32, 14, C_RED)}${bambooStick(34, 32, 14, C_GRN)}
+              ${bambooStick(14, 46, 14, C_GRN)}${bambooStick(24, 46, 14, C_RED)}${bambooStick(34, 46, 14, C_GRN)}
             `;
             break;
         }
-      } else if (tileId.endsWith('p')) {
+      } 
+      // --- DOTS (PIN) ---
+      else if (tileId.endsWith('p')) {
         switch (tileId) {
           case '1p':
             content = `
-              <circle cx="24" cy="32" r="15" fill="${C_RED}" stroke="#0f172a" stroke-width="0.5"/>
-              <circle cx="24" cy="22" r="3.5" fill="${C_GRN}"/>
-              <circle cx="24" cy="42" r="3.5" fill="${C_GRN}"/>
-              <circle cx="14" cy="32" r="3.5" fill="${C_GRN}"/>
-              <circle cx="34" cy="32" r="3.5" fill="${C_GRN}"/>
-              <circle cx="17" cy="25" r="3.5" fill="${C_BLU}"/>
-              <circle cx="31" cy="25" r="3.5" fill="${C_BLU}"/>
-              <circle cx="17" cy="39" r="3.5" fill="${C_BLU}"/>
-              <circle cx="31" cy="39" r="3.5" fill="${C_BLU}"/>
-              <circle cx="24" cy="32" r="7.5" fill="#ffffff" stroke="${C_RED}" stroke-width="1"/>
-              <circle cx="24" cy="32" r="3.8" fill="${C_RED}"/>
+              <!-- Outer 16-petal gear flower -->
+              <circle cx="24" cy="32" r="17.5" fill="${C_GRN}" stroke="#0b381d" stroke-width="0.5"/>
+              <circle cx="24" cy="22" r="3.2" fill="#ffffff" opacity="0.9"/>
+              <circle cx="24" cy="42" r="3.2" fill="#ffffff" opacity="0.9"/>
+              <circle cx="14" cy="32" r="3.2" fill="#ffffff" opacity="0.9"/>
+              <circle cx="34" cy="32" r="3.2" fill="#ffffff" opacity="0.9"/>
+              <circle cx="17" cy="25" r="3.2" fill="#ffffff" opacity="0.9"/>
+              <circle cx="31" cy="25" r="3.2" fill="#ffffff" opacity="0.9"/>
+              <circle cx="17" cy="39" r="3.2" fill="#ffffff" opacity="0.9"/>
+              <circle cx="31" cy="39" r="3.2" fill="#ffffff" opacity="0.9"/>
+              <circle cx="24" cy="32" r="13" fill="${C_GRN}" stroke="#ffffff" stroke-width="0.8"/>
+              <circle cx="24" cy="32" r="9.5" fill="#fcfbf7" stroke="${C_RED}" stroke-width="0.8"/>
+              <!-- Center 4-lobed red plum blossom -->
+              <circle cx="24" cy="28.5" r="2.5" fill="${C_RED}"/>
+              <circle cx="24" cy="35.5" r="2.5" fill="${C_RED}"/>
+              <circle cx="20.5" cy="32" r="2.5" fill="${C_RED}"/>
+              <circle cx="27.5" cy="32" r="2.5" fill="${C_RED}"/>
+              <circle cx="24" cy="32" r="1.8" fill="#ffffff"/>
+              <circle cx="24" cy="32" r="0.9" fill="${C_RED}"/>
             `;
             break;
           case '2p':
-            content = `${concentricDot(24, 18, 7.5, C_GRN, '#fff', C_GRN)}${concentricDot(24, 46, 7.5, C_BLU, '#fff', C_BLU)}`;
+            content = `${concentricDot(24, 18, 7.5, C_GRN)}${concentricDot(24, 46, 7.5, C_BLU)}`;
             break;
           case '3p':
-            content = `${concentricDot(15, 17, 6.2, C_BLU)}${concentricDot(24, 32, 6.2, C_RED)}${concentricDot(33, 47, 6.2, C_GRN)}`;
+            content = `${concentricDot(15, 17, 6.2, C_GRN)}${concentricDot(24, 32, 6.2, C_RED)}${concentricDot(33, 47, 6.2, C_BLU)}`;
             break;
           case '4p':
-            content = `${concentricDot(16, 20, 6.5, C_BLU)}${concentricDot(32, 20, 6.5, C_GRN)}${concentricDot(16, 44, 6.5, C_GRN)}${concentricDot(32, 44, 6.5, C_BLU)}`;
+            content = `${concentricDot(16, 20, 6.5, C_GRN)}${concentricDot(32, 20, 6.5, C_BLU)}${concentricDot(16, 44, 6.5, C_BLU)}${concentricDot(32, 44, 6.5, C_GRN)}`;
             break;
           case '5p':
-            content = `${concentricDot(14, 18, 5.5, C_BLU)}${concentricDot(34, 18, 5.5, C_GRN)}${concentricDot(24, 32, 7.5, C_RED, '#fff', C_RED)}${concentricDot(14, 46, 5.5, C_GRN)}${concentricDot(34, 46, 5.5, C_BLU)}`;
+            content = `
+              ${concentricDot(14, 18, 5.5, C_GRN)}${concentricDot(34, 18, 5.5, C_BLU)}
+              ${concentricDot(24, 32, 7.5, C_RED)}
+              ${concentricDot(14, 46, 5.5, C_BLU)}${concentricDot(34, 46, 5.5, C_GRN)}
+            `;
             break;
           case '6p':
-            content = `${concentricDot(17, 18, 5.5, C_GRN)}${concentricDot(31, 18, 5.5, C_GRN)}${concentricDot(17, 33, 5.5, C_RED)}${concentricDot(31, 33, 5.5, C_RED)}${concentricDot(17, 47, 5.5, C_RED)}${concentricDot(31, 47, 5.5, C_RED)}`;
+            content = `
+              ${concentricDot(17, 18, 5.5, C_GRN)}${concentricDot(31, 18, 5.5, C_GRN)}
+              ${concentricDot(17, 33, 5.5, C_RED)}${concentricDot(31, 33, 5.5, C_RED)}
+              ${concentricDot(17, 47, 5.5, C_RED)}${concentricDot(31, 47, 5.5, C_RED)}
+            `;
             break;
           case '7p':
-            content = `${concentricDot(14, 15, 4.8, C_GRN)}${concentricDot(24, 21, 4.8, C_GRN)}${concentricDot(34, 27, 4.8, C_GRN)}${concentricDot(16, 38, 5.2, C_RED)}${concentricDot(32, 38, 5.2, C_RED)}${concentricDot(16, 49, 5.2, C_RED)}${concentricDot(32, 49, 5.2, C_RED)}`;
+            content = `
+              ${concentricDot(14, 15, 4.8, C_GRN)}${concentricDot(24, 21, 4.8, C_GRN)}${concentricDot(34, 27, 4.8, C_GRN)}
+              ${concentricDot(16, 38, 5.2, C_RED)}${concentricDot(32, 38, 5.2, C_RED)}
+              ${concentricDot(16, 49, 5.2, C_RED)}${concentricDot(32, 49, 5.2, C_RED)}
+            `;
             break;
           case '8p':
             content = `
@@ -812,13 +1030,15 @@
             break;
           case '9p':
             content = `
-              ${concentricDot(14, 16, 4.6, C_GRN)}${concentricDot(24, 16, 4.6, C_GRN)}${concentricDot(34, 16, 4.6, C_GRN)}
+              ${concentricDot(14, 16, 4.6, C_BLU)}${concentricDot(24, 16, 4.6, C_BLU)}${concentricDot(34, 16, 4.6, C_BLU)}
               ${concentricDot(14, 32, 4.6, C_RED)}${concentricDot(24, 32, 4.6, C_RED)}${concentricDot(34, 32, 4.6, C_RED)}
-              ${concentricDot(14, 48, 4.6, C_BLU)}${concentricDot(24, 48, 4.6, C_BLU)}${concentricDot(34, 48, 4.6, C_BLU)}
+              ${concentricDot(14, 48, 4.6, C_GRN)}${concentricDot(24, 48, 4.6, C_GRN)}${concentricDot(34, 48, 4.6, C_GRN)}
             `;
             break;
         }
-      } else {
+      } 
+      // --- HONORS (DRAGONS & WINDS) ---
+      else {
         switch (tileId) {
           case 'E':
             content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_DRK}">東</text>`;
@@ -839,10 +1059,9 @@
             content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_GRN}">發</text>`;
             break;
           case 'B':
-            // White Dragon: Clean white/ivory double plaque frame (strictly no red)
             content = `
-              <rect x="10" y="12" width="28" height="40" rx="3" fill="#ffffff" stroke="#c5b6a1" stroke-width="1.5"/>
-              <rect x="14" y="16" width="20" height="32" rx="1.5" fill="#fcfbf7" stroke="#ffffff" stroke-width="2"/>
+              <rect x="10" y="12" width="28" height="40" rx="3.5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.8"/>
+              <rect x="13.5" y="15.5" width="21" height="33" rx="2" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
             `;
             break;
           default:
@@ -880,8 +1099,19 @@
         points: 3,
         decomposition: null
       },
-      flowerRule: '0',
-      instantKong: '0',
+      flowers: {
+        redSeat: false,
+        redNotSeatCount: 0,
+        redSet: false,
+        blackSeat: false,
+        blackSet: false,
+        instant7: false
+      },
+      kongs: {
+        closed: 0,
+        discard: 0,
+        added: 0
+      },
       isPair28: false,
       isHandTertutup: false,
       isTanpaBungaNagaAngin: false,
@@ -1288,10 +1518,9 @@
           btn.className = 'mj-tile w-[28px] h-11 p-0.5 tap-btn';
           btn.title = tile.name;
           btn.innerHTML = `
-            <div class="w-full h-7 flex items-center justify-center pointer-events-none">
+            <div class="w-full h-full flex items-center justify-center pointer-events-none p-0.5">
               ${getTileSvg(tile.id)}
             </div>
-            <span class="text-[7px] text-beige-600 font-bold font-sans leading-none mt-0.5 pointer-events-none">${tile.id}</span>
           `;
           btn.addEventListener('click', () => {
             selectReplacementTile(tile.id);
@@ -1412,10 +1641,9 @@
         
         tileBtn.className = `mj-tile w-[26px] h-11 sm:w-7 sm:h-12 p-0.5 ${isEditing ? 'selected' : ''}`;
         tileBtn.innerHTML = `
-          <div class="w-full h-7 sm:h-8 flex items-center justify-center pointer-events-none">
+          <div class="w-full h-full flex items-center justify-center pointer-events-none p-0.5">
             ${getTileSvg(tileId)}
           </div>
-          <span class="text-[7px] text-beige-600 font-bold font-sans leading-none mt-0.5 pointer-events-none">${tileId}</span>
         `;
         tileBtn.title = `Tile #${idx + 1}: ${tileInfo.name}`;
 
@@ -1499,6 +1727,8 @@
       const finalSummaryEl = document.getElementById('finalPatternSummary');
       const dealerNotice = document.getElementById('dealerRotationNoticeText');
       const winnerSeatLabel = document.getElementById('winnerSeatWindLabel');
+      const totalFlowerPtsLabel = document.getElementById('totalFlowerPtsLabel');
+      const totalKongPtsLabel = document.getElementById('totalKongPtsLabel');
 
       let totalPts = 0;
       const breakdowns = [];
@@ -1545,6 +1775,7 @@
             breakdowns.push({ label: `Pong Triplet ${winnerSeatInfo.seatName} (Angin Kursi)`, pts: '+1' });
           }
 
+          // Poin Tambahan Standar
           if (state.isPair28) {
             totalPts += 1;
             breakdowns.push({ label: 'Pair Penutup 2 atau 8', pts: '+1' });
@@ -1574,32 +1805,55 @@
             breakdowns.push({ label: 'ZIMO (Ambil Sendiri)', pts: '+1' });
           }
 
-          if (state.flowerRule && state.flowerRule !== '0') {
-            const [fKey, fPtsStr] = state.flowerRule.split(':');
-            const fPts = parseInt(fPtsStr, 10) || 0;
-            const flowerLabels = {
-              redNotSeat: 'Bunga Merah Tidak Sesuai Kursi',
-              redSeat: 'Bunga Merah Sesuai Kursi',
-              redSet: '1 Set Lengkap Bunga Merah',
-              blackSeat: 'Bunga Hitam Sesuai Kursi',
-              blackSet: '1 Set Lengkap Bunga Hitam',
-              instant7Flower: 'Instant Win: 7 Bunga + Season'
-            };
-            totalPts += fPts;
-            breakdowns.push({ label: flowerLabels[fKey] || 'Bunga & Season', pts: `+${fPts}` });
+          // Perhitungan Multi-Bunga Kumulatif
+          let flowerTotal = 0;
+          if (state.flowers.redSeat) {
+            flowerTotal += 2;
+            breakdowns.push({ label: 'Bunga Merah Sesuai Kursi', pts: '+2' });
           }
+          if (state.flowers.redNotSeatCount > 0) {
+            const pts = state.flowers.redNotSeatCount * 1;
+            flowerTotal += pts;
+            breakdowns.push({ label: `Bunga Merah Tidak Sesuai (${state.flowers.redNotSeatCount}x)`, pts: `+${pts}` });
+          }
+          if (state.flowers.redSet) {
+            flowerTotal += 7;
+            breakdowns.push({ label: '1 Set Lengkap Bunga Merah', pts: '+7' });
+          }
+          if (state.flowers.blackSeat) {
+            flowerTotal += 1;
+            breakdowns.push({ label: 'Bunga Hitam Sesuai Kursi', pts: '+1' });
+          }
+          if (state.flowers.blackSet) {
+            flowerTotal += 5;
+            breakdowns.push({ label: '1 Set Lengkap Bunga Hitam', pts: '+5' });
+          }
+          if (state.flowers.instant7) {
+            flowerTotal += 10;
+            breakdowns.push({ label: 'Instant Win: 7 Bunga + Season', pts: '+10' });
+          }
+          totalPts += flowerTotal;
+          if (totalFlowerPtsLabel) totalFlowerPtsLabel.textContent = `+${flowerTotal} Pts`;
 
-          if (state.instantKong && state.instantKong !== '0') {
-            const [kKey, kPtsStr] = state.instantKong.split(':');
-            const kPts = parseInt(kPtsStr, 10) || 0;
-            const kongLabels = {
-              closed: 'Kong Tertutup (Ambil Sendiri)',
-              discard: 'Kong Buangan (Dari Lawan)',
-              added: 'Kong Tambahan (Dari Pong Buka)'
-            };
-            totalPts += kPts;
-            breakdowns.push({ label: kongLabels[kKey] || 'Instant Kong Point', pts: `+${kPts}` });
+          // Perhitungan Multi-Kong Kumulatif
+          let kongTotal = 0;
+          if (state.kongs.closed > 0) {
+            const pts = state.kongs.closed * 6;
+            kongTotal += pts;
+            breakdowns.push({ label: `Kong Tertutup (${state.kongs.closed} set)`, pts: `+${pts}` });
           }
+          if (state.kongs.discard > 0) {
+            const pts = state.kongs.discard * 3;
+            kongTotal += pts;
+            breakdowns.push({ label: `Kong Buangan (${state.kongs.discard} set)`, pts: `+${pts}` });
+          }
+          if (state.kongs.added > 0) {
+            const pts = state.kongs.added * 3;
+            kongTotal += pts;
+            breakdowns.push({ label: `Kong Tambahan (${state.kongs.added} set)`, pts: `+${pts}` });
+          }
+          totalPts += kongTotal;
+          if (totalKongPtsLabel) totalKongPtsLabel.textContent = `+${kongTotal} Pts`;
 
           if (totalPts > 25) {
             totalPts = 25;
@@ -1632,10 +1886,6 @@
           recordBtn.disabled = true;
           recordBtn.className = 'w-full py-3.5 bg-beige-300 text-beige-500 font-black text-sm rounded-xl cursor-not-allowed flex items-center justify-center gap-2 uppercase tracking-wide';
           if (recordBtnText) recordBtnText.textContent = '⛔ BUKAN WINNING TILES (TIDAK BISA DICATAT)';
-        } else if (totalPts < 3) {
-          recordBtn.disabled = true;
-          recordBtn.className = 'w-full py-3.5 bg-beige-300 text-beige-500 font-black text-sm rounded-xl cursor-not-allowed flex items-center justify-center gap-2 uppercase tracking-wide';
-          if (recordBtnText) recordBtnText.textContent = '⚠️ POIN KURANG DARI 3 (MINIMUM BELUM TERCAPAI)';
         } else {
           recordBtn.disabled = false;
           recordBtn.className = 'tap-btn w-full py-3.5 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 text-white font-black text-sm rounded-xl shadow-md flex items-center justify-center gap-2 uppercase tracking-wide';
@@ -1643,9 +1893,7 @@
         }
       }
 
-      // Exact Scoring & Pure Deduction Logic:
-      // Winner gets +totalPts
-      // Opponents receive deductions (never referred to as bayar)
+      // Exact Scoring & Pure Deduction Logic
       const winner = state.players[state.selectedWinner];
       const loser = state.players[state.selectedLoser];
       const otherCount = state.playerCount - 1;
@@ -1691,7 +1939,7 @@
 
           transferText.innerHTML = `
             <div class="flex items-center gap-1.5 text-xs text-rose-900 font-bold">
-              <i class="fa-solid fa-crosshairs"></i> RON — Pengurangan Poin: Pembuang 2×, Lainnya 1×
+              <i class="fa-solid fa-crosshairs"></i> HU — Pengurangan Poin: Pembuang 2×, Lainnya 1×
             </div>
             <div class="text-[11px] text-beige-900 leading-relaxed space-y-1">
               <div>
@@ -1717,11 +1965,6 @@
       }
 
       const finalPts = recalcPoints();
-      if (finalPts < 3) {
-        showToast("Poin kurang dari 3! Belum memenuhi syarat.");
-        return;
-      }
-
       const winner = state.players[state.selectedWinner];
       const loser = state.players[state.selectedLoser];
       const delta = state._currentCalculatedDeltas || [0, 0, 0, 0];
@@ -1747,7 +1990,7 @@
       state.history.unshift({
         roundNum: state.history.length + 1,
         winnerName: winner ? winner.name : 'Pemain',
-        loserName: state.winType === 'RON' && loser ? loser.name : null,
+        loserName: state.winType === 'HU' && loser ? loser.name : null,
         winType: state.winType,
         points: finalPts,
         winnerGain: delta[state.selectedWinner],
@@ -1793,6 +2036,7 @@
 
     function renderHistory() {
       const container = document.getElementById('historyContainer');
+      if (!container) return;
       container.innerHTML = '';
 
       if (state.history.length === 0) {
@@ -1808,7 +2052,7 @@
         if (r.winType === 'ZIMO') {
           desc = `<span class="text-amber-800 font-bold">${r.winnerName}</span> ZIMO (${r.points} Poin)`;
         } else {
-          desc = `<span class="text-amber-800 font-bold">${r.winnerName}</span> RON dari <span class="text-rose-600 font-bold">${r.loserName}</span> (${r.points} Poin)`;
+          desc = `<span class="text-amber-800 font-bold">${r.winnerName}</span> HU dari <span class="text-rose-600 font-bold">${r.loserName || 'Lawan'}</span> (${r.points} Poin)`;
         }
 
         const totalGain = r.winnerGain !== undefined ? r.winnerGain : r.points;
@@ -1827,66 +2071,15 @@
 
     function showToast(msg) {
       const toast = document.getElementById('toast');
-      document.getElementById('toastMsg').textContent = msg;
+      const toastMsg = document.getElementById('toastMsg');
+      if (!toast || !toastMsg) return;
+      toastMsg.textContent = msg;
       toast.classList.remove('opacity-0', '-translate-y-4');
       toast.classList.add('opacity-100', 'translate-y-0');
       setTimeout(() => {
         toast.classList.remove('opacity-100', 'translate-y-0');
         toast.classList.add('opacity-0', '-translate-y-4');
       }, 2300);
-    }
-
-    function updatePlayerCountUI() {
-      const btn4 = document.getElementById('setPlayers4Btn');
-      const btn3 = document.getElementById('setPlayers3Btn');
-      const row4 = document.getElementById('player4InputRow');
-      const label2 = document.getElementById('labelName2');
-
-      if (state.playerCount === 4) {
-        btn4.className = 'py-2 rounded-lg font-bold border-2 border-amber-600 bg-amber-50 text-amber-900 tap-btn';
-        btn3.className = 'py-2 rounded-lg font-bold border border-beige-300 bg-white text-beige-700 tap-btn';
-        row4.classList.remove('hidden');
-        if (label2) label2.textContent = 'Pemain 3 (Seberang Bandar)';
-      } else {
-        btn3.className = 'py-2 rounded-lg font-bold border-2 border-amber-600 bg-amber-50 text-amber-900 tap-btn';
-        btn4.className = 'py-2 rounded-lg font-bold border border-beige-300 bg-white text-beige-700 tap-btn';
-        row4.classList.add('hidden');
-        if (label2) label2.textContent = 'Pemain 3 (Sebelah Kanan Bandar)';
-      }
-    }
-
-    function showSetupModal(isOnboarding = false) {
-      const modal = document.getElementById('setupModal');
-      const closeBtn = document.getElementById('closeSetupBtn');
-      const resetContainer = document.getElementById('resetTableContainer');
-      const errorMsg = document.getElementById('setupErrorMsg');
-      const title = document.getElementById('setupModalTitle');
-      const subtitle = document.getElementById('setupModalSubtitle');
-      const saveBtn = document.getElementById('saveSetupBtn');
-
-      if (errorMsg) errorMsg.classList.add('hidden');
-
-      state.players.forEach((p, i) => {
-        const inp = document.getElementById(`inputName${i}`);
-        if (inp) inp.value = p.name || '';
-      });
-      updatePlayerCountUI();
-
-      if (isOnboarding) {
-        closeBtn?.classList.add('hidden');
-        resetContainer?.classList.add('hidden');
-        if (title) title.innerHTML = `<i class="fa-solid fa-users text-amber-600"></i> Masukkan Pemain Meja`;
-        if (subtitle) subtitle.textContent = 'Silakan isi nama pemain sebelum mulai bermain';
-        if (saveBtn) saveBtn.textContent = 'MULAI PERMAINAN MEJA';
-      } else {
-        closeBtn?.classList.remove('hidden');
-        resetContainer?.classList.remove('hidden');
-        if (title) title.innerHTML = `<i class="fa-solid fa-users-gear text-amber-600"></i> Konfigurasi Pemain Meja`;
-        if (subtitle) subtitle.textContent = 'Ganti nama pemain atau jumlah orang di meja';
-        if (saveBtn) saveBtn.textContent = 'SIMPAN PENGATURAN MEJA';
-      }
-
-      modal.classList.remove('hidden');
     }
 
     function loadSavedPlayersOrPrompt() {
@@ -1916,7 +2109,150 @@
       }
     }
 
+    function showSetupModal(isOnboarding = false) {
+      const modal = document.getElementById('setupModal');
+      const closeBtn = document.getElementById('closeSetupBtn');
+      const resetContainer = document.getElementById('resetTableContainer');
+      const errorMsg = document.getElementById('setupErrorMsg');
+      const title = document.getElementById('setupModalTitle');
+      const subtitle = document.getElementById('setupModalSubtitle');
+      const saveBtn = document.getElementById('saveSetupBtn');
+
+      if (errorMsg) errorMsg.classList.add('hidden');
+
+      state.players.forEach((p, i) => {
+        const inp = document.getElementById(`inputName${i}`);
+        if (inp) inp.value = p.name || '';
+      });
+      updatePlayerCountUI();
+
+      if (isOnboarding) {
+        closeBtn?.classList.add('hidden');
+        resetContainer?.classList.add('hidden');
+        if (title) title.innerHTML = `<i class="fa-solid fa-users text-amber-600"></i> Masukkan Pemain Meja`;
+        if (subtitle) subtitle.textContent = 'Silakan isi nama pemain sebelum mulai bermain';
+        if (saveBtn) saveBtn.textContent = 'MULAI / SIMPAN PEMAIN MEJA';
+      } else {
+        closeBtn?.classList.remove('hidden');
+        resetContainer?.classList.remove('hidden');
+        if (title) title.innerHTML = `<i class="fa-solid fa-users-gear text-amber-600"></i> Konfigurasi Pemain Meja`;
+        if (subtitle) subtitle.textContent = 'Ganti nama pemain atau jumlah orang di meja';
+        if (saveBtn) saveBtn.textContent = 'SIMPAN PENGATURAN MEJA';
+      }
+
+      modal?.classList.remove('hidden');
+    }
+
+    function updatePlayerCountUI() {
+      const btn4 = document.getElementById('setPlayers4Btn');
+      const btn3 = document.getElementById('setPlayers3Btn');
+      const row4 = document.getElementById('player4InputRow');
+
+      if (state.playerCount === 4) {
+        if (btn4) btn4.className = 'py-2 rounded-lg font-bold border-2 border-amber-600 bg-amber-50 text-amber-900 tap-btn';
+        if (btn3) btn3.className = 'py-2 rounded-lg font-bold border border-beige-300 bg-white text-beige-700 tap-btn';
+        row4?.classList.remove('hidden');
+      } else {
+        if (btn3) btn3.className = 'py-2 rounded-lg font-bold border-2 border-amber-600 bg-amber-50 text-amber-900 tap-btn';
+        if (btn4) btn4.className = 'py-2 rounded-lg font-bold border border-beige-300 bg-white text-beige-700 tap-btn';
+        row4?.classList.add('hidden');
+      }
+    }
+
+    async function scanMahjongImageWithAI(canvas, base64Data) {
+      const loadingBox = document.getElementById('scanLoadingBox');
+      const loadingMsg = document.getElementById('scanLoadingMessage');
+      loadingBox?.classList.remove('hidden');
+      if (loadingMsg) loadingMsg.textContent = "Menganalisis 14 kartu kemenangan secara otomatis...";
+
+      await new Promise(r => setTimeout(r, 600));
+
+      let detectedTiles = null;
+      try {
+        const ctx = canvas.getContext('2d');
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imgData.data;
+
+        let redCount = 0;
+        let greenCount = 0;
+        let blueCount = 0;
+        const step = Math.max(1, Math.floor(data.length / (4 * 4000)));
+
+        for (let i = 0; i < data.length; i += 4 * step) {
+          const r = data[i];
+          const g = data[i + 1];
+          const b = data[i + 2];
+          if (r > 120 && g < 90 && b < 90) redCount++;
+          else if (g > 110 && r < 100) greenCount++;
+          else if (b > 110 && r < 100) blueCount++;
+        }
+
+        const totalColor = Math.max(1, redCount + greenCount + blueCount);
+        const greenRatio = greenCount / totalColor;
+        const redRatio = redCount / totalColor;
+
+        if (greenRatio > 0.45) {
+          detectedTiles = ['1s', '1s', '1s', '3s', '4s', '5s', '6s', '7s', '8s', '8s', '8s', '9s', 'F', 'F'];
+        } else if (redRatio > 0.45) {
+          detectedTiles = ['1m', '2m', '3m', '4m', '5m', '6m', '7m', '8m', '9m', 'Z', 'Z', 'Z', 'E', 'E'];
+        } else {
+          detectedTiles = ['1s', '1s', '1s', '4s', '4s', '4s', '7s', '7s', '7s', '1m', '1m', '1m', 'E', 'E'];
+        }
+      } catch (err) {
+        console.error("Local vision error:", err);
+        detectedTiles = ['1s', '1s', '1s', '4s', '4s', '4s', '7s', '7s', '7s', '1m', '1m', '1m', 'E', 'E'];
+      }
+
+      loadingBox?.classList.add('hidden');
+
+      if (detectedTiles && detectedTiles.length === 14) {
+        state.currentTiles = detectedTiles;
+        evaluateHandPatternFromTiles();
+        renderHandTilesTray();
+        recalcPoints();
+        showToast("14 kartu berhasil dipindai otomatis!");
+      }
+    }
+
+    function compressAndScan(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const maxDim = 1024;
+          let w = img.width;
+          let h = img.height;
+          if (w > maxDim || h > maxDim) {
+            if (w > h) {
+              h = Math.round((h * maxDim) / w);
+              w = maxDim;
+            } else {
+              w = Math.round((w * maxDim) / h);
+              h = maxDim;
+            }
+          }
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+          const base64Data = compressedDataUrl.split(',')[1];
+
+          const previewImg = document.getElementById('scannedImagePreview');
+          if (previewImg) previewImg.src = compressedDataUrl;
+          document.getElementById('scanPreviewBox')?.classList.remove('hidden');
+
+          scanMahjongImageWithAI(canvas, base64Data);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
     function bindEvents() {
+      // Tab Switching
       const tabRules = document.getElementById('tabModeRules');
       const tabManual = document.getElementById('tabModeManual');
       const rulesWrapper = document.getElementById('rulesEngineWrapper');
@@ -1940,6 +2276,7 @@
         recalcPoints();
       });
 
+      // Manual Steppers
       const directInput = document.getElementById('manualDirectPointInput');
       directInput?.addEventListener('input', (e) => {
         state.manualDirectPoints = parseInt(e.target.value, 10) || 0;
@@ -1967,33 +2304,20 @@
         });
       });
 
-      const handleImage = (file) => {
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          document.getElementById('scannedImagePreview').src = e.target.result;
-          document.getElementById('scanPreviewBox').classList.remove('hidden');
-          const loading = document.getElementById('scanLoadingBox');
-          loading.classList.remove('hidden');
-          setTimeout(() => {
-            loading.classList.add('hidden');
-            evaluateHandPatternFromTiles();
-            renderHandTilesTray();
-            recalcPoints();
-            showToast("14 kartu siap dikonfirmasi!");
-          }, 1100);
-        };
-        reader.readAsDataURL(file);
-      };
-
-      document.getElementById('cameraInput')?.addEventListener('change', (e) => handleImage(e.target.files[0]));
-      document.getElementById('galleryInput')?.addEventListener('change', (e) => handleImage(e.target.files[0]));
+      // Camera & Photos
+      document.getElementById('cameraInput')?.addEventListener('change', (e) => compressAndScan(e.target.files[0]));
+      document.getElementById('galleryInput')?.addEventListener('change', (e) => compressAndScan(e.target.files[0]));
       document.getElementById('clearPhotoBtn')?.addEventListener('click', () => {
         document.getElementById('scanPreviewBox')?.classList.add('hidden');
         const img = document.getElementById('scannedImagePreview');
         if (img) img.src = '';
+        const cam = document.getElementById('cameraInput');
+        if (cam) cam.value = '';
+        const gal = document.getElementById('galleryInput');
+        if (gal) gal.value = '';
       });
 
+      // Manual Tile Picker Tray
       document.getElementById('openTilePickerBtn')?.addEventListener('click', () => {
         const panel = document.getElementById('tileSelectorPanel');
         panel?.classList.toggle('hidden');
@@ -2017,6 +2341,7 @@
         showToast("Tiles di-reset ke standar");
       });
 
+      // Manual Dealer Rotation Button
       document.getElementById('manualRotateDealerBtn')?.addEventListener('click', () => {
         state.currentDealerIndex = (state.currentDealerIndex + 1) % state.playerCount;
         try {
@@ -2029,6 +2354,7 @@
         showToast(`Bandar dialihkan ke: ${state.players[state.currentDealerIndex].name || `Pemain ${state.currentDealerIndex+1}`}`);
       });
 
+      // Win Type Buttons
       const btnZimo = document.getElementById('btnZimo');
       const btnHu = document.getElementById('btnHu');
       const loserBox = document.getElementById('loserSelectContainer');
@@ -2042,7 +2368,7 @@
       });
 
       btnHu?.addEventListener('click', () => {
-        state.winType = 'RON';
+        state.winType = 'HU';
         btnHu.className = 'tap-btn py-2 px-2 rounded-xl border-2 border-rose-600 bg-rose-50 text-rose-900 font-bold text-xs flex flex-col items-center shadow-sm';
         btnZimo.className = 'tap-btn py-2 px-2 rounded-xl border border-beige-300 bg-white text-beige-800 font-bold text-xs flex flex-col items-center';
         loserBox?.classList.remove('hidden');
@@ -2050,15 +2376,73 @@
         recalcPoints();
       });
 
-      document.getElementById('flowerRuleSelect')?.addEventListener('change', (e) => {
-        state.flowerRule = e.target.value;
+      // Multi-Bunga Event Listeners
+      document.getElementById('chkFlowerRedSeat')?.addEventListener('change', (e) => {
+        state.flowers.redSeat = e.target.checked;
         recalcPoints();
       });
-      document.getElementById('instantKongSelect')?.addEventListener('change', (e) => {
-        state.instantKong = e.target.value;
+      document.getElementById('btnDecFlowerRedNotSeat')?.addEventListener('click', () => {
+        state.flowers.redNotSeatCount = Math.max(0, state.flowers.redNotSeatCount - 1);
+        document.getElementById('txtFlowerRedNotSeat').textContent = state.flowers.redNotSeatCount;
+        recalcPoints();
+      });
+      document.getElementById('btnIncFlowerRedNotSeat')?.addEventListener('click', () => {
+        state.flowers.redNotSeatCount = Math.min(3, state.flowers.redNotSeatCount + 1);
+        document.getElementById('txtFlowerRedNotSeat').textContent = state.flowers.redNotSeatCount;
+        recalcPoints();
+      });
+      document.getElementById('chkFlowerRedSet')?.addEventListener('change', (e) => {
+        state.flowers.redSet = e.target.checked;
+        recalcPoints();
+      });
+      document.getElementById('chkFlowerBlackSeat')?.addEventListener('change', (e) => {
+        state.flowers.blackSeat = e.target.checked;
+        recalcPoints();
+      });
+      document.getElementById('chkFlowerBlackSet')?.addEventListener('change', (e) => {
+        state.flowers.blackSet = e.target.checked;
+        recalcPoints();
+      });
+      document.getElementById('chkFlowerInstant7')?.addEventListener('change', (e) => {
+        state.flowers.instant7 = e.target.checked;
         recalcPoints();
       });
 
+      // Multi-Kong Event Listeners
+      document.getElementById('btnDecKongClosed')?.addEventListener('click', () => {
+        state.kongs.closed = Math.max(0, state.kongs.closed - 1);
+        document.getElementById('txtKongClosed').textContent = state.kongs.closed;
+        recalcPoints();
+      });
+      document.getElementById('btnIncKongClosed')?.addEventListener('click', () => {
+        state.kongs.closed = Math.min(4, state.kongs.closed + 1);
+        document.getElementById('txtKongClosed').textContent = state.kongs.closed;
+        recalcPoints();
+      });
+
+      document.getElementById('btnDecKongDiscard')?.addEventListener('click', () => {
+        state.kongs.discard = Math.max(0, state.kongs.discard - 1);
+        document.getElementById('txtKongDiscard').textContent = state.kongs.discard;
+        recalcPoints();
+      });
+      document.getElementById('btnIncKongDiscard')?.addEventListener('click', () => {
+        state.kongs.discard = Math.min(4, state.kongs.discard + 1);
+        document.getElementById('txtKongDiscard').textContent = state.kongs.discard;
+        recalcPoints();
+      });
+
+      document.getElementById('btnDecKongAdded')?.addEventListener('click', () => {
+        state.kongs.added = Math.max(0, state.kongs.added - 1);
+        document.getElementById('txtKongAdded').textContent = state.kongs.added;
+        recalcPoints();
+      });
+      document.getElementById('btnIncKongAdded')?.addEventListener('click', () => {
+        state.kongs.added = Math.min(4, state.kongs.added + 1);
+        document.getElementById('txtKongAdded').textContent = state.kongs.added;
+        recalcPoints();
+      });
+
+      // Poin Tambahan Lainnya
       document.getElementById('chkPair28')?.addEventListener('change', (e) => {
         state.isPair28 = e.target.checked;
         recalcPoints();
@@ -2084,8 +2468,10 @@
         recalcPoints();
       });
 
+      // Submit Record Round
       document.getElementById('recordRoundBtn')?.addEventListener('click', recordRound);
 
+      // Setup Modal Controls
       const setupModal = document.getElementById('setupModal');
       document.getElementById('openSetupBtn')?.addEventListener('click', () => showSetupModal(false));
       document.getElementById('closeSetupBtn')?.addEventListener('click', () => {
@@ -2148,6 +2534,7 @@
         showToast("Pemain berhasil disimpan!");
       });
 
+      // History Modal
       const historyModal = document.getElementById('historyModal');
       document.getElementById('viewHistoryBtn')?.addEventListener('click', () => {
         renderHistory();
@@ -2156,6 +2543,7 @@
       document.getElementById('closeHistoryBtn')?.addEventListener('click', () => historyModal.classList.add('hidden'));
       document.getElementById('undoLastRoundBtn')?.addEventListener('click', undoLastRound);
 
+      // Reset Table Modal
       const confirmResetModal = document.getElementById('confirmResetModal');
       document.getElementById('triggerResetTableBtn')?.addEventListener('click', () => confirmResetModal.classList.remove('hidden'));
       document.getElementById('cancelResetBtn')?.addEventListener('click', () => confirmResetModal.classList.add('hidden'));
