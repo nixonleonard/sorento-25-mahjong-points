@@ -29,9 +29,9 @@
               950: '#23160b',
             },
             brass: {
-              400: '#e5b869',
-              500: '#c8953c',
-              600: '#a77626'
+              400: '#f3c87a',
+              500: '#d99f38',
+              600: '#b37e22'
             }
           },
           fontFamily: {
@@ -45,10 +45,10 @@
 
   <style>
     body {
-      background-color: #f5f0e5;
+      background-color: #f4eee2;
       background-image: 
-        radial-gradient(#e4d6bf 1.2px, transparent 1.2px),
-        linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(245,240,229,0.8));
+        radial-gradient(#e0d2bc 1.2px, transparent 1.2px),
+        linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(244,238,226,0.9));
       background-size: 20px 20px, 100% 100%;
       font-family: 'Plus Jakarta Sans', sans-serif;
       color: #2b1f14;
@@ -66,62 +66,73 @@
     }
     .cream-card {
       background: #ffffff;
-      border: 1px solid #ebd9c2;
-      box-shadow: 0 4px 18px -2px rgba(61, 41, 20, 0.06), 0 2px 6px -1px rgba(61, 41, 20, 0.04);
+      border: 1px solid #ebd8c0;
+      box-shadow: 0 4px 20px -2px rgba(61, 41, 20, 0.07), 0 2px 6px -1px rgba(61, 41, 20, 0.04);
     }
     .cream-inset {
-      background: #faf6ed;
-      border: 1px solid #ebd8bf;
+      background: #fbf7ef;
+      border: 1px solid #ebdac3;
     }
     .wood-rack {
-      background: linear-gradient(180deg, #d4b896 0%, #be9c74 40%, #a8835b 100%);
-      border: 1.5px solid #8e6840;
+      background: linear-gradient(180deg, #cfb08b 0%, #ba976f 42%, #9f7b53 100%);
+      border: 2px solid #845f38;
       box-shadow: 
-        inset 0 3px 6px rgba(0, 0, 0, 0.25),
-        inset 0 -2px 4px rgba(255, 255, 255, 0.25),
-        0 6px 14px -2px rgba(60, 39, 21, 0.25);
+        inset 0 3px 6px rgba(0, 0, 0, 0.28),
+        inset 0 -2px 4px rgba(255, 255, 255, 0.3),
+        0 8px 18px -3px rgba(60, 39, 21, 0.3);
     }
     .wood-rack-lip {
-      background: linear-gradient(180deg, #8a633a 0%, #6f4d2a 100%);
-      box-shadow: 0 -1px 0 rgba(255,255,255,0.15), 0 2px 3px rgba(0,0,0,0.3);
+      background: linear-gradient(180deg, #7a552e 0%, #5d3e1d 100%);
+      box-shadow: 0 -1px 0 rgba(255,255,255,0.2), 0 3px 4px rgba(0,0,0,0.35);
     }
+    /* EXTRA-LARGE AUTHENTIC 3D TILE */
     .mj-tile {
       display: inline-flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(175deg, #ffffff 0%, #fdfcf9 50%, #f2ebe0 100%);
+      background: linear-gradient(172deg, #ffffff 0%, #fdfbf7 50%, #f0e7d9 100%);
       color: #1a1a1a;
-      border-radius: 6px;
+      border-radius: 8px;
       box-shadow: 
-        0 4px 6px -1px rgba(45, 28, 14, 0.35),
-        0 1px 3px 0 rgba(45, 28, 14, 0.2),
-        inset 0 1px 1px rgba(255, 255, 255, 0.98),
-        inset 0 -3px 0 #b39f86,
-        inset 1px 0 1px rgba(255, 255, 255, 0.7),
-        inset -1px 0 1px #cfbeaa;
-      border: 1px solid #ded3c2;
+        0 5px 8px -1px rgba(45, 28, 14, 0.38),
+        0 2px 4px 0 rgba(45, 28, 14, 0.22),
+        inset 0 1.5px 1px rgba(255, 255, 255, 0.98),
+        inset 0 -3.5px 0 #b09a80,
+        inset 1.5px 0 1px rgba(255, 255, 255, 0.75),
+        inset -1.5px 0 1px #cab69f;
+      border: 1px solid #ded0bd;
       cursor: pointer;
-      transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
       overflow: hidden;
       flex-shrink: 0;
     }
     .mj-tile:hover {
       transform: translateY(-3px);
-      box-shadow: 0 7px 12px rgba(45, 28, 14, 0.3), inset 0 -3px 0 #9e8971;
+      box-shadow: 0 8px 15px rgba(45, 28, 14, 0.32), inset 0 -3.5px 0 #9c856a;
     }
     .mj-tile.selected {
-      outline: 2.5px solid #c87a1d;
-      box-shadow: 0 0 12px rgba(200, 122, 29, 0.65), inset 0 -3px 0 #8c4e07;
-      transform: translateY(-4px) scale(1.06);
-      z-index: 10;
+      outline: 3px solid #c87a1d;
+      outline-offset: 1px;
+      box-shadow: 0 0 16px rgba(200, 122, 29, 0.8), inset 0 -3.5px 0 #8c4e07;
+      transform: translateY(-6px) scale(1.08);
+      z-index: 20;
+    }
+    /* Bottom Sheet Animation */
+    .sheet-enter {
+      transform: translateY(100%);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sheet-enter-active {
+      transform: translateY(0);
     }
   </style>
 </head>
 <body class="min-h-screen flex justify-center selection:bg-amber-200 selection:text-amber-950">
 
-  <div class="w-full max-w-md min-h-screen flex flex-col justify-between p-3.5 pb-10 space-y-3.5">
+  <!-- Mobile Viewport Container -->
+  <div class="w-full max-w-md min-h-screen flex flex-col justify-between p-3.5 pb-12 space-y-3.5">
     
     <!-- Top Header -->
     <header class="flex items-center justify-between pb-3 border-b border-beige-300">
@@ -228,7 +239,7 @@
             <span class="w-5 h-5 rounded-full bg-gradient-to-r from-amber-600 to-amber-700 text-white flex items-center justify-center text-[10px] font-black shadow-xs">2</span>
             Kemenangan Hand (Tiles)
           </label>
-          <span id="tileCountIndicator" class="text-[10px] text-amber-950 font-mono font-bold bg-amber-100 px-2 py-0.5 rounded-full border border-amber-300">14 / 14 Tiles</span>
+          <span id="tileCountIndicator" class="text-[10px] text-amber-950 font-mono font-bold bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-300 shadow-2xs">14 / 14 Tiles</span>
         </div>
 
         <!-- Tab Pemilih: Susun Kartu vs Menang Khusus/Instan -->
@@ -263,12 +274,12 @@
               <p class="text-[10px] text-beige-700 leading-tight">Menang langsung dari buangan pertama dealer.</p>
             </button>
 
-            <button type="button" class="special-win-card tap-btn p-2.5 rounded-xl border border-beige-300 bg-white text-left shadow-2xs space-y-1 hover:border-amber-600" data-key="instant7" data-name="Instant Win: 7 Bunga + Season" data-pts="10">
+            <button type="button" class="special-win-card tap-btn p-2.5 rounded-xl border border-beige-300 bg-white text-left shadow-2xs space-y-1 hover:border-amber-600" data-key="instant7" data-name="Instant Win: 8 Bunga" data-pts="10">
               <div class="flex items-center justify-between font-black text-amber-950">
-                <span>7 Bunga + Season</span>
+                <span>8 Bunga</span>
                 <span class="font-mono text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded text-[10px]">10 Pt</span>
               </div>
-              <p class="text-[10px] text-beige-700 leading-tight">Mengumpulkan 7 keping bunga/season seketika.</p>
+              <p class="text-[10px] text-beige-700 leading-tight">Mengumpulkan 8 keping bunga lengkap seketika.</p>
             </button>
 
             <button type="button" class="special-win-card tap-btn p-2.5 rounded-xl border border-beige-300 bg-white text-left shadow-2xs space-y-1 hover:border-amber-600" data-key="4kongs" data-name="All Quadruplets = 4 Kongs" data-pts="15">
@@ -282,70 +293,38 @@
         </div>
 
         <!-- Rak Ubin Kayu Normal -->
-        <div id="normalTilesRackWrapper" class="space-y-2">
+        <div id="normalTilesRackWrapper" class="space-y-2.5">
           <!-- Panduan Kong & Tiles -->
-          <div class="p-2 rounded-xl bg-amber-100/60 border border-amber-300 text-[10px] text-amber-950 flex items-start gap-1.5 leading-snug">
-            <i class="fa-solid fa-circle-info text-amber-700 mt-0.5 flex-shrink-0"></i>
-            <div>
-              <b>Info Mahjong Kong:</b> Setiap Kong menambah kapasitas tangan (+1 kartu per Kong). Gunakan tombol <b>+ Kong</b> atau stepper Kong di Bagian 4.
+          <div class="p-2 rounded-xl bg-amber-100/60 border border-amber-300 text-[10px] text-amber-950 flex items-center justify-between leading-snug">
+            <div class="flex items-center gap-1.5">
+              <i class="fa-solid fa-hand-pointer text-amber-700 text-xs"></i>
+              <span>Sentuh ubin di rak kayu untuk menggantinya</span>
             </div>
+            <span class="font-bold text-[9px] bg-white px-2 py-0.5 rounded-md border border-amber-200">Ketuk Ubin</span>
           </div>
 
-          <!-- Luxury Wooden Mahjong Rack Tray -->
-          <div class="wood-rack rounded-2xl p-2.5 space-y-2">
-            <div id="handTilesTray" class="flex flex-wrap gap-1 p-2 bg-stone-900/15 rounded-xl min-h-[58px] border border-black/15 items-center justify-center">
-              <!-- Mahjong Tiles render here -->
+          <!-- Luxury Wooden Mahjong Rack Tray with Extra Large Tiles -->
+          <div class="wood-rack rounded-2xl p-3 space-y-2.5">
+            <div id="handTilesTray" class="flex flex-wrap gap-1.5 p-2 bg-stone-900/20 rounded-xl min-h-[72px] border border-black/20 items-center justify-center">
+              <!-- Mahjong Tiles render here with extra-large size -->
             </div>
-            <div class="wood-rack-lip h-2 rounded-full w-full"></div>
+            <div class="wood-rack-lip h-2.5 rounded-full w-full"></div>
           </div>
 
-          <!-- Tombol Aksi Konfirmasi, Kong, & Quick Sort -->
-          <div class="flex items-center gap-1.5 pt-1">
-            <button type="button" id="openTilePickerBtn" class="flex-1 py-2 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white rounded-xl text-xs font-extrabold tap-btn flex items-center justify-center gap-1.5 shadow-sm">
-              <i class="fa-solid fa-shapes text-[11px]"></i>
-              <span>Pilihan Ubin</span>
+          <!-- Action Bar: Ganti Ubin, Urutkan & Reset Kosongkan Rak -->
+          <div class="grid grid-cols-3 gap-1.5 pt-0.5">
+            <button type="button" id="openTilePickerBtn" class="py-2.5 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 text-white rounded-xl text-xs font-black tap-btn flex items-center justify-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-shapes text-xs"></i>
+              <span>Isi / Ganti</span>
             </button>
-            <button type="button" id="quickAddKongBtn" class="px-2.5 py-2 bg-amber-100 hover:bg-amber-200 border border-amber-300 rounded-xl text-xs font-black text-amber-950 tap-btn flex items-center gap-1 shadow-2xs" title="Tambah 1 Kong ke tangan">
-              <i class="fa-solid fa-plus text-amber-700 text-[10px]"></i>
-              <span>Kong</span>
-            </button>
-            <button type="button" id="sortHandTilesBtn" class="px-2.5 py-2 bg-white hover:bg-beige-100 border border-beige-300 rounded-xl text-xs font-bold text-beige-900 tap-btn flex items-center gap-1 shadow-2xs" title="Urutkan kartu secara otomatis">
+            <button type="button" id="sortHandTilesBtn" class="py-2.5 bg-white hover:bg-beige-100 border border-beige-300 rounded-xl text-xs font-bold text-beige-900 tap-btn flex items-center justify-center gap-1.5 shadow-2xs" title="Urutkan kartu secara otomatis">
               <i class="fa-solid fa-arrow-down-a-z text-amber-700"></i>
               <span>Urutkan</span>
             </button>
-            <button type="button" id="resetHandTilesBtn" class="px-2.5 py-2 bg-beige-200 hover:bg-beige-300 border border-beige-400 rounded-xl text-xs font-semibold text-beige-800 tap-btn">
-              Reset
+            <button type="button" id="resetHandTilesBtn" class="py-2.5 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl text-xs font-black text-rose-900 tap-btn flex items-center justify-center gap-1.5 shadow-2xs" title="Kosongkan rak kartu untuk susun dari awal">
+              <i class="fa-solid fa-rotate-left text-rose-700 text-xs"></i>
+              <span>Reset Kosong</span>
             </button>
-          </div>
-
-          <!-- Tile Selector Tray with Tabbed Categories & Usage Indicators -->
-          <div id="tileSelectorPanel" class="hidden mt-2 p-3 bg-white border border-beige-300 rounded-2xl space-y-2.5 shadow-lg">
-            <div class="flex items-center justify-between border-b border-beige-200 pb-2">
-              <div class="flex items-center gap-1.5">
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span>
-                <span class="text-xs font-black text-beige-950">Sentuh Ubin Pengganti:</span>
-              </div>
-              <button id="closeTilePickerBtn" type="button" class="text-beige-600 hover:text-beige-950 text-xs px-2 py-0.5 font-extrabold bg-beige-100 rounded-lg">✕ Tutup</button>
-            </div>
-            
-            <div class="space-y-2 text-[10px]">
-              <div>
-                <span class="text-beige-700 font-extrabold block mb-1">Karakter / Wan (萬):</span>
-                <div class="flex flex-wrap gap-1" id="paletteWan"></div>
-              </div>
-              <div>
-                <span class="text-beige-700 font-extrabold block mb-1">Bambu / Sou (條):</span>
-                <div class="flex flex-wrap gap-1" id="paletteSou"></div>
-              </div>
-              <div>
-                <span class="text-beige-700 font-extrabold block mb-1">Dots / Pin (筒):</span>
-                <div class="flex flex-wrap gap-1" id="palettePin"></div>
-              </div>
-              <div>
-                <span class="text-beige-700 font-extrabold block mb-1">Angin (風) & Naga (三元牌):</span>
-                <div class="flex flex-wrap gap-1" id="paletteHonors"></div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -440,7 +419,7 @@
             <span class="text-[10px] font-extrabold text-rose-800 block uppercase tracking-wider">Bunga Merah (1, 2, 3, 4)</span>
             
             <div class="grid grid-cols-1 gap-1.5 text-xs">
-              <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs">
+              <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs" id="wrapperFlowerRedSeat">
                 <div class="flex items-center gap-2">
                   <input type="checkbox" id="chkFlowerRedSeat" class="rounded text-amber-600 accent-amber-600 w-4 h-4">
                   <span class="text-[11px] font-bold">Bunga Merah Sesuai Kursi</span>
@@ -448,19 +427,19 @@
                 <span class="text-[10px] font-mono font-black text-rose-800 bg-rose-50 px-2 py-0.5 rounded-lg border border-rose-200">+2 Poin</span>
               </label>
 
-              <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 shadow-2xs">
+              <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 shadow-2xs" id="wrapperFlowerRedNotSeat">
                 <div>
                   <span class="text-[11px] font-bold block">Bunga Merah Tidak Sesuai</span>
                   <span class="text-[9px] text-beige-600">+1 Poin per keping</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <button type="button" id="btnFlowerRedMinus" class="w-7 h-7 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-sm tap-btn flex items-center justify-center">-</button>
+                  <button type="button" id="btnFlowerRedMinus" class="w-8 h-8 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-base tap-btn flex items-center justify-center">-</button>
                   <span id="flowerRedNotSeatCount" class="w-6 text-center font-mono font-black text-sm">0</span>
-                  <button type="button" id="btnFlowerRedPlus" class="w-7 h-7 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-sm tap-btn flex items-center justify-center">+</button>
+                  <button type="button" id="btnFlowerRedPlus" class="w-8 h-8 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-base tap-btn flex items-center justify-center">+</button>
                 </div>
               </div>
 
-              <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs">
+              <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs" id="wrapperFlowerRedSet">
                 <div class="flex items-center gap-2">
                   <input type="checkbox" id="chkFlowerRedSet" class="rounded text-amber-600 accent-amber-600 w-4 h-4">
                   <span class="text-[11px] font-bold">1 Set Lengkap Bunga Merah (4 Bunga)</span>
@@ -475,7 +454,7 @@
             <span class="text-[10px] font-extrabold text-stone-700 block uppercase tracking-wider">Bunga Hitam (1, 2, 3, 4)</span>
 
             <div class="grid grid-cols-1 gap-1.5 text-xs">
-              <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs">
+              <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs" id="wrapperFlowerBlackSeat">
                 <div class="flex items-center gap-2">
                   <input type="checkbox" id="chkFlowerBlackSeat" class="rounded text-amber-600 accent-amber-600 w-4 h-4">
                   <span class="text-[11px] font-bold">Bunga Hitam Sesuai Kursi</span>
@@ -483,7 +462,7 @@
                 <span class="text-[10px] font-mono font-black text-stone-800 bg-stone-100 px-2 py-0.5 rounded-lg border border-stone-300">+1 Poin</span>
               </label>
 
-              <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs">
+              <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs" id="wrapperFlowerBlackSet">
                 <div class="flex items-center gap-2">
                   <input type="checkbox" id="chkFlowerBlackSet" class="rounded text-amber-600 accent-amber-600 w-4 h-4">
                   <span class="text-[11px] font-bold">1 Set Lengkap Bunga Hitam (4 Bunga)</span>
@@ -502,6 +481,9 @@
             </span>
             <span id="totalKongPtsLabel" class="text-[10px] font-mono font-black text-amber-950 bg-amber-200/80 px-2 py-0.5 rounded-md border border-amber-300">+0 Pts</span>
           </div>
+          <p class="text-[10px] text-amber-900 font-semibold bg-amber-50/80 p-1.5 rounded-lg border border-amber-200">
+            <i class="fa-solid fa-info-circle mr-1 text-amber-700"></i> Setiap Kong otomatis menambah +1 slot ubin di rak kartu (15, 16, 17, atau 18 ubin).
+          </p>
 
           <div class="space-y-1.5 text-xs">
             <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 shadow-2xs">
@@ -510,9 +492,9 @@
                 <span class="text-[9px] text-beige-600">+6 Poin per set</span>
               </div>
               <div class="flex items-center gap-2">
-                <button type="button" id="btnKongClosedMinus" class="w-7 h-7 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-sm tap-btn flex items-center justify-center">-</button>
+                <button type="button" id="btnKongClosedMinus" class="w-8 h-8 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-base tap-btn flex items-center justify-center">-</button>
                 <span id="kongClosedCount" class="w-6 text-center font-mono font-black text-sm">0</span>
-                <button type="button" id="btnKongClosedPlus" class="w-7 h-7 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-sm tap-btn flex items-center justify-center">+</button>
+                <button type="button" id="btnKongClosedPlus" class="w-8 h-8 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-base tap-btn flex items-center justify-center">+</button>
               </div>
             </div>
 
@@ -522,9 +504,9 @@
                 <span class="text-[9px] text-beige-600">+3 Poin per set</span>
               </div>
               <div class="flex items-center gap-2">
-                <button type="button" id="btnKongDiscardMinus" class="w-7 h-7 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-sm tap-btn flex items-center justify-center">-</button>
+                <button type="button" id="btnKongDiscardMinus" class="w-8 h-8 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-base tap-btn flex items-center justify-center">-</button>
                 <span id="kongDiscardCount" class="w-6 text-center font-mono font-black text-sm">0</span>
-                <button type="button" id="btnKongDiscardPlus" class="w-7 h-7 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-sm tap-btn flex items-center justify-center">+</button>
+                <button type="button" id="btnKongDiscardPlus" class="w-8 h-8 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-base tap-btn flex items-center justify-center">+</button>
               </div>
             </div>
 
@@ -534,9 +516,9 @@
                 <span class="text-[9px] text-beige-600">+3 Poin per set</span>
               </div>
               <div class="flex items-center gap-2">
-                <button type="button" id="btnKongAddedMinus" class="w-7 h-7 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-sm tap-btn flex items-center justify-center">-</button>
+                <button type="button" id="btnKongAddedMinus" class="w-8 h-8 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-base tap-btn flex items-center justify-center">-</button>
                 <span id="kongAddedCount" class="w-6 text-center font-mono font-black text-sm">0</span>
-                <button type="button" id="btnKongAddedPlus" class="w-7 h-7 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-sm tap-btn flex items-center justify-center">+</button>
+                <button type="button" id="btnKongAddedPlus" class="w-8 h-8 rounded-lg bg-beige-100 hover:bg-beige-200 border border-beige-300 font-black text-base tap-btn flex items-center justify-center">+</button>
               </div>
             </div>
           </div>
@@ -544,19 +526,13 @@
 
         <!-- Sub-Card 4: Kondisi Tambahan Lainnya -->
         <div class="p-3 cream-inset rounded-xl space-y-2">
-          <span class="text-xs font-black text-beige-950 block border-b border-beige-200 pb-1">
-            Kondisi Tambahan Lainnya
-          </span>
+          <div class="flex items-center justify-between border-b border-beige-200 pb-1">
+            <span class="text-xs font-black text-beige-950 block">
+              Kondisi Tambahan Lainnya
+            </span>
+          </div>
 
           <div class="grid grid-cols-2 gap-1.5 text-[11px]">
-            <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs">
-              <div class="flex items-center gap-1.5">
-                <input type="checkbox" id="chkPair28" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
-                <span class="text-[10px] font-bold leading-tight">Pair 2 / 8</span>
-              </div>
-              <span class="text-[9px] font-mono font-black text-amber-900 bg-amber-100 px-1.5 py-0.5 rounded-md border border-amber-200">+1</span>
-            </label>
-
             <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs">
               <div class="flex items-center gap-1.5">
                 <input type="checkbox" id="chkHandTertutup" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
@@ -568,7 +544,7 @@
             <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs">
               <div class="flex items-center gap-1.5">
                 <input type="checkbox" id="chkTanpaBungaNagaAngin" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
-                <span class="text-[10px] font-bold leading-tight">Tanpa Bunga/Naga</span>
+                <span class="text-[10px] font-bold leading-tight">Tanpa Bunga, Naga & Mata Angin</span>
               </div>
               <span class="text-[9px] font-mono font-black text-amber-900 bg-amber-100 px-1.5 py-0.5 rounded-md border border-amber-200">+2</span>
             </label>
@@ -589,10 +565,10 @@
               <span class="text-[9px] font-mono font-black text-amber-900 bg-amber-100 px-1.5 py-0.5 rounded-md border border-amber-200">+1</span>
             </label>
 
-            <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs">
+            <label class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-beige-300 text-beige-950 cursor-pointer tap-btn shadow-2xs col-span-2">
               <div class="flex items-center gap-1.5">
                 <input type="checkbox" id="chkMenangBuntut" class="rounded text-amber-600 accent-amber-600 w-3.5 h-3.5">
-                <span class="text-[10px] font-bold leading-tight">Menang Buntut</span>
+                <span class="text-[10px] font-bold leading-tight">Menang Buntut (Pengganti Kong / Bunga)</span>
               </div>
               <span class="text-[9px] font-mono font-black text-amber-900 bg-amber-100 px-1.5 py-0.5 rounded-md border border-amber-200">+1</span>
             </label>
@@ -676,10 +652,30 @@
         <span id="dealerRotationNoticeText">Jika disimpan: Bandar bertahan (Pemain 1).</span>
       </div>
 
+      <!-- Banner Peringatan Hu Palsu (< 3 Poin) -->
+      <div id="huPalsuWarningBanner" class="hidden p-3 bg-rose-100 border-2 border-rose-400 rounded-xl text-xs text-rose-950 space-y-1.5">
+        <div class="flex items-center justify-between font-black text-rose-950">
+          <span class="flex items-center gap-1.5">
+            <i class="fa-solid fa-triangle-exclamation text-rose-700 text-base"></i>
+            PERATURAN 8 BAMBOO: HU PALSU (&lt; 3 POIN)
+          </span>
+          <span id="huPalsuCurrentPts" class="font-mono bg-rose-200 text-rose-900 px-2 py-0.5 rounded-lg text-xs font-black">0 Poin</span>
+        </div>
+        <p class="text-[11px] leading-relaxed text-rose-900">
+          Syarat minimal menang resmi adalah <b>3 Poin</b>. Hand ini bernilai di bawah 3 poin dan <b>tidak boleh dideklarasikan menang</b>. Jika terlanjur deklarasi, klaim penalti resmi di bawah.
+        </p>
+      </div>
+
       <!-- Tombol Eksekusi Poin -->
       <button type="button" id="recordRoundBtn" class="tap-btn w-full py-3.5 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 text-white font-black text-sm rounded-xl shadow-md flex items-center justify-center gap-2 uppercase tracking-wide">
         <i class="fa-solid fa-circle-check text-lg"></i>
         <span id="recordRoundBtnText">CATAT & SIMPAN POIN MEJA</span>
+      </button>
+
+      <!-- Tombol Eksekusi Penalti Hu Palsu -->
+      <button type="button" id="claimHuPalsuBtn" class="tap-btn w-full py-3 bg-gradient-to-r from-rose-600 via-rose-700 to-rose-800 hover:from-rose-500 hover:to-rose-700 text-white font-black text-xs rounded-xl shadow-md hidden flex items-center justify-center gap-2 uppercase tracking-wide">
+        <i class="fa-solid fa-gavel text-base"></i>
+        <span>KLAIM PENALTI HU PALSU (-30 POIN)</span>
       </button>
     </section>
 
@@ -687,6 +683,67 @@
       8 Bamboo Official Rulebook Point Calculator • Luxury Cream Edition
     </footer>
 
+  </div>
+
+  <!-- ERGONOMIC BOTTOM SHEET: Tile Selector Palette Drawer -->
+  <div id="tilePickerSheet" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs hidden flex flex-col justify-end transition-opacity">
+    <div class="w-full max-w-md mx-auto bg-[#faf6ee] rounded-t-3xl border-t-2 border-amber-500/80 shadow-2xl p-4 max-h-[88vh] flex flex-col space-y-3">
+      
+      <!-- Drawer Top Bar & Current Slot Navigator -->
+      <div class="flex items-center justify-between border-b border-beige-300 pb-2.5">
+        <div class="flex items-center gap-2">
+          <button id="btnPrevSlot" type="button" class="w-8 h-8 rounded-xl bg-white hover:bg-beige-100 border border-beige-300 text-beige-800 font-black text-sm tap-btn flex items-center justify-center shadow-2xs">
+            <i class="fa-solid fa-chevron-left text-xs"></i>
+          </button>
+          
+          <div class="flex items-center gap-2 bg-white px-2.5 py-1 rounded-xl border border-beige-300 shadow-2xs">
+            <div id="sheetCurrentTilePreview" class="w-7 h-10 flex items-center justify-center">
+              <!-- Tile SVG preview -->
+            </div>
+            <div>
+              <span id="sheetSlotIndexLabel" class="text-[10px] text-beige-600 font-bold block uppercase">Slot #1</span>
+              <span id="sheetSlotNameLabel" class="text-xs font-black text-amber-950 block truncate max-w-[120px]">1 Karakter</span>
+            </div>
+          </div>
+
+          <button id="btnNextSlot" type="button" class="w-8 h-8 rounded-xl bg-white hover:bg-beige-100 border border-beige-300 text-beige-800 font-black text-sm tap-btn flex items-center justify-center shadow-2xs">
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </button>
+        </div>
+
+        <button id="closeTilePickerBtn" type="button" class="px-3.5 py-1.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white text-xs font-black rounded-xl tap-btn shadow-xs">
+          Selesai ✕
+        </button>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="grid grid-cols-4 gap-1 p-1 bg-beige-200/80 rounded-xl border border-beige-300 text-xs font-extrabold shadow-inner">
+        <button type="button" class="tab-category py-1.5 rounded-lg bg-white text-amber-950 shadow-2xs border border-beige-300 text-center tap-btn" data-category="wan">
+          萬 Wan
+        </button>
+        <button type="button" class="tab-category py-1.5 rounded-lg text-beige-700 hover:text-beige-950 text-center tap-btn" data-category="sou">
+          條 Sou
+        </button>
+        <button type="button" class="tab-category py-1.5 rounded-lg text-beige-700 hover:text-beige-950 text-center tap-btn" data-category="pin">
+          筒 Pin
+        </button>
+        <button type="button" class="tab-category py-1.5 rounded-lg text-beige-700 hover:text-beige-950 text-center tap-btn" data-category="honors">
+          Angin / Naga
+        </button>
+      </div>
+
+      <!-- Active Category Tile Grid (Extra Large Tiles with Usage Counters) -->
+      <div id="paletteTilesContainer" class="flex-1 overflow-y-auto custom-scroll p-1 min-h-[220px]">
+        <div id="activePaletteGrid" class="grid grid-cols-5 gap-2.5 justify-items-center py-2">
+          <!-- Dynamically populated with large tiles -->
+        </div>
+      </div>
+
+      <!-- Bottom Tip -->
+      <p class="text-center text-[10px] text-beige-600 italic">
+        Sentuh ubin pengganti. Maksimal 4 ubin untuk setiap jenis.
+      </p>
+    </div>
   </div>
 
   <!-- MODAL: Setup Meja 4 Pemain -->
@@ -796,7 +853,7 @@
         { id: '9m', name: '9 Karakter', label: '九萬', num: '九', indo: '9 Karakter' },
       ],
       sou: [
-        { id: '1s', name: '1 Bambu (Burung)', label: '一條', indo: '1 Bambu' },
+        { id: '1s', name: '1 Bambu (Burung Merak)', label: '一條', indo: '1 Bambu' },
         { id: '2s', name: '2 Bambu', label: '二條', indo: '2 Bambu' },
         { id: '3s', name: '3 Bambu', label: '三條', indo: '3 Bambu' },
         { id: '4s', name: '4 Bambu', label: '四條', indo: '4 Bambu' },
@@ -818,10 +875,10 @@
         { id: '9p', name: '9 Dot', label: '九筒', indo: '9 Dot' },
       ],
       honors: [
-        { id: 'E', name: 'Angin Timur', label: '東', text: '東', indo: 'Angin Timur', color: '#1e3a8a' },
-        { id: 'S', name: 'Angin Selatan', label: '南', text: '南', indo: 'Angin Selatan', color: '#b91c1c' },
-        { id: 'W', name: 'Angin Barat', label: '西', text: '西', indo: 'Angin Barat', color: '#1e3a8a' },
-        { id: 'N', name: 'Angin Utara', label: '北', text: '北', indo: 'Angin Utara', color: '#1e3a8a' },
+        { id: 'E', name: 'Angin Timur', label: '東', text: '東', indo: 'Angin Timur', color: '#1f2937' },
+        { id: 'S', name: 'Angin Selatan', label: '南', text: '南', indo: 'Angin Selatan', color: '#1f2937' },
+        { id: 'W', name: 'Angin Barat', label: '西', text: '西', indo: 'Angin Barat', color: '#1f2937' },
+        { id: 'N', name: 'Angin Utara', label: '北', text: '北', indo: 'Angin Utara', color: '#1f2937' },
         { id: 'Z', name: 'Naga Merah', label: '紅中', text: '中', indo: 'Naga Merah (Zhong)', color: '#dc2626' },
         { id: 'F', name: 'Naga Hijau', label: '發財', text: '發', indo: 'Naga Hijau (Fa)', color: '#15803d' },
         { id: 'B', name: 'Naga Putih', label: '白板', text: '白', indo: 'Naga Putih (Bai)', color: '#2563eb' },
@@ -913,16 +970,16 @@
             content = `${bambooStick(24, 15, 15, C_RED)}${bambooStick(16, 30, 15, C_GRN)}${bambooStick(32, 30, 15, C_GRN)}${bambooStick(13, 47, 16, C_BLU)}${bambooStick(20, 47, 16, C_BLU)}${bambooStick(28, 47, 16, C_BLU)}${bambooStick(35, 47, 16, C_BLU)}`;
             break;
           case '8s':
-            // Authentic 8 Bamboo: Inverted double-M (Top: W, Bottom: M), Left: Red, Right: Dark Slate/Green
+            // Authentic 8 Bamboo: Top W-shape (left red, right dark), Bottom M-shape (green)
             content = `
-              ${bambooStick(17, 23, 17, C_RED, 25)}
-              ${bambooStick(22, 18, 17, C_RED, -25)}
-              ${bambooStick(26, 18, 17, C_DRK, 25)}
-              ${bambooStick(31, 23, 17, C_DRK, -25)}
-              ${bambooStick(17, 40, 17, C_GRN, -25)}
-              ${bambooStick(22, 45, 17, C_GRN, 25)}
-              ${bambooStick(26, 45, 17, C_GRN, -25)}
-              ${bambooStick(31, 40, 17, C_GRN, 25)}
+              ${bambooStick(17, 22, 16, C_RED, -25)}
+              ${bambooStick(22, 22, 16, C_RED, 25)}
+              ${bambooStick(26, 22, 16, C_DRK, -25)}
+              ${bambooStick(31, 22, 16, C_DRK, 25)}
+              ${bambooStick(17, 43, 16, C_GRN, 25)}
+              ${bambooStick(22, 43, 16, C_GRN, -25)}
+              ${bambooStick(26, 43, 16, C_GRN, 25)}
+              ${bambooStick(31, 43, 16, C_GRN, -25)}
             `;
             break;
           case '9s':
@@ -987,16 +1044,16 @@
       } else {
         switch (tileId) {
           case 'E':
-            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_BLU}">東</text>`;
+            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_DRK}">東</text>`;
             break;
           case 'S':
-            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_RED}">南</text>`;
+            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_DRK}">南</text>`;
             break;
           case 'W':
-            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_BLU}">西</text>`;
+            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_DRK}">西</text>`;
             break;
           case 'N':
-            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_BLU}">北</text>`;
+            content = `<text x="24" y="42" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="28" fill="${C_DRK}">北</text>`;
             break;
           case 'Z':
             content = `<text x="24" y="43" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="31" fill="${C_RED}">中</text>`;
@@ -1036,15 +1093,15 @@
       selectedWinner: 0,
       winType: 'ZIMO',
       selectedLoser: 1,
-      specialWinMode: null, // null or 'tianhu', 'dihu', 'instant7', '4kongs'
-      // Default to Mixed / Semi Flush: 123m (chow), 456m (chow), 789m (chow), ZZZ (pong), EE (pair)
-      currentTiles: ['1m', '2m', '3m', '4m', '5m', '6m', '7m', '8m', '9m', 'Z', 'Z', 'Z', 'E', 'E'],
-      activeTileIndex: null,
+      specialWinMode: null,
+      currentTiles: Array(14).fill(null),
+      activeTileIndex: 0,
+      activePaletteCategory: 'wan',
       baseHand: {
-        valid: true,
-        key: 'mixed_flush',
-        name: 'Mixed / Semi Flush',
-        points: 4,
+        valid: false,
+        key: 'incomplete',
+        name: 'Ubin Belum Lengkap',
+        points: 0,
         decomposition: null,
         outscored: []
       },
@@ -1061,7 +1118,6 @@
         discard: 0,
         added: 0
       },
-      isPair28: false,
       isHandTertutup: false,
       isTanpaBungaNagaAngin: false,
       isLastTile: false,
@@ -1145,7 +1201,6 @@
     }
 
     function parseHongKongMahjongHand(tiles) {
-      // 0. CHECK SPECIAL WIN MODE (TIANHU, DIHU, 7 BUNGA, 4 KONGS)
       if (state.specialWinMode === 'tianhu') {
         return {
           valid: true,
@@ -1170,9 +1225,9 @@
         return {
           valid: true,
           key: 'instant7',
-          name: 'Instant Win: 7 Bunga + Season',
+          name: 'Instant Win: 8 Bunga',
           points: 10,
-          decomposition: { type: 'SPECIAL', desc: 'Mengumpulkan 7 keping bunga/season' },
+          decomposition: { type: 'SPECIAL', desc: 'Mengumpulkan 8 keping bunga lengkap' },
           outscored: []
         };
       }
@@ -1189,22 +1244,23 @@
 
       const totalKongs = getTotalKongCount();
       const expectedCount = 14 + totalKongs;
+      const filledTiles = tiles.filter(Boolean);
 
-      if (!tiles || tiles.length !== expectedCount) {
+      if (filledTiles.length < expectedCount) {
         return {
           valid: false,
-          key: 'invalid',
-          name: `Bukan ${expectedCount} Kartu (Invalid)`,
+          key: 'incomplete',
+          name: `Ubin Belum Lengkap (${filledTiles.length}/${expectedCount})`,
           points: 0,
-          errorDetail: `Jumlah kartu harus tepat ${expectedCount} keping (${totalKongs} Kong aktif).`,
+          errorDetail: `Rak kartu belum lengkap (${filledTiles.length} dari ${expectedCount} ubin terisi). Sentuh slot kosong <b>[+]</b> untuk mengisi ubin kemenangan.`,
           decomposition: null,
           outscored: []
         };
       }
 
-      // STRICT VALIDATION: Maximum 4 of any individual tile
+      // Max 4 identical tiles validation
       const counts = {};
-      for (const t of tiles) {
+      for (const t of filledTiles) {
         counts[t] = (counts[t] || 0) + 1;
         if (counts[t] > 4) {
           return {
@@ -1221,27 +1277,27 @@
 
       const candidatePatterns = [];
 
-      // 1. 13 Orphans (15 Pts) - requires exactly 14 tiles (0 kongs)
+      // 1. 13 Orphans (15 Pts)
       if (totalKongs === 0) {
         const orphanRequired = ['1m', '9m', '1s', '9s', '1p', '9p', 'E', 'S', 'W', 'N', 'Z', 'F', 'B'];
         let orphanMissing = 0;
-        let hasOrphanPair = false;
+        let orphanPair = null;
         orphanRequired.forEach(req => {
           const c = counts[req] || 0;
           if (c === 0) orphanMissing++;
-          if (c >= 2) hasOrphanPair = true;
+          if (c >= 2) orphanPair = req;
         });
-        if (orphanMissing === 0 && hasOrphanPair) {
+        if (orphanMissing === 0 && orphanPair) {
           candidatePatterns.push({
             valid: true,
             key: 'orphans',
             name: '13 Orphans',
             points: 15,
-            decomposition: { type: 'SPECIAL', desc: '13 Terminal & Honor + 1 Pasang Kembar' }
+            decomposition: { type: 'SPECIAL', desc: '13 Terminal & Honor + 1 Pasang Kembar', pair: orphanPair }
           });
         }
 
-        // 2. Nine Gates (12 Pts) - requires 14 tiles of 1 suit
+        // 2. Nine Gates (12 Pts)
         const suits = new Set(tiles.map(t => t.length === 2 ? t[1] : 'h'));
         if (suits.size === 1 && !suits.has('h')) {
           const suit = [...suits][0];
@@ -1250,12 +1306,29 @@
           if (numCounts[1] >= 3 && numCounts[9] >= 3 &&
               numCounts[2] >= 1 && numCounts[3] >= 1 && numCounts[4] >= 1 &&
               numCounts[5] >= 1 && numCounts[6] >= 1 && numCounts[7] >= 1 && numCounts[8] >= 1) {
+            
+            let detectedPair = null;
+            if (numCounts[1] >= 4) detectedPair = `1${suit}`;
+            else if (numCounts[9] >= 4) detectedPair = `9${suit}`;
+            else {
+              for (let i = 2; i <= 8; i++) {
+                if (numCounts[i] >= 2) {
+                  detectedPair = `${i}${suit}`;
+                  break;
+                }
+              }
+            }
+
             candidatePatterns.push({
               valid: true,
               key: 'nine_gates',
               name: 'Nine Gates',
               points: 12,
-              decomposition: { type: 'SPECIAL', desc: '111 2345678 999 dari 1 Jenis Suit' }
+              decomposition: { 
+                type: 'SPECIAL', 
+                desc: '111 2345678 999 dari 1 Jenis Suit', 
+                pair: detectedPair 
+              }
             });
           }
         }
@@ -1280,11 +1353,12 @@
         }
       }
 
-      // 4. Standard 4 Melds + 1 Pair Decompositions (with Kong support)
+      // 4. Standard 4 Melds + 1 Pair Decompositions
+      // Uji SEMUA variasi dekomposisi dan masukkan SEMUA pola yang cocok ke kandidat
       const validDecompositions = decomposeStandardHand(tiles, totalKongs);
       for (const decomp of validDecompositions) {
-        const pattern = categorizeDecomposition(tiles, decomp);
-        candidatePatterns.push(pattern);
+        const patternsForDecomp = evaluateAllQualifyingPatterns(tiles, decomp);
+        patternsForDecomp.forEach(p => candidatePatterns.push(p));
       }
 
       if (candidatePatterns.length === 0) {
@@ -1299,16 +1373,40 @@
         };
       }
 
-      // HIGHEST POINT PRIORITY: Sort candidates descending by points
-      candidatePatterns.sort((a, b) => b.points - a.points);
+      // PRIORITAS TOTAL POIN TERTINGGI:
+      // Hitung total nilai riil masing-masing kandidat (Pola + Bonus Pair 2/8 + Bonus Pong Naga / Angin)
+      const winnerSeatInfo = getPlayerSeatWindInfo(state.selectedWinner);
+      candidatePatterns.forEach(cand => {
+        let calcScore = cand.points;
+        
+        // Pengecekan bonus pair 2/8 untuk kombinasi ini
+        if (cand.decomposition && cand.decomposition.pair) {
+          if (['2m', '8m', '2s', '8s', '2p', '8p'].includes(cand.decomposition.pair)) {
+            calcScore += 1;
+          }
+        }
+
+        // Pengecekan bonus pong naga & angin untuk kombinasi ini jika bukan Limit Hand
+        if (cand.points < 20 && cand.key !== 'all_honours') {
+          const honors = detectAutomaticHonors(tiles);
+          if (honors.dragonNames) calcScore += honors.dragonNames.length;
+          if (winnerSeatInfo.seatTile && (honors.windCounts[winnerSeatInfo.seatTile] || 0) >= 3) {
+            calcScore += 1;
+          }
+        }
+        cand.computedTotalPoints = calcScore;
+      });
+
+      // Urutkan dari total poin paling besar ke paling kecil
+      candidatePatterns.sort((a, b) => b.computedTotalPoints - a.computedTotalPoints || b.points - a.points);
       const best = candidatePatterns[0];
 
-      // Identify alternative qualifying patterns with fewer points
+      // Kumpulkan pola alternatif lain yang poinnya lebih rendah untuk ditampilkan transparan
       const seenKeys = new Set([best.key]);
       const outscored = [];
       for (let i = 1; i < candidatePatterns.length; i++) {
         const item = candidatePatterns[i];
-        if (!seenKeys.has(item.key) && item.points < best.points) {
+        if (!seenKeys.has(item.key) && item.points <= best.points) {
           seenKeys.add(item.key);
           outscored.push({ name: item.name, points: item.points });
         }
@@ -1316,6 +1414,92 @@
 
       best.outscored = outscored;
       return best;
+    }
+
+    // Fungsi Penguji: Mengumpulkan SEMUA pola yang memenuhi syarat untuk satu susunan set kartu
+    function evaluateAllQualifyingPatterns(tiles, decomp) {
+      const suits = new Set();
+      let hasHonors = false;
+      tiles.forEach(t => {
+        if (t.length === 2) suits.add(t[1]);
+        else hasHonors = true;
+      });
+
+      const pongAndKongMelds = decomp.melds.filter(m => m.type === 'PONG' || m.type === 'KONG');
+      const pongCount = pongAndKongMelds.length;
+      const chowCount = decomp.melds.filter(m => m.type === 'CHOW').length;
+      const kongCount = decomp.melds.filter(m => m.type === 'KONG').length;
+      const pongsOfTiles = pongAndKongMelds.map(m => m.tile);
+
+      const dragonPongs = pongsOfTiles.filter(t => ['Z', 'F', 'B'].includes(t)).length;
+      const isDragonPair = ['Z', 'F', 'B'].includes(decomp.pair);
+
+      const windPongs = pongsOfTiles.filter(t => ['E', 'S', 'W', 'N'].includes(t)).length;
+      const isWindPair = ['E', 'S', 'W', 'N'].includes(decomp.pair);
+
+      const matched = [];
+
+      // 15 Poin
+      if (kongCount === 4) {
+        matched.push({ valid: true, key: '4kongs', name: 'All Quadruplets = 4 Kongs', points: 15, decomposition: decomp });
+      }
+
+      // 12 Poin
+      if (windPongs === 4) {
+        matched.push({ valid: true, key: 'four_blessings', name: '4 Blessings = 4 Big Winds', points: 12, decomposition: decomp });
+      }
+
+      // 10 Poin
+      if (windPongs === 3 && isWindPair) {
+        matched.push({ valid: true, key: 'small_4_winds', name: 'Small Four Winds', points: 10, decomposition: decomp });
+      }
+      if (dragonPongs === 3) {
+        matched.push({ valid: true, key: 'big_3_dragons', name: '3 Scholars = Big 3 Dragons', points: 10, decomposition: decomp });
+      }
+      if (suits.size === 0 && hasHonors) {
+        matched.push({ valid: true, key: 'all_honours', name: 'All Honours', points: 10, decomposition: decomp });
+      }
+      const allTerm = tiles.every(t => (t.startsWith('1') || t.startsWith('9')) && t.length === 2);
+      if (allTerm && pongCount === 4) {
+        matched.push({ valid: true, key: 'all_terminals', name: "All Terminals = 1's & 9's", points: 10, decomposition: decomp });
+      }
+      if (pongCount === 4 && state.isHandTertutup) {
+        matched.push({ valid: true, key: 'all_concealed_triplets', name: 'All Concealed Triplets', points: 10, decomposition: decomp });
+      }
+      if (suits.size === 1 && !hasHonors) {
+        matched.push({ valid: true, key: 'full_flush', name: 'Full Colour = Full Flush', points: 10, decomposition: decomp });
+      }
+
+      // 5 Poin
+      if (dragonPongs === 2 && isDragonPair) {
+        matched.push({ valid: true, key: 'small_3_dragons', name: 'Small Three Dragons', points: 5, decomposition: decomp });
+      }
+
+      // 4 Poin
+      if (suits.size === 1 && hasHonors) {
+        matched.push({ valid: true, key: 'mixed_flush', name: 'Mixed / Semi Flush', points: 4, decomposition: decomp });
+      }
+
+      // 3 Poin
+      const isMixedTerm = tiles.every(t => (t.startsWith('1') || t.startsWith('9') || ['E','S','W','N','Z','F','B'].includes(t)));
+      if (isMixedTerm && pongCount === 4) {
+        matched.push({ valid: true, key: 'mixed_terminals', name: 'Mixed Terminals', points: 3, decomposition: decomp });
+      }
+      if (pongCount === 4) {
+        matched.push({ valid: true, key: 'triplets', name: 'All Triplets = 4 Pongs', points: 3, decomposition: decomp });
+      }
+
+      // 2 Poin
+      if (chowCount === 4 && !isDragonPair) {
+        matched.push({ valid: true, key: 'sequences', name: 'All Sequences = 4 Chows', points: 2, decomposition: decomp });
+      }
+
+      // 0 Poin (Chicken Hand jika tidak ada pola bernilai yang lolos)
+      if (matched.length === 0) {
+        matched.push({ valid: true, key: 'chicken', name: 'Chicken Hand', points: 0, decomposition: decomp });
+      }
+
+      return matched;
     }
 
     function decomposeStandardHand(tiles, targetKongs) {
@@ -1355,7 +1539,7 @@
         return;
       }
 
-      // Option A: Kong (if needed and count >= 4)
+      // Option A: Kong
       const currentKongCount = currentMelds.filter(m => m.type === 'KONG').length;
       if (currentKongCount < targetKongs && counts[firstTile] >= 4) {
         counts[firstTile] -= 4;
@@ -1416,61 +1600,23 @@
       const windPongs = pongsOfTiles.filter(t => ['E', 'S', 'W', 'N'].includes(t)).length;
       const isWindPair = ['E', 'S', 'W', 'N'].includes(decomp.pair);
 
-      // 0. All Quadruplets = 4 Kongs (15 Poin)
-      if (kongCount === 4) {
-        return { valid: true, key: '4kongs', name: 'All Quadruplets = 4 Kongs', points: 15, decomposition: decomp };
-      }
-      // 1. 4 Blessings = 4 Big Winds (12 Poin)
-      if (windPongs === 4) {
-        return { valid: true, key: 'four_blessings', name: '4 Blessings = 4 Big Winds', points: 12, decomposition: decomp };
-      }
-      // 2. Small Four Winds (10 Poin)
-      if (windPongs === 3 && isWindPair) {
-        return { valid: true, key: 'small_4_winds', name: 'Small Four Winds', points: 10, decomposition: decomp };
-      }
-      // 3. 3 Scholars = Big 3 Dragons (10 Poin)
-      if (dragonPongs === 3) {
-        return { valid: true, key: 'big_3_dragons', name: '3 Scholars = Big 3 Dragons', points: 10, decomposition: decomp };
-      }
-      // 4. All Honours (10 Poin)
-      if (suits.size === 0 && hasHonors) {
-        return { valid: true, key: 'all_honours', name: 'All Honours', points: 10, decomposition: decomp };
-      }
-      // 5. All Terminals = 1's & 9's (10 Poin)
+      if (kongCount === 4) return { valid: true, key: '4kongs', name: 'All Quadruplets = 4 Kongs', points: 15, decomposition: decomp };
+      if (windPongs === 4) return { valid: true, key: 'four_blessings', name: '4 Blessings = 4 Big Winds', points: 12, decomposition: decomp };
+      if (windPongs === 3 && isWindPair) return { valid: true, key: 'small_4_winds', name: 'Small Four Winds', points: 10, decomposition: decomp };
+      if (dragonPongs === 3) return { valid: true, key: 'big_3_dragons', name: '3 Scholars = Big 3 Dragons', points: 10, decomposition: decomp };
+      if (suits.size === 0 && hasHonors) return { valid: true, key: 'all_honours', name: 'All Honours', points: 10, decomposition: decomp };
+      
       const allTerm = tiles.every(t => (t.startsWith('1') || t.startsWith('9')) && t.length === 2);
-      if (allTerm && pongCount === 4) {
-        return { valid: true, key: 'all_terminals', name: "All Terminals = 1's & 9's", points: 10, decomposition: decomp };
-      }
-      // 6. All Concealed Triplets (10 Poin)
-      if (pongCount === 4 && state.isHandTertutup) {
-        return { valid: true, key: 'all_concealed_triplets', name: 'All Concealed Triplets', points: 10, decomposition: decomp };
-      }
-      // 7. Full Colour = Full Flush (10 Poin)
-      if (suits.size === 1 && !hasHonors) {
-        return { valid: true, key: 'full_flush', name: 'Full Colour = Full Flush', points: 10, decomposition: decomp };
-      }
-      // 8. Small Three Dragons (5 Poin)
-      if (dragonPongs === 2 && isDragonPair) {
-        return { valid: true, key: 'small_3_dragons', name: 'Small Three Dragons', points: 5, decomposition: decomp };
-      }
-      // 9. Mixed / Semi Flush (4 Poin)
-      if (suits.size === 1 && hasHonors) {
-        return { valid: true, key: 'mixed_flush', name: 'Mixed / Semi Flush', points: 4, decomposition: decomp };
-      }
-      // 10. Mixed Terminals (1, 9 & Honors) (3 Poin)
+      if (allTerm && pongCount === 4) return { valid: true, key: 'all_terminals', name: "All Terminals = 1's & 9's", points: 10, decomposition: decomp };
+      if (pongCount === 4 && state.isHandTertutup) return { valid: true, key: 'all_concealed_triplets', name: 'All Concealed Triplets', points: 10, decomposition: decomp };
+      if (suits.size === 1 && !hasHonors) return { valid: true, key: 'full_flush', name: 'Full Colour = Full Flush', points: 10, decomposition: decomp };
+      if (dragonPongs === 2 && isDragonPair) return { valid: true, key: 'small_3_dragons', name: 'Small Three Dragons', points: 5, decomposition: decomp };
+      if (suits.size === 1 && hasHonors) return { valid: true, key: 'mixed_flush', name: 'Mixed / Semi Flush', points: 4, decomposition: decomp };
+      
       const isMixedTerm = tiles.every(t => (t.startsWith('1') || t.startsWith('9') || ['E','S','W','N','Z','F','B'].includes(t)));
-      if (isMixedTerm && pongCount === 4) {
-        return { valid: true, key: 'mixed_terminals', name: 'Mixed Terminals', points: 3, decomposition: decomp };
-      }
-      // 11. All Triplets = 4 Pongs (3 Poin)
-      if (pongCount === 4) {
-        return { valid: true, key: 'triplets', name: 'All Triplets = 4 Pongs', points: 3, decomposition: decomp };
-      }
-      // 12. All Sequences = 4 Chows (2 Poin)
-      if (chowCount === 4 && !isDragonPair) {
-        return { valid: true, key: 'sequences', name: 'All Sequences = 4 Chows', points: 2, decomposition: decomp };
-      }
-      // 13. Chicken Hand (0 Poin)
+      if (isMixedTerm && pongCount === 4) return { valid: true, key: 'mixed_terminals', name: 'Mixed Terminals', points: 3, decomposition: decomp };
+      if (pongCount === 4) return { valid: true, key: 'triplets', name: 'All Triplets = 4 Pongs', points: 3, decomposition: decomp };
+      if (chowCount === 4 && !isDragonPair) return { valid: true, key: 'sequences', name: 'All Sequences = 4 Chows', points: 2, decomposition: decomp };
       return { valid: true, key: 'chicken', name: 'Chicken Hand', points: 0, decomposition: decomp };
     }
 
@@ -1489,6 +1635,13 @@
         pill.className = 'px-3 py-1 bg-amber-100 text-amber-950 border border-amber-300 rounded-xl text-xs font-black shadow-2xs';
         pill.textContent = decomp.desc;
         container.appendChild(pill);
+
+        if (decomp.pair) {
+          const pairPill = document.createElement('span');
+          pairPill.className = 'px-2.5 py-1 bg-amber-100/70 text-amber-950 border border-amber-300/90 rounded-lg text-[11px] font-bold flex items-center gap-1 shadow-2xs';
+          pairPill.innerHTML = `<span class="font-extrabold text-amber-800">Sepasang Mata:</span> ${getTileIndonesianName(decomp.pair)}`;
+          container.appendChild(pairPill);
+        }
         return;
       }
 
@@ -1500,7 +1653,6 @@
         return;
       }
 
-      // Render Melds (Chows, Pongs, Kongs)
       if (decomp.melds && decomp.melds.length) {
         decomp.melds.forEach(m => {
           const pill = document.createElement('span');
@@ -1521,7 +1673,6 @@
         });
       }
 
-      // Render Eyes / Pair
       if (decomp.pair) {
         const pill = document.createElement('span');
         pill.className = 'px-2.5 py-1 bg-amber-100/70 text-amber-950 border border-amber-300/90 rounded-lg text-[11px] font-bold flex items-center gap-1 shadow-2xs';
@@ -1530,171 +1681,36 @@
       }
     }
 
-    function buildPaletteTrays() {
-      const suits = [
-        { key: 'wan', containerId: 'paletteWan' },
-        { key: 'sou', containerId: 'paletteSou' },
-        { key: 'pin', containerId: 'palettePin' },
-        { key: 'honors', containerId: 'paletteHonors' }
-      ];
-
-      const currentCounts = {};
-      state.currentTiles.forEach(t => { currentCounts[t] = (currentCounts[t] || 0) + 1; });
-
-      suits.forEach(({ key, containerId }) => {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = '';
-        const tiles = TILE_DATA[key] || [];
-
-        tiles.forEach(tile => {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          const used = currentCounts[tile.id] || 0;
-          const isMaxed = used >= 4;
-
-          btn.className = `mj-tile w-[29px] h-12 p-0.5 tap-btn ${isMaxed ? 'opacity-40 cursor-not-allowed' : ''}`;
-          btn.title = `${tile.name} (Digunakan: ${used}/4)`;
-          btn.innerHTML = `
-            <div class="w-full h-8 flex items-center justify-center pointer-events-none">
-              ${getTileSvg(tile.id)}
-            </div>
-            ${used > 0 ? `<span class="absolute top-0.5 right-0.5 text-[8px] font-black ${isMaxed ? 'bg-rose-600 text-white' : 'bg-amber-600 text-white'} px-1 rounded-full leading-tight">${used}</span>` : ''}
-          `;
-          btn.addEventListener('click', () => {
-            selectReplacementTile(tile.id);
-          });
-          container.appendChild(btn);
-        });
-      });
-    }
-
-    function syncTilesWithKongCount() {
-      const targetKongs = getTotalKongCount();
-      const expectedLength = 14 + targetKongs;
-      
-      while (state.currentTiles.length < expectedLength) {
-        const counts = {};
-        state.currentTiles.forEach(t => { counts[t] = (counts[t] || 0) + 1; });
-        const triplet = Object.keys(counts).find(t => counts[t] === 3);
-        if (triplet) {
-          state.currentTiles.push(triplet);
-        } else {
-          const anyTile = Object.keys(counts).find(t => counts[t] < 4);
-          state.currentTiles.push(anyTile || '1m');
-        }
-      }
-
-      while (state.currentTiles.length > expectedLength) {
-        const counts = {};
-        state.currentTiles.forEach(t => { counts[t] = (counts[t] || 0) + 1; });
-        const quad = Object.keys(counts).find(t => counts[t] === 4);
-        if (quad) {
-          const idx = state.currentTiles.lastIndexOf(quad);
-          if (idx !== -1) state.currentTiles.splice(idx, 1);
-        } else {
-          state.currentTiles.pop();
-        }
-      }
-
-      state.currentTiles.sort(tileSortCompare);
-      renderHandTilesTray();
-      evaluateHandPatternFromTiles();
-      recalcPoints();
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      buildPaletteTrays();
-      loadSavedPlayersOrPrompt();
-      renderPlayers();
-      renderWinnerButtons();
-      renderLoserButtons();
-      renderHandTilesTray();
-      evaluateHandPatternFromTiles();
-      bindEvents();
-      recalcPoints();
-    });
-
-    function loadSavedPlayersOrPrompt() {
-      try {
-        const saved = localStorage.getItem('mj_business_players');
-        const savedDealer = localStorage.getItem('mj_business_dealer');
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed) && parsed.length >= 4 && parsed[0].name) {
-            state.players = parsed.slice(0, 4);
-            state.isConfigured = true;
-          }
-        }
-        if (savedDealer !== null) {
-          state.currentDealerIndex = parseInt(savedDealer, 10) || 0;
-        }
-      } catch (e) {
-        console.warn('Storage read error', e);
-      }
-
-      if (!state.isConfigured || !state.players[0].name) {
-        showSetupModal(true);
-      } else {
-        document.getElementById('closeSetupBtn')?.classList.remove('hidden');
-        document.getElementById('resetTableContainer')?.classList.remove('hidden');
-      }
-    }
-
-    function showSetupModal(isOnboarding = false) {
-      const modal = document.getElementById('setupModal');
-      const closeBtn = document.getElementById('closeSetupBtn');
-      const resetContainer = document.getElementById('resetTableContainer');
-      const errorMsg = document.getElementById('setupErrorMsg');
-      const title = document.getElementById('setupModalTitle');
-      const subtitle = document.getElementById('setupModalSubtitle');
-      const saveBtn = document.getElementById('saveSetupBtn');
-
-      if (errorMsg) errorMsg.classList.add('hidden');
-
-      for (let i = 0; i < 4; i++) {
-        const inp = document.getElementById(`inputName${i}`);
-        if (inp) inp.value = state.players[i]?.name || '';
-      }
-
-      if (isOnboarding) {
-        closeBtn?.classList.add('hidden');
-        resetContainer?.classList.add('hidden');
-        if (title) title.innerHTML = `<i class="fa-solid fa-users text-amber-600"></i> Masukkan Pemain Meja (4 Pemain)`;
-        if (subtitle) subtitle.textContent = 'Silakan isi 4 nama pemain sebelum mulai bermain';
-        if (saveBtn) saveBtn.textContent = 'MULAI PERMAINAN MEJA';
-      } else {
-        closeBtn?.classList.remove('hidden');
-        resetContainer?.classList.remove('hidden');
-        if (title) title.innerHTML = `<i class="fa-solid fa-users-gear text-amber-600"></i> Konfigurasi Pemain Meja (4 Pemain)`;
-        if (subtitle) subtitle.textContent = 'Ganti nama 4 pemain di meja';
-        if (saveBtn) saveBtn.textContent = 'SIMPAN PENGATURAN MEJA';
-      }
-
-      modal.classList.remove('hidden');
-    }
-
     function renderHandTilesTray() {
       const tray = document.getElementById('handTilesTray');
       tray.innerHTML = '';
 
       state.currentTiles.forEach((tileId, idx) => {
-        const tileInfo = TILE_MAP[tileId] || { label: tileId, name: tileId };
         const tileBtn = document.createElement('div');
         const isEditing = state.activeTileIndex === idx;
-        
-        tileBtn.className = `mj-tile w-[26px] h-11 sm:w-7 sm:h-12 p-0.5 ${isEditing ? 'selected' : ''}`;
-        tileBtn.innerHTML = `
-          <div class="w-full h-8 sm:h-9 flex items-center justify-center pointer-events-none">
-            ${getTileSvg(tileId)}
-          </div>
-        `;
-        tileBtn.title = `Slot #${idx + 1}: ${tileInfo.name} (Klik untuk ganti)`;
+
+        if (!tileId) {
+          // Empty Slot Placeholder
+          tileBtn.className = `mj-tile w-[43px] h-[60px] xs:w-[46px] xs:h-[65px] p-0.5 tap-btn border-2 border-dashed ${isEditing ? 'border-amber-600 bg-amber-100/70 ring-2 ring-amber-500/50' : 'border-stone-400/50 bg-stone-100/40'} flex flex-col items-center justify-center`;
+          tileBtn.innerHTML = `
+            <span class="text-sm font-black ${isEditing ? 'text-amber-800' : 'text-stone-400'}">+</span>
+            <span class="text-[9px] font-mono font-bold ${isEditing ? 'text-amber-900' : 'text-stone-500'}">#${idx + 1}</span>
+          `;
+          tileBtn.title = `Slot #${idx + 1}: Kosong (Ketuk untuk memilih ubin)`;
+        } else {
+          // Filled Mahjong Tile
+          const tileInfo = TILE_MAP[tileId] || { label: tileId, name: tileId };
+          tileBtn.className = `mj-tile w-[43px] h-[60px] xs:w-[46px] xs:h-[65px] p-0.5 tap-btn ${isEditing ? 'selected' : ''}`;
+          tileBtn.innerHTML = `
+            <div class="w-full h-[52px] xs:h-[56px] flex items-center justify-center pointer-events-none">
+              ${getTileSvg(tileId)}
+            </div>
+          `;
+          tileBtn.title = `Slot #${idx + 1}: ${tileInfo.name} (Ketuk untuk mengganti)`;
+        }
 
         tileBtn.addEventListener('click', () => {
-          state.activeTileIndex = idx;
-          renderHandTilesTray();
-          document.getElementById('tileSelectorPanel').classList.remove('hidden');
+          openBottomSheetPicker(idx);
         });
 
         tray.appendChild(tileBtn);
@@ -1702,20 +1718,171 @@
 
       const kongs = getTotalKongCount();
       const expected = 14 + kongs;
-      const label = kongs > 0 ? `${state.currentTiles.length} / ${expected} Tiles (${kongs} Kong)` : `${state.currentTiles.length} / 14 Tiles`;
-      document.getElementById('tileCountIndicator').textContent = label;
-      buildPaletteTrays();
+      const filled = state.currentTiles.filter(Boolean).length;
+      const label = kongs > 0 ? `${filled} / ${expected} Ubin (${kongs} Kong)` : `${filled} / 14 Ubin`;
+      const badge = document.getElementById('tileCountIndicator');
+      if (badge) {
+        badge.textContent = label;
+        if (filled === expected && expected > 0) {
+          badge.className = 'text-[10px] text-emerald-950 font-mono font-bold bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-300 shadow-2xs';
+        } else {
+          badge.className = 'text-[10px] text-amber-950 font-mono font-bold bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-300 shadow-2xs';
+        }
+      }
+    }
+
+    function openBottomSheetPicker(slotIndex) {
+      state.activeTileIndex = slotIndex !== undefined ? slotIndex : (state.activeTileIndex || 0);
+      renderHandTilesTray();
+      updateSheetSlotHeader();
+      renderActivePaletteCategory();
+      
+      const sheet = document.getElementById('tilePickerSheet');
+      sheet.classList.remove('hidden');
+    }
+
+    function closeBottomSheetPicker() {
+      const sheet = document.getElementById('tilePickerSheet');
+      sheet.classList.add('hidden');
+      state.activeTileIndex = null;
+      renderHandTilesTray();
+    }
+
+    function updateSheetSlotHeader() {
+      if (state.activeTileIndex === null || state.activeTileIndex >= state.currentTiles.length) return;
+      const currentTileId = state.currentTiles[state.activeTileIndex];
+      const previewEl = document.getElementById('sheetCurrentTilePreview');
+      const idxLabel = document.getElementById('sheetSlotIndexLabel');
+      const nameLabel = document.getElementById('sheetSlotNameLabel');
+
+      if (idxLabel) idxLabel.textContent = `Slot #${state.activeTileIndex + 1}`;
+
+      if (currentTileId) {
+        const tileInfo = TILE_MAP[currentTileId] || { name: currentTileId };
+        if (previewEl) previewEl.innerHTML = getTileSvg(currentTileId);
+        if (nameLabel) nameLabel.textContent = tileInfo.name;
+      } else {
+        if (previewEl) previewEl.innerHTML = `<span class="text-stone-400 font-black text-sm">+</span>`;
+        if (nameLabel) nameLabel.textContent = '(Belum Dipilih)';
+      }
+    }
+
+    function renderActivePaletteCategory() {
+      const grid = document.getElementById('activePaletteGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const category = state.activePaletteCategory || 'wan';
+      const tiles = TILE_DATA[category] || [];
+
+      const currentCounts = {};
+      state.currentTiles.forEach(t => { currentCounts[t] = (currentCounts[t] || 0) + 1; });
+
+      tiles.forEach(tile => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        const used = currentCounts[tile.id] || 0;
+        const isMaxed = used >= 4;
+
+        // EXTRA LARGE TILE IN PALETTE
+        btn.className = `mj-tile w-[50px] h-[70px] sm:w-[54px] sm:h-[75px] p-1 tap-btn ${isMaxed ? 'opacity-40 cursor-not-allowed' : ''}`;
+        btn.title = `${tile.name} (Digunakan: ${used}/4)`;
+        btn.innerHTML = `
+          <div class="w-full h-[58px] sm:h-[62px] flex items-center justify-center pointer-events-none">
+            ${getTileSvg(tile.id)}
+          </div>
+          ${used > 0 ? `<span class="absolute top-1 right-1 text-[9px] font-black ${isMaxed ? 'bg-rose-600 text-white' : 'bg-amber-600 text-white'} px-1.5 py-0.2 rounded-full leading-tight shadow-xs">${used}/4</span>` : ''}
+        `;
+
+        btn.addEventListener('click', () => {
+          if (isMaxed) {
+            showToast(`Ubin ${tile.name} sudah maksimal (4/4)!`);
+            return;
+          }
+          selectReplacementTile(tile.id);
+        });
+
+        grid.appendChild(btn);
+      });
     }
 
     function selectReplacementTile(newTileId) {
       if (state.activeTileIndex !== null && state.activeTileIndex < state.currentTiles.length) {
         state.currentTiles[state.activeTileIndex] = newTileId;
-        state.activeTileIndex = (state.activeTileIndex + 1) % state.currentTiles.length;
+        
+        // Auto-advance to next empty slot if any, else next sequential slot
+        let nextEmpty = -1;
+        for (let i = 0; i < state.currentTiles.length; i++) {
+          const checkIdx = (state.activeTileIndex + 1 + i) % state.currentTiles.length;
+          if (!state.currentTiles[checkIdx]) {
+            nextEmpty = checkIdx;
+            break;
+          }
+        }
+
+        if (nextEmpty !== -1) {
+          state.activeTileIndex = nextEmpty;
+        } else {
+          state.activeTileIndex = (state.activeTileIndex + 1) % state.currentTiles.length;
+        }
+
         renderHandTilesTray();
+        updateSheetSlotHeader();
+        renderActivePaletteCategory();
         evaluateHandPatternFromTiles();
         recalcPoints();
-        showToast(`Ubin diganti ke ${newTileId}`);
+        showToast(`Ubin dipilih: ${getTileIndonesianName(newTileId)}`);
       }
+    }
+
+    function syncTilesWithKongCount() {
+      const targetKongs = getTotalKongCount();
+      const expectedLength = 14 + targetKongs;
+      
+      while (state.currentTiles.length < expectedLength) {
+        state.currentTiles.push(null);
+      }
+
+      while (state.currentTiles.length > expectedLength) {
+        // Remove trailing empty slot or last slot
+        const emptyIdx = state.currentTiles.lastIndexOf(null);
+        if (emptyIdx !== -1 && emptyIdx >= 14) {
+          state.currentTiles.splice(emptyIdx, 1);
+        } else {
+          state.currentTiles.pop();
+        }
+      }
+
+      if (state.activeTileIndex !== null && state.activeTileIndex >= state.currentTiles.length) {
+        state.activeTileIndex = state.currentTiles.length - 1;
+      }
+
+      renderHandTilesTray();
+      evaluateHandPatternFromTiles();
+      recalcPoints();
+    }
+
+    function resetHandToDefault() {
+      state.kongs.closed = 0;
+      state.kongs.discard = 0;
+      state.kongs.added = 0;
+      const closedEl = document.getElementById('kongClosedCount');
+      const discardEl = document.getElementById('kongDiscardCount');
+      const addedEl = document.getElementById('kongAddedCount');
+      if (closedEl) closedEl.textContent = '0';
+      if (discardEl) discardEl.textContent = '0';
+      if (addedEl) addedEl.textContent = '0';
+
+      // 14 Empty primary slots ready to be arranged
+      state.currentTiles = Array(14).fill(null);
+      state.activeTileIndex = 0;
+      state.specialWinMode = null;
+      
+      closeBottomSheetPicker();
+      renderHandTilesTray();
+      evaluateHandPatternFromTiles();
+      recalcPoints();
+      showToast("Rak ubin dikosongkan (14 slot ubin kosong siap diisi)!");
     }
 
     function renderPlayers() {
@@ -1925,7 +2092,8 @@
           if (!isLimitHand) {
             if (!state.specialWinMode) {
               const honors = detectAutomaticHonors(state.currentTiles);
-              const handExcludesDragonPongs = ['big_3_dragons', 'small_3_dragons', 'all_honours'].includes(state.baseHand.key);
+              // Small Three Dragons dan Big 3 Dragons tetap mendapatkan tambahan +1 untuk setiap triplet naga miliknya
+              const handExcludesDragonPongs = ['all_honours'].includes(state.baseHand.key);
               if (!handExcludesDragonPongs && honors.dragonNames && honors.dragonNames.length > 0) {
                 honors.dragonNames.forEach(d => {
                   totalPts += 1;
@@ -1933,24 +2101,29 @@
                 });
               }
 
-              const handExcludesWindPongs = ['four_blessings', 'small_4_winds', 'all_honours'].includes(state.baseHand.key);
+              const handExcludesWindPongs = ['all_honours'].includes(state.baseHand.key);
               if (!handExcludesWindPongs && winnerSeatInfo.seatTile && (honors.windCounts[winnerSeatInfo.seatTile] || 0) >= 3) {
                 totalPts += 1;
                 breakdowns.push({ label: `Pong Triplet ${winnerSeatInfo.seatName} (Angin Kursi)`, pts: '+1' });
               }
+
+              // DETEKSI OTOMATIS: Pair Penutup 2 atau 8 (Jenis apa pun)
+              if (state.baseHand.decomposition && state.baseHand.decomposition.pair) {
+                const pairTile = state.baseHand.decomposition.pair;
+                if (['2m', '8m', '2s', '8s', '2p', '8p'].includes(pairTile)) {
+                  totalPts += 1;
+                  breakdowns.push({ label: `Pair Penutup 2/8 (${getTileIndonesianName(pairTile)})`, pts: '+1' });
+                }
+              }
             }
 
-            if (state.isPair28) {
-              totalPts += 1;
-              breakdowns.push({ label: 'Pair Penutup 2 atau 8', pts: '+1' });
-            }
             if (state.isHandTertutup && state.baseHand.key !== 'all_concealed_triplets') {
               totalPts += 1;
               breakdowns.push({ label: 'Hand Tertutup (Concealed)', pts: '+1' });
             }
             if (state.isTanpaBungaNagaAngin) {
               totalPts += 2;
-              breakdowns.push({ label: 'Tanpa Bunga, Naga & Angin', pts: '+2' });
+              breakdowns.push({ label: 'Tanpa Bunga, Naga & Mata Angin', pts: '+2' });
             }
             if (state.isLastTile) {
               totalPts += 1;
@@ -2042,11 +2215,40 @@
 
       if (totalPointsEl) totalPointsEl.textContent = totalPts;
 
+      // Hu Palsu Rule Check (< 3 Points)
+      const huPalsuBanner = document.getElementById('huPalsuWarningBanner');
+      const huPalsuPts = document.getElementById('huPalsuCurrentPts');
+      const claimHuPalsuBtn = document.getElementById('claimHuPalsuBtn');
+
+      const isHuPalsu = (state.entryMode === 'RULES' && state.baseHand.valid && totalPts < 3) ||
+                        (state.entryMode === 'MANUAL' && totalPts < 3);
+
+      if (huPalsuBanner) {
+        if (isHuPalsu) {
+          huPalsuBanner.classList.remove('hidden');
+          if (huPalsuPts) huPalsuPts.textContent = `${totalPts} Poin`;
+        } else {
+          huPalsuBanner.classList.add('hidden');
+        }
+      }
+
+      if (claimHuPalsuBtn) {
+        if (isHuPalsu) {
+          claimHuPalsuBtn.classList.remove('hidden');
+        } else {
+          claimHuPalsuBtn.classList.add('hidden');
+        }
+      }
+
       if (recordBtn) {
         if (state.entryMode === 'RULES' && !state.baseHand.valid) {
           recordBtn.disabled = true;
           recordBtn.className = 'w-full py-3.5 bg-beige-300 text-beige-500 font-black text-sm rounded-xl cursor-not-allowed flex items-center justify-center gap-2 uppercase tracking-wide';
           if (recordBtnText) recordBtnText.textContent = '⛔ BUKAN WINNING TILES (TIDAK BISA DICATAT)';
+        } else if (isHuPalsu) {
+          recordBtn.disabled = true;
+          recordBtn.className = 'w-full py-3.5 bg-rose-200 text-rose-700 font-black text-sm rounded-xl cursor-not-allowed flex items-center justify-center gap-2 uppercase tracking-wide border border-rose-300';
+          if (recordBtnText) recordBtnText.textContent = `⛔ HU PALSU (${totalPts} POIN < 3 POIN) — TIDAK SAH`;
         } else {
           recordBtn.disabled = false;
           recordBtn.className = 'tap-btn w-full py-3.5 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 text-white font-black text-sm rounded-xl shadow-md flex items-center justify-center gap-2 uppercase tracking-wide';
@@ -2117,7 +2319,119 @@
     }
 
     function bindEvents() {
-      // Tab Switching: Normal Tiles vs Menang Instan
+      // Bottom Sheet Drawer Slot Navigators
+      document.getElementById('btnPrevSlot')?.addEventListener('click', () => {
+        if (state.activeTileIndex !== null) {
+          state.activeTileIndex = (state.activeTileIndex - 1 + state.currentTiles.length) % state.currentTiles.length;
+          renderHandTilesTray();
+          updateSheetSlotHeader();
+        }
+      });
+
+      document.getElementById('btnNextSlot')?.addEventListener('click', () => {
+        if (state.activeTileIndex !== null) {
+          state.activeTileIndex = (state.activeTileIndex + 1) % state.currentTiles.length;
+          renderHandTilesTray();
+          updateSheetSlotHeader();
+        }
+      });
+
+      // Bottom Sheet Category Tabs
+      document.querySelectorAll('.tab-category').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.tab-category').forEach(t => {
+            t.className = 'tab-category py-1.5 rounded-lg text-beige-700 hover:text-beige-950 text-center tap-btn';
+          });
+          tab.className = 'tab-category py-1.5 rounded-lg bg-white text-amber-950 shadow-2xs border border-beige-300 text-center tap-btn font-black';
+          state.activePaletteCategory = tab.dataset.category;
+          renderActivePaletteCategory();
+        });
+      });
+
+      document.getElementById('openTilePickerBtn')?.addEventListener('click', () => openBottomSheetPicker(0));
+      document.getElementById('closeTilePickerBtn')?.addEventListener('click', closeBottomSheetPicker);
+
+      // Helper: Susun kartu berdasarkan dekomposisi set kombinasi yang terdeteksi
+      function getArrangedTilesByDecomposition(filledTiles, decomp) {
+        if (!decomp) return null;
+        const arranged = [];
+
+        if (decomp.type === 'SEVEN_PAIRS' && Array.isArray(decomp.pairs)) {
+          const sortedPairs = [...decomp.pairs].sort(tileSortCompare);
+          sortedPairs.forEach(p => arranged.push(p, p));
+        } else if (decomp.type === 'SPECIAL') {
+          if (state.baseHand.key === 'orphans' && decomp.pair) {
+            const orphans = ['1m', '9m', '1s', '9s', '1p', '9p', 'E', 'S', 'W', 'N', 'Z', 'F', 'B'];
+            orphans.forEach(o => arranged.push(o));
+            arranged.push(decomp.pair);
+          } else {
+            return [...filledTiles].sort(tileSortCompare);
+          }
+        } else if (Array.isArray(decomp.melds) && decomp.pair) {
+          // Urutkan susunan meld (Chow/Pong/Kong)
+          const sortedMelds = [...decomp.melds].sort((a, b) => {
+            const tileA = a.type === 'CHOW' ? a.tiles[0] : a.tile;
+            const tileB = b.type === 'CHOW' ? b.tiles[0] : b.tile;
+            return tileSortCompare(tileA, tileB);
+          });
+
+          sortedMelds.forEach(m => {
+            if (m.type === 'CHOW' && Array.isArray(m.tiles)) {
+              arranged.push(...m.tiles);
+            } else if (m.type === 'PONG') {
+              arranged.push(m.tile, m.tile, m.tile);
+            } else if (m.type === 'KONG') {
+              arranged.push(m.tile, m.tile, m.tile, m.tile);
+            }
+          });
+
+          // Tempatkan sepasang mata (pair/eyes) di bagian akhir
+          arranged.push(decomp.pair, decomp.pair);
+        }
+
+        // Verifikasi susunan kartu memiliki jumlah dan jenis kartu yang persis sama
+        if (arranged.length === filledTiles.length) {
+          const countArr = {};
+          const countFilled = {};
+          arranged.forEach(t => countArr[t] = (countArr[t] || 0) + 1);
+          filledTiles.forEach(t => countFilled[t] = (countFilled[t] || 0) + 1);
+          let match = true;
+          for (const t in countFilled) {
+            if (countFilled[t] !== countArr[t]) {
+              match = false;
+              break;
+            }
+          }
+          if (match) return arranged;
+        }
+
+        return null;
+      }
+
+      // Auto-Sort Hand (Meld & Pair jika sah, atau urut standar jika belum)
+      document.getElementById('sortHandTilesBtn')?.addEventListener('click', () => {
+        const filled = state.currentTiles.filter(Boolean);
+        const decomp = state.baseHand?.valid ? state.baseHand.decomposition : null;
+        let orderedFilled = getArrangedTilesByDecomposition(filled, decomp);
+        let toastMsg = "Kartu diurutkan sesuai set kombinasi (Meld & Pasang Mata)!";
+
+        if (!orderedFilled) {
+          orderedFilled = [...filled].sort(tileSortCompare);
+          toastMsg = "Susunan kartu diurutkan secara rapi!";
+        }
+
+        const empties = Array(state.currentTiles.length - orderedFilled.length).fill(null);
+        state.currentTiles = [...orderedFilled, ...empties];
+        renderHandTilesTray();
+        evaluateHandPatternFromTiles();
+        recalcPoints();
+        showToast(toastMsg);
+      });
+
+      // Reset Hand to 14 Empty Slots
+      document.getElementById('resetHandTilesBtn')?.addEventListener('click', resetHandToDefault);
+
+      // Mode Switchers: Normal Tiles vs Special Win
       const tabWinNormal = document.getElementById('tabWinTypeNormal');
       const tabWinInstant = document.getElementById('tabWinTypeInstant');
       const normalRackWrapper = document.getElementById('normalTilesRackWrapper');
@@ -2125,7 +2439,7 @@
 
       tabWinNormal?.addEventListener('click', () => {
         state.specialWinMode = null;
-        tabWinNormal.className = 'flex-1 py-1.5 rounded-lg bg-white text-beige-950 shadow-2xs border border-beige-300/80 flex items-center justify-center gap-1.5 tap-btn transition';
+        tabWinNormal.className = 'flex-1 py-1.5 rounded-lg bg-white text-beige-950 shadow-2xs border border-beige-300/80 flex items-center justify-center gap-1.5 tap-btn transition font-black';
         tabWinInstant.className = 'flex-1 py-1.5 rounded-lg text-amber-900 hover:text-amber-950 flex items-center justify-center gap-1.5 tap-btn transition';
         normalRackWrapper?.classList.remove('hidden');
         specialWinBox?.classList.add('hidden');
@@ -2135,7 +2449,7 @@
       });
 
       tabWinInstant?.addEventListener('click', () => {
-        tabWinInstant.className = 'flex-1 py-1.5 rounded-lg bg-white text-amber-950 shadow-2xs border border-amber-300 flex items-center justify-center gap-1.5 tap-btn transition';
+        tabWinInstant.className = 'flex-1 py-1.5 rounded-lg bg-white text-amber-950 shadow-2xs border border-amber-300 flex items-center justify-center gap-1.5 tap-btn transition font-black';
         tabWinNormal.className = 'flex-1 py-1.5 rounded-lg text-beige-700 hover:text-beige-950 flex items-center justify-center gap-1.5 tap-btn transition';
         normalRackWrapper?.classList.add('hidden');
         specialWinBox?.classList.remove('hidden');
@@ -2145,7 +2459,6 @@
         }
       });
 
-      // Special Win Cards Click Listener
       document.querySelectorAll('.special-win-card').forEach(card => {
         card.addEventListener('click', () => {
           document.querySelectorAll('.special-win-card').forEach(c => c.classList.remove('border-amber-600', 'bg-amber-100/70', 'ring-2', 'ring-amber-500/30'));
@@ -2157,7 +2470,7 @@
         });
       });
 
-      // Tab Switching: Rules Engine vs Manual Point
+      // Rules vs Manual Tabs
       const tabRules = document.getElementById('tabModeRules');
       const tabManual = document.getElementById('tabModeManual');
       const rulesWrapper = document.getElementById('rulesEngineWrapper');
@@ -2181,7 +2494,7 @@
         recalcPoints();
       });
 
-      // Manual Steppers
+      // Manual Point Inputs
       const directInput = document.getElementById('manualDirectPointInput');
       directInput?.addEventListener('input', (e) => {
         state.manualDirectPoints = parseInt(e.target.value, 10) || 0;
@@ -2209,65 +2522,10 @@
         });
       });
 
-      // Quick Add Kong Button in Section 2
-      document.getElementById('quickAddKongBtn')?.addEventListener('click', () => {
-        const total = getTotalKongCount();
-        if (total >= 4) {
-          showToast("Maksimal 4 Kong di meja!");
-          return;
-        }
-        state.kongs.closed++;
-        const el = document.getElementById('kongClosedCount');
-        if (el) el.textContent = state.kongs.closed;
-        syncTilesWithKongCount();
-        showToast(`1 Kong ditambahkan ke tangan (${state.currentTiles.length} kartu)!`);
-      });
-
-      // Tile Picker Drawer Controls
-      document.getElementById('openTilePickerBtn')?.addEventListener('click', () => {
-        const panel = document.getElementById('tileSelectorPanel');
-        panel?.classList.toggle('hidden');
-        if (state.activeTileIndex === null) {
-          state.activeTileIndex = 0;
-          renderHandTilesTray();
-        }
-      });
-
-      document.getElementById('closeTilePickerBtn')?.addEventListener('click', () => {
-        document.getElementById('tileSelectorPanel')?.classList.add('hidden');
-        state.activeTileIndex = null;
-        renderHandTilesTray();
-      });
-
-      // Quick Sort Hand Tiles Button
-      document.getElementById('sortHandTilesBtn')?.addEventListener('click', () => {
-        state.currentTiles.sort(tileSortCompare);
-        renderHandTilesTray();
-        evaluateHandPatternFromTiles();
-        recalcPoints();
-        showToast("Susunan kartu diurutkan secara rapi!");
-      });
-
-      document.getElementById('resetHandTilesBtn')?.addEventListener('click', () => {
-        state.kongs.closed = 0;
-        state.kongs.discard = 0;
-        state.kongs.added = 0;
-        document.getElementById('kongClosedCount').textContent = '0';
-        document.getElementById('kongDiscardCount').textContent = '0';
-        document.getElementById('kongAddedCount').textContent = '0';
-        state.currentTiles = ['1m', '2m', '3m', '4m', '5m', '6m', '7m', '8m', '9m', 'Z', 'Z', 'Z', 'E', 'E'];
-        evaluateHandPatternFromTiles();
-        renderHandTilesTray();
-        recalcPoints();
-        showToast("Ubin di-reset ke Mixed / Semi Flush (14 Tiles)");
-      });
-
-      // Manual Dealer Rotation Button
+      // Dealer Rotation
       document.getElementById('manualRotateDealerBtn')?.addEventListener('click', () => {
         state.currentDealerIndex = (state.currentDealerIndex + 1) % 4;
-        try {
-          localStorage.setItem('mj_business_dealer', state.currentDealerIndex);
-        } catch(e) {}
+        saveAllStateToStorage();
         renderPlayers();
         renderWinnerButtons();
         renderLoserButtons();
@@ -2275,7 +2533,7 @@
         showToast(`Bandar dialihkan ke: ${state.players[state.currentDealerIndex].name || `Pemain ${state.currentDealerIndex+1}`}`);
       });
 
-      // Win Type Buttons (ZIMO vs HU)
+      // Win Type (ZIMO vs HU)
       const btnZimo = document.getElementById('btnZimo');
       const btnHu = document.getElementById('btnHu');
       const loserBox = document.getElementById('loserSelectContainer');
@@ -2297,11 +2555,21 @@
         recalcPoints();
       });
 
-      // Multi-Bunga Event Handlers
-      document.getElementById('chkFlowerRedSeat')?.addEventListener('change', (e) => {
+      // Flower Events dengan Mutual Exclusion (Set Lengkap tidak dapat digabung dengan Bunga Kursi / Tidak Sesuai)
+      const chkRedSeat = document.getElementById('chkFlowerRedSeat');
+      const chkRedSet = document.getElementById('chkFlowerRedSet');
+      const chkBlackSeat = document.getElementById('chkFlowerBlackSeat');
+      const chkBlackSet = document.getElementById('chkFlowerBlackSet');
+
+      chkRedSeat?.addEventListener('change', (e) => {
         state.flowers.redSeat = e.target.checked;
+        if (e.target.checked && chkRedSet) {
+          chkRedSet.checked = false;
+          state.flowers.redSet = false;
+        }
         recalcPoints();
       });
+
       document.getElementById('btnFlowerRedMinus')?.addEventListener('click', () => {
         if (state.flowers.redNotSeatCount > 0) {
           state.flowers.redNotSeatCount--;
@@ -2309,27 +2577,49 @@
           recalcPoints();
         }
       });
+
       document.getElementById('btnFlowerRedPlus')?.addEventListener('click', () => {
         if (state.flowers.redNotSeatCount < 4) {
           state.flowers.redNotSeatCount++;
           document.getElementById('flowerRedNotSeatCount').textContent = state.flowers.redNotSeatCount;
+          if (chkRedSet) {
+            chkRedSet.checked = false;
+            state.flowers.redSet = false;
+          }
           recalcPoints();
         }
       });
-      document.getElementById('chkFlowerRedSet')?.addEventListener('change', (e) => {
+
+      chkRedSet?.addEventListener('change', (e) => {
         state.flowers.redSet = e.target.checked;
-        recalcPoints();
-      });
-      document.getElementById('chkFlowerBlackSeat')?.addEventListener('change', (e) => {
-        state.flowers.blackSeat = e.target.checked;
-        recalcPoints();
-      });
-      document.getElementById('chkFlowerBlackSet')?.addEventListener('change', (e) => {
-        state.flowers.blackSet = e.target.checked;
+        if (e.target.checked) {
+          if (chkRedSeat) { chkRedSeat.checked = false; state.flowers.redSeat = false; }
+          state.flowers.redNotSeatCount = 0;
+          const countEl = document.getElementById('flowerRedNotSeatCount');
+          if (countEl) countEl.textContent = '0';
+        }
         recalcPoints();
       });
 
-      // Multi-Kong Event Handlers with dynamic rack tile sync
+      chkBlackSeat?.addEventListener('change', (e) => {
+        state.flowers.blackSeat = e.target.checked;
+        if (e.target.checked && chkBlackSet) {
+          chkBlackSet.checked = false;
+          state.flowers.blackSet = false;
+        }
+        recalcPoints();
+      });
+
+      chkBlackSet?.addEventListener('change', (e) => {
+        state.flowers.blackSet = e.target.checked;
+        if (e.target.checked && chkBlackSeat) {
+          chkBlackSeat.checked = false;
+          state.flowers.blackSeat = false;
+        }
+        recalcPoints();
+      });
+
+      // Kong Steppers
       document.getElementById('btnKongClosedMinus')?.addEventListener('click', () => {
         if (state.kongs.closed > 0) {
           state.kongs.closed--;
@@ -2338,8 +2628,7 @@
         }
       });
       document.getElementById('btnKongClosedPlus')?.addEventListener('click', () => {
-        const total = getTotalKongCount();
-        if (total < 4) {
+        if (getTotalKongCount() < 4) {
           state.kongs.closed++;
           document.getElementById('kongClosedCount').textContent = state.kongs.closed;
           syncTilesWithKongCount();
@@ -2353,8 +2642,7 @@
         }
       });
       document.getElementById('btnKongDiscardPlus')?.addEventListener('click', () => {
-        const total = getTotalKongCount();
-        if (total < 4) {
+        if (getTotalKongCount() < 4) {
           state.kongs.discard++;
           document.getElementById('kongDiscardCount').textContent = state.kongs.discard;
           syncTilesWithKongCount();
@@ -2368,51 +2656,29 @@
         }
       });
       document.getElementById('btnKongAddedPlus')?.addEventListener('click', () => {
-        const total = getTotalKongCount();
-        if (total < 4) {
+        if (getTotalKongCount() < 4) {
           state.kongs.added++;
           document.getElementById('kongAddedCount').textContent = state.kongs.added;
           syncTilesWithKongCount();
         }
       });
 
-      // Additional Conditions
-      document.getElementById('chkPair28')?.addEventListener('change', (e) => {
-        state.isPair28 = e.target.checked;
-        recalcPoints();
-      });
-      document.getElementById('chkHandTertutup')?.addEventListener('change', (e) => {
-        state.isHandTertutup = e.target.checked;
-        evaluateHandPatternFromTiles();
-        recalcPoints();
-      });
-      document.getElementById('chkTanpaBungaNagaAngin')?.addEventListener('change', (e) => {
-        state.isTanpaBungaNagaAngin = e.target.checked;
-        recalcPoints();
-      });
-      document.getElementById('chkLastTile')?.addEventListener('change', (e) => {
-        state.isLastTile = e.target.checked;
-        recalcPoints();
-      });
-      document.getElementById('chkStealingKong')?.addEventListener('change', (e) => {
-        state.isStealingKong = e.target.checked;
-        recalcPoints();
-      });
-      document.getElementById('chkMenangBuntut')?.addEventListener('change', (e) => {
-        state.isMenangBuntut = e.target.checked;
-        recalcPoints();
-      });
+      // Additional Checkboxes (Pair 2/8 sudah otomatis)
+      document.getElementById('chkHandTertutup')?.addEventListener('change', (e) => { state.isHandTertutup = e.target.checked; evaluateHandPatternFromTiles(); recalcPoints(); });
+      document.getElementById('chkTanpaBungaNagaAngin')?.addEventListener('change', (e) => { state.isTanpaBungaNagaAngin = e.target.checked; recalcPoints(); });
+      document.getElementById('chkLastTile')?.addEventListener('change', (e) => { state.isLastTile = e.target.checked; recalcPoints(); });
+      document.getElementById('chkStealingKong')?.addEventListener('change', (e) => { state.isStealingKong = e.target.checked; recalcPoints(); });
+      document.getElementById('chkMenangBuntut')?.addEventListener('change', (e) => { state.isMenangBuntut = e.target.checked; recalcPoints(); });
 
-      // Submit Record Round
+      // Record Round & Claim Hu Palsu Penalty
       document.getElementById('recordRoundBtn')?.addEventListener('click', recordRound);
+      document.getElementById('claimHuPalsuBtn')?.addEventListener('click', executeHuPalsuPenalty);
+      document.getElementById('undoLastRoundBtn')?.addEventListener('click', undoLastRound);
 
-      // Setup Modal Controls
+      // Setup Modal
       const setupModal = document.getElementById('setupModal');
       document.getElementById('openSetupBtn')?.addEventListener('click', () => showSetupModal(false));
-      document.getElementById('closeSetupBtn')?.addEventListener('click', () => {
-        if (!state.isConfigured) return;
-        setupModal.classList.add('hidden');
-      });
+      document.getElementById('closeSetupBtn')?.addEventListener('click', () => { if (state.isConfigured) setupModal.classList.add('hidden'); });
 
       document.getElementById('saveSetupBtn')?.addEventListener('click', () => {
         const errorMsg = document.getElementById('setupErrorMsg');
@@ -2438,13 +2704,7 @@
         if (errorMsg) errorMsg.classList.add('hidden');
         state.isConfigured = true;
 
-        try {
-          const toSave = state.players.slice(0, 4);
-          localStorage.setItem('mj_business_players', JSON.stringify(toSave));
-          localStorage.setItem('mj_business_dealer', state.currentDealerIndex);
-        } catch (e) {
-          console.warn('Storage save error', e);
-        }
+        saveAllStateToStorage();
 
         setupModal.classList.add('hidden');
         document.getElementById('closeSetupBtn')?.classList.remove('hidden');
@@ -2457,16 +2717,11 @@
         showToast("Pemain berhasil disimpan!");
       });
 
-      // History Modal
+      // History & Reset Modals
       const historyModal = document.getElementById('historyModal');
-      document.getElementById('viewHistoryBtn')?.addEventListener('click', () => {
-        renderHistory();
-        historyModal.classList.remove('hidden');
-      });
+      document.getElementById('viewHistoryBtn')?.addEventListener('click', () => { renderHistory(); historyModal.classList.remove('hidden'); });
       document.getElementById('closeHistoryBtn')?.addEventListener('click', () => historyModal.classList.add('hidden'));
-      document.getElementById('undoLastRoundBtn')?.addEventListener('click', undoLastRound);
 
-      // Reset Table Modal
       const confirmResetModal = document.getElementById('confirmResetModal');
       document.getElementById('triggerResetTableBtn')?.addEventListener('click', () => confirmResetModal.classList.remove('hidden'));
       document.getElementById('cancelResetBtn')?.addEventListener('click', () => confirmResetModal.classList.add('hidden'));
@@ -2477,6 +2732,7 @@
         try {
           localStorage.removeItem('mj_business_players');
           localStorage.removeItem('mj_business_dealer');
+          localStorage.removeItem('mj_business_history');
         } catch(e) {}
         confirmResetModal.classList.add('hidden');
         setupModal.classList.add('hidden');
@@ -2485,8 +2741,18 @@
         renderHistory();
         recalcPoints();
         showSetupModal(true);
-        showToast("Tabel di-reset. Silakan isi pemain baru.");
+        showToast("Tabel di-reset.");
       });
+    }
+
+    function saveAllStateToStorage() {
+      try {
+        localStorage.setItem('mj_business_players', JSON.stringify(state.players.slice(0, 4)));
+        localStorage.setItem('mj_business_dealer', state.currentDealerIndex);
+        localStorage.setItem('mj_business_history', JSON.stringify(state.history));
+      } catch (e) {
+        console.warn('LocalStorage save error', e);
+      }
     }
 
     function recordRound() {
@@ -2496,6 +2762,11 @@
       }
 
       const finalPts = recalcPoints();
+      if (finalPts < 3) {
+        showToast("Gagal: Hu Palsu! Poin di bawah 3 tidak boleh dicatat sebagai kemenangan.");
+        return;
+      }
+
       const winner = state.players[state.selectedWinner];
       const loser = state.players[state.selectedLoser];
       const delta = state._currentCalculatedDeltas || [0, 0, 0, 0];
@@ -2504,8 +2775,6 @@
         p.points += (delta[idx] || 0);
       });
 
-      // Aturan Pergantian Bandar (Lian Zhuang):
-      // Jika Bandar menang, bandar bertahan. Jika pemain lain yang menang, bandar bergeser ke pemain berikutnya.
       const previousDealer = state.currentDealerIndex;
       let dealerShifted = false;
       if (state.selectedWinner !== state.currentDealerIndex) {
@@ -2529,6 +2798,8 @@
         time: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })
       });
 
+      saveAllStateToStorage();
+
       renderPlayers();
       renderWinnerButtons();
       renderLoserButtons();
@@ -2538,6 +2809,59 @@
         ? ` | Bandar berpindah ke ${state.players[state.currentDealerIndex].name}!`
         : ` | Bandar bertahan!`;
       showToast(`${winner ? winner.name : 'Pemenang'} +${delta[state.selectedWinner]} Poin tercatat${dealerMsg}`);
+    }
+
+    function executeHuPalsuPenalty() {
+      const violator = state.players[state.selectedWinner];
+      const violatorName = violator ? violator.name : `Pemain ${state.selectedWinner + 1}`;
+      const deltas = [0, 0, 0, 0];
+
+      // Official 8 Bamboo Rule: Violator penalized -30 points, each opponent gains +10 points
+      deltas[state.selectedWinner] = -30;
+      state.players.forEach((p, idx) => {
+        if (idx !== state.selectedWinner) {
+          deltas[idx] = 10;
+        }
+      });
+
+      state.players.forEach((p, idx) => {
+        p.points += deltas[idx];
+      });
+
+      const previousDealer = state.currentDealerIndex;
+      let dealerShifted = false;
+      if (state.selectedWinner === state.currentDealerIndex) {
+        state.currentDealerIndex = (state.currentDealerIndex + 1) % 4;
+        dealerShifted = true;
+      }
+
+      updateSeatsFromDealer();
+
+      state.history.unshift({
+        roundNum: state.history.length + 1,
+        winnerName: violatorName,
+        loserName: 'Semua Meja (Hu Palsu)',
+        winType: 'HU_PALSU',
+        points: -30,
+        winnerGain: -30,
+        previousDealer: previousDealer,
+        newDealer: state.currentDealerIndex,
+        dealerShifted: dealerShifted,
+        delta: [...deltas],
+        time: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })
+      });
+
+      saveAllStateToStorage();
+
+      renderPlayers();
+      renderWinnerButtons();
+      renderLoserButtons();
+      recalcPoints();
+
+      const dealerMsg = dealerShifted
+        ? ` | Bandar berpindah ke ${state.players[state.currentDealerIndex].name}!`
+        : ``;
+      showToast(`Penalti Hu Palsu: ${violatorName} (-30 Pts), 3 lawan (+10 Pts)${dealerMsg}`);
     }
 
     function undoLastRound() {
@@ -2553,6 +2877,8 @@
         state.currentDealerIndex = last.previousDealer;
         updateSeatsFromDealer();
       }
+
+      saveAllStateToStorage();
 
       renderPlayers();
       renderWinnerButtons();
@@ -2576,20 +2902,24 @@
         item.className = 'p-3 rounded-xl bg-white border border-beige-300 flex items-center justify-between shadow-2xs';
         
         let desc = '';
-        if (r.winType === 'ZIMO') {
+        if (r.winType === 'HU_PALSU') {
+          desc = `<span class="text-rose-700 font-black">${r.winnerName}</span> <span class="bg-rose-100 text-rose-900 px-1.5 py-0.5 rounded text-[10px] font-black border border-rose-300">HU PALSU</span> (Penalti -30 Poin, 3 Lawan +10)`;
+        } else if (r.winType === 'ZIMO') {
           desc = `<span class="text-amber-900 font-extrabold">${r.winnerName}</span> ZIMO (${r.points} Poin)`;
         } else {
           desc = `<span class="text-amber-900 font-extrabold">${r.winnerName}</span> HU dari <span class="text-rose-600 font-bold">${r.loserName}</span> (${r.points} Poin)`;
         }
 
         const totalGain = r.winnerGain !== undefined ? r.winnerGain : r.points;
+        const gainClass = totalGain >= 0 ? 'text-amber-900' : 'text-rose-700';
+        const gainSign = totalGain > 0 ? '+' : '';
         item.innerHTML = `
           <div>
             <div class="font-bold text-beige-950 text-xs">${desc}</div>
             <div class="text-[10px] text-beige-600 font-medium mt-0.5">Ronde #${r.roundNum} • ${r.time}</div>
           </div>
-          <div class="text-right font-mono font-black text-amber-900 text-sm">
-            +${totalGain} pt
+          <div class="text-right font-mono font-black ${gainClass} text-sm">
+            ${gainSign}${totalGain} pt
           </div>
         `;
         container.appendChild(item);
@@ -2606,6 +2936,84 @@
         toast.classList.add('opacity-0', '-translate-y-4');
       }, 2300);
     }
+
+    function loadSavedPlayersOrPrompt() {
+      try {
+        const saved = localStorage.getItem('mj_business_players');
+        const savedDealer = localStorage.getItem('mj_business_dealer');
+        const savedHistory = localStorage.getItem('mj_business_history');
+
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length >= 4 && parsed[0].name) {
+            state.players = parsed.slice(0, 4);
+            state.isConfigured = true;
+          }
+        }
+        if (savedDealer !== null) {
+          state.currentDealerIndex = parseInt(savedDealer, 10) || 0;
+        }
+        if (savedHistory) {
+          const parsedHistory = JSON.parse(savedHistory);
+          if (Array.isArray(parsedHistory)) {
+            state.history = parsedHistory;
+          }
+        }
+      } catch (e) {
+        console.warn('Storage read error', e);
+      }
+
+      if (!state.isConfigured || !state.players[0].name) {
+        showSetupModal(true);
+      } else {
+        document.getElementById('closeSetupBtn')?.classList.remove('hidden');
+        document.getElementById('resetTableContainer')?.classList.remove('hidden');
+      }
+    }
+
+    function showSetupModal(isOnboarding = false) {
+      const modal = document.getElementById('setupModal');
+      const closeBtn = document.getElementById('closeSetupBtn');
+      const resetContainer = document.getElementById('resetTableContainer');
+      const errorMsg = document.getElementById('setupErrorMsg');
+      const title = document.getElementById('setupModalTitle');
+      const subtitle = document.getElementById('setupModalSubtitle');
+      const saveBtn = document.getElementById('saveSetupBtn');
+
+      if (errorMsg) errorMsg.classList.add('hidden');
+
+      for (let i = 0; i < 4; i++) {
+        const inp = document.getElementById(`inputName${i}`);
+        if (inp) inp.value = state.players[i]?.name || '';
+      }
+
+      if (isOnboarding) {
+        closeBtn?.classList.add('hidden');
+        resetContainer?.classList.add('hidden');
+        if (title) title.innerHTML = `<i class="fa-solid fa-users text-amber-600"></i> Masukkan Pemain Meja (4 Pemain)`;
+        if (subtitle) subtitle.textContent = 'Silakan isi 4 nama pemain sebelum mulai bermain';
+        if (saveBtn) saveBtn.textContent = 'MULAI PERMAINAN MEJA';
+      } else {
+        closeBtn?.classList.remove('hidden');
+        resetContainer?.classList.remove('hidden');
+        if (title) title.innerHTML = `<i class="fa-solid fa-users-gear text-amber-600"></i> Konfigurasi Pemain Meja (4 Pemain)`;
+        if (subtitle) subtitle.textContent = 'Ganti nama 4 pemain di meja';
+        if (saveBtn) saveBtn.textContent = 'SIMPAN PENGATURAN MEJA';
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadSavedPlayersOrPrompt();
+      renderPlayers();
+      renderWinnerButtons();
+      renderLoserButtons();
+      renderHandTilesTray();
+      evaluateHandPatternFromTiles();
+      bindEvents();
+      recalcPoints();
+    });
   </script>
 </body>
 </html>
