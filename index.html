@@ -2264,8 +2264,10 @@
         transferText.className = 'p-3 bg-amber-100/70 border border-amber-300 rounded-xl text-xs font-semibold text-amber-950 leading-snug space-y-1.5';
 
         if (state.winType === 'ZIMO') {
-          deltas[state.selectedWinner] = totalPts;
           const cutPerOpponent = totalPts * 2;
+          const totalWinnerGain = cutPerOpponent * 3;
+          deltas[state.selectedWinner] = totalWinnerGain;
+
           state.players.forEach((p, idx) => {
             if (idx !== state.selectedWinner) {
               deltas[idx] = -cutPerOpponent;
@@ -2278,18 +2280,19 @@
             </div>
             <div class="text-[11px] text-beige-950 leading-relaxed space-y-1">
               <div>
-                • Pemenang (<b class="text-amber-900 font-extrabold">${winner ? winner.name : 'Pemenang'}</b>) bertambah: <b class="text-amber-950 font-mono text-sm font-black">+${totalPts} Poin</b>
+                • Pemenang (<b class="text-amber-900 font-extrabold">${winner ? winner.name : 'Pemenang'}</b>) menerima total: <b class="text-amber-950 font-mono text-sm font-black">+${totalWinnerGain} Poin</b> (${cutPerOpponent} × 3 lawan)
               </div>
               <div class="text-rose-800">
-                • Semua <b>3 lawan</b> mengalami <b>pengurangan poin:</b> masing-masing <b class="font-mono font-black">-${cutPerOpponent} Poin</b> (2 × ${totalPts} Pts).
+                • Semua <b>3 lawan</b> masing-masing dipotong: <b class="font-mono font-black">-${cutPerOpponent} Poin</b> (2 × ${totalPts} Pts).
               </div>
             </div>
           `;
         } else {
-          deltas[state.selectedWinner] = totalPts;
           const discarderCut = totalPts * 2;
           const otherCut = totalPts * 1;
+          const totalWinnerGain = discarderCut + (otherCut * 2);
 
+          deltas[state.selectedWinner] = totalWinnerGain;
           deltas[state.selectedLoser] = -discarderCut;
           state.players.forEach((p, idx) => {
             if (idx !== state.selectedWinner && idx !== state.selectedLoser) {
@@ -2303,7 +2306,7 @@
             </div>
             <div class="text-[11px] text-beige-950 leading-relaxed space-y-1">
               <div>
-                • Pemenang (<b class="text-amber-900 font-extrabold">${winner ? winner.name : 'Pemenang'}</b>) bertambah: <b class="text-amber-950 font-mono text-sm font-black">+${totalPts} Poin</b>
+                • Pemenang (<b class="text-amber-900 font-extrabold">${winner ? winner.name : 'Pemenang'}</b>) menerima total: <b class="text-amber-950 font-mono text-sm font-black">+${totalWinnerGain} Poin</b> (${discarderCut} + ${otherCut} + ${otherCut})
               </div>
               <div class="text-rose-800">
                 • Pembuang (<b class="text-rose-700 font-extrabold">${loser ? loser.name : 'Lawan'}</b>) dipotong <b>2× Poin</b> = <b class="font-mono font-black">-${discarderCut} Poin</b><br>
